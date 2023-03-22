@@ -26,6 +26,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 // Componentes do projeto
 import { NavComponent } from './components/nav/nav.component';
@@ -54,6 +56,10 @@ import { LoteCreateComponent } from './components/lote/lote-create/lote-create.c
 import { LoteListComponent } from './components/lote/lote-list/lote-list.component';
 import { LoteDeleteComponent } from './components/lote/lote-delete/lote-delete.component';
 import { LoteUpdateComponent } from './components/lote/lote-update/lote-update.component';
+import { AnimalCreateComponent } from './components/animal/animal-create/animal-create.component';
+import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
+import { AnimalDeleteComponent } from './components/animal/animal-delete/animal-delete.component';
+import { AnimalUpdateComponent } from './components/animal/animal-update/animal-update.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +87,10 @@ import { LoteUpdateComponent } from './components/lote/lote-update/lote-update.c
     LoteListComponent,
     LoteDeleteComponent,
     LoteUpdateComponent,
+    AnimalCreateComponent,
+    AnimalListComponent,
+    AnimalDeleteComponent,
+    AnimalUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -106,6 +116,8 @@ import { LoteUpdateComponent } from './components/lote/lote-update/lote-update.c
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
@@ -117,3 +129,5 @@ import { LoteUpdateComponent } from './components/lote/lote-update/lote-update.c
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
