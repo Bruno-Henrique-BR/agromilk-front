@@ -60,6 +60,9 @@ import { AnimalCreateComponent } from './components/animal/animal-create/animal-
 import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
 import { AnimalDeleteComponent } from './components/animal/animal-delete/animal-delete.component';
 import { AnimalUpdateComponent } from './components/animal/animal-update/animal-update.component';
+import { TanqueCreateComponent } from './components/tanque/tanque-create/tanque-create.component';
+import { TanqueListComponent } from './components/tanque/tanque-list/tanque-list.component';
+import { TanqueUpdateComponent } from './components/tanque/tanque-update/tanque-update.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +93,10 @@ import { AnimalUpdateComponent } from './components/animal/animal-update/animal-
     AnimalCreateComponent,
     AnimalListComponent,
     AnimalDeleteComponent,
-    AnimalUpdateComponent
+    AnimalUpdateComponent,
+    TanqueCreateComponent,
+    TanqueListComponent,
+    TanqueUpdateComponent
   ],
   imports: [
     BrowserModule,

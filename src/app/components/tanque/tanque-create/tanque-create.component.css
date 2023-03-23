@@ -12,23 +12,6 @@
    
 }
 
-.status-prioridade {
-   display: flex;
-}
-.status-prioridade mat-form-field {
-   width: 30%;
-}
-.raca {
-   width: 35%;
-}
-.lote {
-   width: 35%;
-}
-.cor {
-   width: 35%;
-}
-
-
 h1, p {
    text-align: center;
 }

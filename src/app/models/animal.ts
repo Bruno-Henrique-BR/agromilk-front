@@ -5,8 +5,8 @@ export interface Animal {
    dataNascimento?:   string;
    dataCompra?: string;
    cor:      string;
-   raca: any;
-   lote: any;
+   idRaca: any;
+   idLote: any;
    nomeRaca:            string;
    nomeLote:            string;
    lactacao:     boolean;

@@ -1,51 +1,60 @@
 <div class="container mat-elevation-z8">
   <form class="form">
 
-    <h1 class="fullWidth">Cadastrar Lote</h1>
-
-    <mat-form-field class="fullWidth" appearance="outline">
-      <mat-label>Codigo</mat-label>
-      <input matInput [(ngModel)]="animal.codigo" name="codigo" [formControl]="codigo" required matInput
-        placeholder="Ex.. fulano de tal" maxlength="50">
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Data de compra</mat-label>
-      <input matInput [matDatepicker]="dataCompra">
-      <mat-datepicker-toggle matIconSuffix [for]="dataCompra"></mat-datepicker-toggle>
-      <mat-datepicker #dataCompra></mat-datepicker>
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-      <mat-label>Data de nascimento</mat-label>
-      <input matInput [matDatepicker]="dataNascimento">
-      <mat-datepicker-toggle matIconSuffix [for]="dataNascimento"></mat-datepicker-toggle>
-      <mat-datepicker #dataNascimento></mat-datepicker>
-    </mat-form-field>
-    
-    <mat-form-field class="fullWidth" appearance="outline">
-      <mat-label>Cor</mat-label>
-      <input [(ngModel)]="animal.cor" name="cor" matInput placeholder="Ex.. fulano@mail.com">
-    </mat-form-field>
-
-      <mat-checkbox [(ngModel)]="animal.lactacao" [ngModelOptions]="{standalone: true}">Lactação</mat-checkbox>
-
-    <div class="lote">
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Selecione um lote</mat-label>
-        <mat-select [(ngModel)]="animal.lote" name="lote" [formControl]="lote" required>
-          <mat-option *ngFor="let lot of lotes" value="{{ lot.idLote }}">{{ lot.nome }}</mat-option>
-        </mat-select>
+    <h1 class="fullWidth">Cadastrar Animal</h1>
+    <div class="status-prioridade">
+      <mat-form-field appearance="outline">
+        <mat-label>Codigo</mat-label>
+        <input matInput [(ngModel)]="animal.codigo" name="codigo" [formControl]="codigo" required matInput
+          placeholder="Ex.. fulano de tal" maxlength="50">
       </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Apelido</mat-label>
+        <input matInput [(ngModel)]="animal.apelido" name="apelido" [formControl]="apelido" required matInput
+          placeholder="Ex.. fulano de tal" maxlength="50">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Data de compra</mat-label>
+        <input matInput [matDatepicker]="dataCompra">
+        <mat-datepicker-toggle matIconSuffix [for]="dataCompra"></mat-datepicker-toggle>
+        <mat-datepicker #dataCompra></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput [matDatepicker]="dataNascimento">
+        <mat-datepicker-toggle matIconSuffix [for]="dataNascimento"></mat-datepicker-toggle>
+        <mat-datepicker #dataNascimento></mat-datepicker>
+      </mat-form-field>
+   
+      
     </div>
 
-    <div class="raca">
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Selecione uma raça</mat-label>
-        <mat-select [(ngModel)]="animal.raca" name="raca" [formControl]="raca" required>
-          <mat-option *ngFor="let rac of racas" value="{{ rac.idRaca }}">{{ rac.nome }}</mat-option>
-        </mat-select>
+    <mat-checkbox [(ngModel)]="animal.lactacao" [ngModelOptions]="{standalone: true}">Lactação</mat-checkbox>
+    <div class="status-prioridade">
+      <div class="lote">
+        <mat-form-field appearance="outline">
+          <mat-label>Selecione um lote</mat-label>
+          <mat-select [(ngModel)]="animal.idLote" name="idLote" [formControl]="idLote" required>
+            <mat-option *ngFor="let lot of lotes" value="{{ lot.idLote }}">{{ lot.nome }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="raca">
+        <mat-form-field appearance="outline">
+          <mat-label>Selecione uma raça</mat-label>
+          <mat-select [(ngModel)]="animal.idRaca" name="idRaca" [formControl]="idRaca" required>
+            <mat-option *ngFor="let rac of racas" value="{{ rac.idRaca }}">{{ rac.nome }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="cor">
+      <mat-form-field appearance="outline">
+        <mat-label>Cor</mat-label>
+        <input [(ngModel)]="animal.cor" name="cor" matInput placeholder="Ex.. fulano@mail.com">
       </mat-form-field>
+      </div>
     </div>
 
 

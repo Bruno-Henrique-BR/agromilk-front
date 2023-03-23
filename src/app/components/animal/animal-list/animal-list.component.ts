@@ -13,7 +13,18 @@ export class AnimalListComponent implements OnInit {
 
   animais: Animal[] = []
 
-  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'acoes'];
+  codigo?:   string;
+  apelido?:   string;
+  dataNascimento?:   string;
+  dataCompra?: string;
+  cor:      string;
+  idRaca: any;
+  idLote: any;
+  nomeRaca:            string;
+  nomeLote:            string;
+  lactacao:     boolean;
+
+  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'dataNascimento', 'dataCompra', 'cor', 'nomeRaca', 'nomeLote', 'lactacao', 'acoes'];
   dataSource = new MatTableDataSource<Animal>(this.animais);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

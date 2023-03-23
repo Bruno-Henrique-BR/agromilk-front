@@ -24,8 +24,8 @@ export class AnimalCreateComponent implements OnInit {
     dataNascimento:   '',
     dataCompra: '',
     cor:      '',
-    raca: '',
-    lote: '',
+    idRaca: '',
+    idLote: '',
     nomeRaca:            '',
     nomeLote:            '',
     lactacao:     true,
@@ -38,8 +38,8 @@ export class AnimalCreateComponent implements OnInit {
 
   codigo: FormControl =  new FormControl(null, Validators.minLength(3));
   apelido: FormControl =  new FormControl(null, Validators.minLength(3));
-  lote:    FormControl = new FormControl(null, [Validators.required]);
-  raca:    FormControl = new FormControl(null, [Validators.required]);
+  idLote:    FormControl = new FormControl(null, [Validators.required]);
+  idRaca:    FormControl = new FormControl(null, [Validators.required]);
   public mask = {
     guide: true,
     showMask : true,
@@ -90,6 +90,6 @@ export class AnimalCreateComponent implements OnInit {
   
   
   validaCampos(): boolean {
-    return this.codigo.valid && this.apelido.valid && this.lote.valid && this.raca.valid
+    return this.codigo.valid && this.apelido.valid && this.idLote.valid && this.idRaca.valid
   }
 }

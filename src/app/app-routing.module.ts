@@ -26,6 +26,9 @@ import { AnimalCreateComponent } from './components/animal/animal-create/animal-
 import { AnimalDeleteComponent } from './components/animal/animal-delete/animal-delete.component';
 import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
 import { AnimalUpdateComponent } from './components/animal/animal-update/animal-update.component';
+import { TanqueListComponent } from './components/tanque/tanque-list/tanque-list.component';
+import { TanqueCreateComponent } from './components/tanque/tanque-create/tanque-create.component';
+import { TanqueUpdateComponent } from './components/tanque/tanque-update/tanque-update.component';
 const routes: Routes = [
   {
     path: '', component: NavComponent,  children: [
@@ -60,6 +63,11 @@ const routes: Routes = [
       { path: 'animal/create',     component: AnimalCreateComponent },
       { path: 'animal/update/:idAnimal', component: AnimalUpdateComponent },
       { path: 'animal/delete/:idAnimal', component: AnimalDeleteComponent },
+
+      { path: 'tanque',            component:  TanqueListComponent },
+      { path: 'tanque/create',     component: TanqueCreateComponent },
+      { path: 'tanque/update/:idTanque', component: TanqueUpdateComponent },
+
     ]
   }
 ];
