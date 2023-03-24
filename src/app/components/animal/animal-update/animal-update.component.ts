@@ -3,8 +3,11 @@ import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Animal } from 'src/app/models/animal';
+import { Lote } from 'src/app/models/lote';
+import { Raca } from 'src/app/models/raca';
 import { AnimalService } from 'src/app/services/animal.service';
-
+import { LoteService } from 'src/app/services/lote.service';
+import { RacaService } from 'src/app/services/raca.service';
 
 @Component({
   selector: 'app-animal-update',
@@ -28,11 +31,18 @@ export class AnimalUpdateComponent implements OnInit {
    
   }
 
+  lotes: Lote[] = []
+  racas: Raca[] = []
+  
   codigo: FormControl =  new FormControl(null, Validators.minLength(3));
   apelido: FormControl =  new FormControl(null, Validators.minLength(3));
+  idLote:    FormControl = new FormControl(null, [Validators.required]);
+  idRaca:    FormControl = new FormControl(null, [Validators.required]);
 
   constructor(
     private service: AnimalService,
+    private loteService: LoteService,
+    private racaService: RacaService,
     private toast:    ToastrService,
     private router:          Router,
     private route:   ActivatedRoute,
@@ -41,11 +51,26 @@ export class AnimalUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.animal.idAnimal = this.route.snapshot.paramMap.get('idAnimal');
     this.findById();
+    this.findAllLotes();
+    this.findAllRacas();
+    
    }
 
   findById(): void {
     this.service.findById(this.animal.idAnimal).subscribe(resposta => {
       this.animal = resposta;
+    })
+  }
+
+  findAllLotes(): void {
+    this.loteService.findAll().subscribe(resposta => {
+      this.lotes = resposta;
+    })
+  }
+
+  findAllRacas(): void {
+    this.racaService.findAll().subscribe(resposta => {
+      this.racas = resposta;
     })
   }
 

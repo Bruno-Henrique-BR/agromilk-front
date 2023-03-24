@@ -6,12 +6,12 @@
       <mat-form-field appearance="outline">
         <mat-label>Codigo</mat-label>
         <input matInput [(ngModel)]="animal.codigo" name="codigo" [formControl]="codigo" required matInput
-          placeholder="Ex.. fulano de tal" maxlength="50">
+          maxlength="50">
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Apelido</mat-label>
         <input matInput [(ngModel)]="animal.apelido" name="apelido" [formControl]="apelido" required matInput
-          placeholder="Ex.. fulano de tal" maxlength="50">
+          maxlength="50">
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Data de compra</mat-label>
@@ -26,8 +26,8 @@
         <mat-datepicker-toggle matIconSuffix [for]="dataNascimento"></mat-datepicker-toggle>
         <mat-datepicker #dataNascimento></mat-datepicker>
       </mat-form-field>
-   
-      
+
+
     </div>
 
     <mat-checkbox [(ngModel)]="animal.lactacao" [ngModelOptions]="{standalone: true}">Lactação</mat-checkbox>
@@ -50,10 +50,10 @@
         </mat-form-field>
       </div>
       <div class="cor">
-      <mat-form-field appearance="outline">
-        <mat-label>Cor</mat-label>
-        <input [(ngModel)]="animal.cor" name="cor" matInput placeholder="Ex.. fulano@mail.com">
-      </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Cor</mat-label>
+          <input [(ngModel)]="animal.cor" name="cor" matInput placeholder="Ex.. fulano@mail.com">
+        </mat-form-field>
       </div>
     </div>
 

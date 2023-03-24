@@ -1,12 +1,15 @@
 .container {
-   width: 35rem;
+   width: auto;
    margin: auto;
-   padding: 1rem;
-   border-radius: .6rem;
+   padding: 2rem;
+   border-radius: .2rem;
+   background: antiquewhite;
+
 }
 
 .fullWidth {
    width: 100%;
+   
 }
 
 h1, p {
@@ -32,7 +35,15 @@ p {
    margin-top: 4rem;
    opacity: .5;
 }
-
+.criar {
+   float: left;
+}
+.voltar {
+   float: right;
+}
+.form {
+   width: auto;
+}
 mat-icon {
    opacity: .8;
 }

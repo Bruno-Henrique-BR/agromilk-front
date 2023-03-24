@@ -30,24 +30,12 @@ import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 // Componentes do projeto
-import { NavComponent } from './components/nav/nav.component';
+import { NavComponent } from './components/nav/nav.component';NavComponent
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
-import { TecnicoListComponent } from './components/tecnico/tecnico-list/tecnico-list.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
-import { TecnicoCreateComponent } from './components/tecnico/tecnico-create/tecnico-create.component';
 import { NgxMaskModule } from 'ngx-mask';
-import { TecnicoUpdateComponent } from './components/tecnico/tecnico-update/tecnico-update.component';
-import { TecnicoDeleteComponent } from './components/tecnico/tecnico-delete/tecnico-delete.component';
-import { ClienteCreateComponent } from './components/cliente/cliente-create/cliente-create.component';
-import { ClienteDeleteComponent } from './components/cliente/cliente-delete/cliente-delete.component';
-import { ClienteListComponent } from './components/cliente/cliente-list/cliente-list.component';
-import { ClienteUpdateComponent } from './components/cliente/cliente-update/cliente-update.component';
-import { ChamadoListComponent } from './components/chamado/chamado-list/chamado-list.component';
-import { ChamadoCreateComponent } from './components/chamado/chamado-create/chamado-create.component';
-import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
-import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
 import { RacaListComponent } from './components/raca/raca-list/raca-list.component';
 import { RacaCreateComponent } from './components/raca/raca-create/raca-create.component';
 import { RacaDeleteComponent } from './components/raca/raca-delete/raca-delete.component';
@@ -70,18 +58,6 @@ import { TanqueUpdateComponent } from './components/tanque/tanque-update/tanque-
     NavComponent,
     HomeComponent,
     HeaderComponent,
-    TecnicoListComponent,
-    TecnicoCreateComponent,
-    TecnicoUpdateComponent,
-    TecnicoDeleteComponent,
-    ClienteCreateComponent,
-    ClienteDeleteComponent,
-    ClienteListComponent,
-    ClienteUpdateComponent,
-    ChamadoListComponent,
-    ChamadoCreateComponent,
-    ChamadoUpdateComponent,
-    ChamadoReadComponent, 
     RacaListComponent,
     RacaCreateComponent,
     RacaUpdateComponent,
