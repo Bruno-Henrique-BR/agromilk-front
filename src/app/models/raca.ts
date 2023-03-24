@@ -1,6 +1,6 @@
 export interface Raca {
    idRaca?:         any;
-   nome:     string;
+   nomeRaca:     string;
    descricao:      string;
 
  }

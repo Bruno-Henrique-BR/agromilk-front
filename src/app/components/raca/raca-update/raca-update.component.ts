@@ -15,12 +15,12 @@ export class RacaUpdateComponent implements OnInit {
 
   raca: Raca = {
     idRaca:         '',
-    nome:       '',
+    nomeRaca:       '',
     descricao:        '',
    
   }
 
-  nome: FormControl =  new FormControl(null, Validators.minLength(3));
+  nomeRaca: FormControl =  new FormControl(null, Validators.minLength(3));
   descricao: FormControl =  new FormControl(null, Validators.minLength(3));
 
 
@@ -60,6 +60,6 @@ export class RacaUpdateComponent implements OnInit {
   
   
   validaCampos(): boolean {
-    return this.nome.valid && this.descricao.valid
+    return this.nomeRaca.valid && this.descricao.valid
   }
 }

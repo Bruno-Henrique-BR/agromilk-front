@@ -13,7 +13,7 @@ export class LoteListComponent implements OnInit {
 
   lotes: Lote[] = []
 
-  displayedColumns: string[] = ['idLote', 'nome', 'descricao', 'acoes'];
+  displayedColumns: string[] = ['idLote', 'nomeLote', 'descricao', 'acoes'];
   dataSource = new MatTableDataSource<Lote>(this.lotes);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

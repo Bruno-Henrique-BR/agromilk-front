@@ -14,7 +14,7 @@ export class RacaDeleteComponent implements OnInit {
 
   raca: Raca = {
     idRaca:         '',
-    nome:       '',
+    nomeRaca:       '',
     descricao:        '',
    
   }

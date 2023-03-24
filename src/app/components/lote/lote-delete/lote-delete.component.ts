@@ -14,7 +14,7 @@ export class LoteDeleteComponent implements OnInit {
 
   lote: Lote = {
     idLote:         '',
-    nome:       '',
+    nomeLote:       '',
     descricao:        '',
    
   }

@@ -1,6 +1,6 @@
 export interface Lote {
    idLote?:         any;
-   nome:     string;
+   nomeLote:     string;
    descricao:      string;
 
  }

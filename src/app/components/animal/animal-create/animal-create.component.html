@@ -36,7 +36,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Selecione um lote</mat-label>
           <mat-select [(ngModel)]="animal.idLote" name="idLote" [formControl]="idLote" required>
-            <mat-option *ngFor="let lot of lotes" value="{{ lot.idLote }}">{{ lot.nome }}</mat-option>
+            <mat-option *ngFor="let lot of lotes" value="{{ lot.idLote }}">{{ lot.nomeLote }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -45,7 +45,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Selecione uma raça</mat-label>
           <mat-select [(ngModel)]="animal.idRaca" name="idRaca" [formControl]="idRaca" required>
-            <mat-option *ngFor="let rac of racas" value="{{ rac.idRaca }}">{{ rac.nome }}</mat-option>
+            <mat-option *ngFor="let rac of racas" value="{{ rac.idRaca }}">{{ rac.nomeRaca }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

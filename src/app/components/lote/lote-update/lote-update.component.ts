@@ -15,12 +15,12 @@ export class LoteUpdateComponent implements OnInit {
 
   lote: Lote = {
     idLote:         '',
-    nome:       '',
+    nomeLote:       '',
     descricao:        '',
    
   }
 
-  nome: FormControl =  new FormControl(null, Validators.minLength(3));
+  nomeLote: FormControl =  new FormControl(null, Validators.minLength(3));
   descricao: FormControl =  new FormControl(null, Validators.minLength(3));
 
 
@@ -60,6 +60,6 @@ export class LoteUpdateComponent implements OnInit {
   
   
   validaCampos(): boolean {
-    return this.nome.valid && this.descricao.valid
+    return this.nomeLote.valid && this.descricao.valid
   }
 }

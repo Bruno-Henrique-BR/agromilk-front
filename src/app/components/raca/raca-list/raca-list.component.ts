@@ -13,7 +13,7 @@ export class RacaListComponent implements OnInit {
 
   racas: Raca[] = []
 
-  displayedColumns: string[] = ['idRaca', 'nome', 'descricao', 'acoes'];
+  displayedColumns: string[] = ['idRaca', 'nomeRaca', 'descricao', 'acoes'];
   dataSource = new MatTableDataSource<Raca>(this.racas);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
