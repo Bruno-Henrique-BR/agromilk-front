@@ -1,18 +1,28 @@
 .container {
-   width: auto;
+   width: 80%;
    margin: auto;
-   padding: 2rem;
+   padding: 5%;
    border-radius: .2rem;
    background: antiquewhite;
 
 }
 
 .fullWidth {
-   width: 100%;
-   
+   width: 80%;
+
 }
 
-h1, p {
+.status-prioridade {
+   display: flex;
+}
+
+.status-prioridade mat-form-field {
+   width: auto;
+   padding: 10px;
+}
+
+h1,
+p {
    text-align: center;
 }
 
@@ -35,15 +45,25 @@ p {
    margin-top: 4rem;
    opacity: .5;
 }
+
 .criar {
    float: left;
 }
+
 .voltar {
    float: right;
 }
+
 .form {
    width: auto;
 }
+
 mat-icon {
    opacity: .8;
+}
+
+.ativo {
+   display: flex;
+   width: auto;
+   padding: 10px;
 }

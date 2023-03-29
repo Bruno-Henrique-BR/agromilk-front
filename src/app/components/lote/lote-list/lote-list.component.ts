@@ -28,7 +28,7 @@ export class LoteListComponent implements OnInit {
   }
 
   findAll() : void {
-    this.service.findAll().subscribe(response => {
+    this.service.listarLotes().subscribe(response => {
       this.lotes = response;
       this.dataSource = new MatTableDataSource<Lote>(this.lotes);
       this.dataSource.paginator = this.paginator;

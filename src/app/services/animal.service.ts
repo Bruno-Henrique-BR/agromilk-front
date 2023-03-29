@@ -19,6 +19,10 @@ export class AnimalService {
     return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal`);
   }
 
+  findByIdLote(idLote: any): Observable<Animal[]> {
+    return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/lote/${idLote}`);
+  }
+
   cadastrarAnimal(animal: Animal): Observable<Animal> {
     return this.http.post<Animal>(`${API_CONFIG.baseUrl}/agromilk/animal`, animal);
   }

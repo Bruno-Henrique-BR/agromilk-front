@@ -1,0 +1,66 @@
+.container {
+    width: 90%;
+    margin: auto;
+    }
+    
+    table {
+    width: 100%;
+    }
+    
+    .cadas {
+    width: 25%;
+    float: right;
+    background-color: green;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    }
+    
+    mat-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+    }
+    
+    button {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
+    
+    button:hover {
+    background-color: #0062cc;
+    }
+    
+    h1 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+    }
+    
+    .edit {
+    color: rgb(0, 153, 255);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
+    
+    .edit:hover {
+    color: #0062cc;
+    }
+    
+    .delete {
+    color: red;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
+    
+    .delete:hover {
+    color: #dc3545;
+    }

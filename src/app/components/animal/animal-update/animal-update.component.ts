@@ -34,6 +34,11 @@ export class AnimalUpdateComponent implements OnInit {
   lotes: Lote[] = []
   racas: Raca[] = []
   
+  public mask = {
+    guide: true,
+    showMask : true,
+    mask: [/\d/, /\d/, '/', /\M/, /\M/, '/',/\y/, /\y/,/\y/, /\y/]
+  };
   codigo: FormControl =  new FormControl(null, Validators.minLength(3));
   apelido: FormControl =  new FormControl(null, Validators.minLength(3));
   idLote:    FormControl = new FormControl(null, [Validators.required]);
@@ -63,7 +68,7 @@ export class AnimalUpdateComponent implements OnInit {
   }
 
   findAllLotes(): void {
-    this.loteService.findAll().subscribe(resposta => {
+    this.loteService.listarLotes().subscribe(resposta => {
       this.lotes = resposta;
     })
   }

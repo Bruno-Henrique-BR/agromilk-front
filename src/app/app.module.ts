@@ -28,6 +28,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { TextMaskModule } from 'angular2-text-mask';
+import { MAT_DATE_LOCALE } from '@angular/material/core'
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 // Componentes do projeto
 import { NavComponent } from './components/nav/nav.component';NavComponent
@@ -44,6 +49,7 @@ import { LoteCreateComponent } from './components/lote/lote-create/lote-create.c
 import { LoteListComponent } from './components/lote/lote-list/lote-list.component';
 import { LoteDeleteComponent } from './components/lote/lote-delete/lote-delete.component';
 import { LoteUpdateComponent } from './components/lote/lote-update/lote-update.component';
+import { LoteAnimalComponent } from './components/lote/lote-animal/lote-animal.component';
 import { AnimalCreateComponent } from './components/animal/animal-create/animal-create.component';
 import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
 import { AnimalDeleteComponent } from './components/animal/animal-delete/animal-delete.component';
@@ -51,6 +57,9 @@ import { AnimalUpdateComponent } from './components/animal/animal-update/animal-
 import { TanqueCreateComponent } from './components/tanque/tanque-create/tanque-create.component';
 import { TanqueListComponent } from './components/tanque/tanque-list/tanque-list.component';
 import { TanqueUpdateComponent } from './components/tanque/tanque-update/tanque-update.component';
+import { TanqueDeleteComponent } from './components/tanque/tanque-delete/tanque-delete.component';
+import { OrdenhaListComponent } from './components/ordenha/ordenha-list/ordenha-list.component';
+import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/ordenha-create.component';
 
 @NgModule({
   declarations: [
@@ -66,13 +75,17 @@ import { TanqueUpdateComponent } from './components/tanque/tanque-update/tanque-
     LoteListComponent,
     LoteDeleteComponent,
     LoteUpdateComponent,
+    LoteAnimalComponent,
     AnimalCreateComponent,
     AnimalListComponent,
     AnimalDeleteComponent,
     AnimalUpdateComponent,
     TanqueCreateComponent,
     TanqueListComponent,
-    TanqueUpdateComponent
+    TanqueUpdateComponent,
+    TanqueDeleteComponent,
+    OrdenhaListComponent,
+    OrdenhaCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +113,9 @@ import { TanqueUpdateComponent } from './components/tanque/tanque-update/tanque-
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatAutocompleteModule,
+    TextMaskModule,
+    MatExpansionModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
@@ -107,7 +123,8 @@ import { TanqueUpdateComponent } from './components/tanque/tanque-update/tanque-
     }),
     NgxMaskModule.forRoot()
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [AuthInterceptorProvider ,{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

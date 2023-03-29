@@ -15,52 +15,50 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Data de compra</mat-label>
-        <input matInput [matDatepicker]="dataCompra">
-        <mat-datepicker-toggle matIconSuffix [for]="dataCompra"></mat-datepicker-toggle>
+        <input matInput [textMask]="mask" [matDatepicker]="dataCompra">
+        <mat-datepicker-toggle matSuffix [for]="dataCompra"></mat-datepicker-toggle>
         <mat-datepicker #dataCompra></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Data de nascimento</mat-label>
-        <input matInput [matDatepicker]="dataNascimento">
-        <mat-datepicker-toggle matIconSuffix [for]="dataNascimento"></mat-datepicker-toggle>
+        <input matInput [matDatepicker]="dataNascimento" placeholder="Data de nascimento">
+        <mat-datepicker-toggle matSuffix [for]="dataNascimento"></mat-datepicker-toggle>
         <mat-datepicker #dataNascimento></mat-datepicker>
       </mat-form-field>
 
-
     </div>
 
-    <mat-checkbox [(ngModel)]="animal.lactacao" [ngModelOptions]="{standalone: true}">Lactação</mat-checkbox>
+
+
     <div class="status-prioridade">
-      <div class="lote">
-        <mat-form-field appearance="outline">
-          <mat-label>Selecione um lote</mat-label>
-          <mat-select [(ngModel)]="animal.idLote" name="idLote" [formControl]="idLote" required>
-            <mat-option *ngFor="let lot of lotes" value="{{ lot.idLote }}">{{ lot.nomeLote }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Selecione um lote</mat-label>
+        <input type="text" matInput name="idLote" [formControl]="idLote" required [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let lot of lotes" value="{{ lot.idLote }}">{{ lot.nomeLote }}</mat-option>
 
-      <div class="raca">
-        <mat-form-field appearance="outline">
-          <mat-label>Selecione uma raça</mat-label>
-          <mat-select [(ngModel)]="animal.idRaca" name="idRaca" [formControl]="idRaca" required>
-            <mat-option *ngFor="let rac of racas" value="{{ rac.idRaca }}">{{ rac.nomeRaca }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="cor">
-        <mat-form-field appearance="outline">
-          <mat-label>Cor</mat-label>
-          <input [(ngModel)]="animal.cor" name="cor" matInput placeholder="Ex.. fulano@mail.com">
-        </mat-form-field>
-      </div>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Selecione uma raça</mat-label>
+        <mat-select [(ngModel)]="animal.idRaca" name="idRaca" [formControl]="idRaca" required>
+          <mat-option *ngFor="let rac of racas" value="{{ rac.idRaca }}">{{ rac.nomeRaca }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cor</mat-label>
+        <input [(ngModel)]="animal.cor" name="cor" matInput>
+      </mat-form-field>
     </div>
-
-
-
-    <button (click)="create()" [disabled]="!validaCampos()" class="mat-elevation-z4" mat-flat-button
-      color="primary">Cadastrar</button>
-    <button routerLink="../" class="mat-elevation-z4" mat-stroked-button color="warn">Cancelar</button>
+    <div class="lactacao">
+      <mat-checkbox [(ngModel)]="animal.lactacao"
+        [ngModelOptions]="{standalone: true}"><mat-label>Lactação</mat-label></mat-checkbox>
+    </div>
+    <div>
+      <button (click)="create()" [disabled]="!validaCampos()" class="mat-elevation-z4" mat-flat-button
+        color="primary">Cadastrar</button>
+      <button routerLink="../" class="mat-elevation-z4" mat-stroked-button color="warn">Cancelar</button>
+    </div>
   </form>
 </div>

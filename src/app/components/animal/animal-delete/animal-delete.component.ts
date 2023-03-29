@@ -33,7 +33,11 @@ export class AnimalDeleteComponent implements OnInit {
 
   lotes: Lote[] = []
   racas: Raca[] = []
-  
+  public mask = {
+    guide: true,
+    showMask : true,
+    mask: [/\d/, /\d/, '/', /\M/, /\M/, '/',/\y/, /\y/,/\y/, /\y/]
+  };
   constructor(
     private service: AnimalService,
     private loteService: LoteService,
@@ -58,7 +62,7 @@ export class AnimalDeleteComponent implements OnInit {
   }
 
   findAllLotes(): void {
-    this.loteService.findAll().subscribe(resposta => {
+    this.loteService.listarLotes().subscribe(resposta => {
       this.lotes = resposta;
     })
   }

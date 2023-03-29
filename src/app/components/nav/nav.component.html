@@ -1,43 +1,49 @@
-<mat-drawer-container class="container" autosize>
-   <mat-drawer #drawer class="sidenav" mode="side">
-      <img src="assets/img/side-image.svg" alt="Imagem de navegação">
-      <mat-nav-list class="nav-list">
-         <a mat-list-item routerLink="home">
-            <i class="material-icons">home</i>
-            Home
-         </a>
-         <a mat-list-item routerLink="animal">
-            <i class="material-icons">support</i>
-            Animal
-         </a>
-         <a mat-list-item routerLink="raca">
-            <i class="material-icons">support</i>
-            Raça
-         </a>
-
-         <a mat-list-item routerLink="lote">
-            <i class="material-icons">support</i>
-            Lote
-         </a>
-
-         <a mat-list-item routerLink="tanque">
-            <i class="material-icons">support</i>
-            Tanque
-         </a>
-        
-         <a mat-list-item (click)="logout()">
-            <i class="material-icons">logout</i>
-            Logout
-         </a>
-      </mat-nav-list>
-   </mat-drawer>
-
-   <div class="sidenav-content">
-      <app-header></app-header>
-      <button class="menu mat-elevation-z8" (click)="drawer.toggle()" mat-icon-button>
-         <mat-icon>menu</mat-icon>
-      </button>
-      <router-outlet></router-outlet>
-   </div>
-
+<mat-drawer-container class="container">
+  <mat-drawer #drawer class="sidenav" mode="side" opened="true" fixedTopGap="64">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </mat-list-item>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon>add_circle_outline</mat-icon>
+          <span>Cadastro</span>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <mat-list-item routerLink="/animal" routerLinkActive="active">
+            <span>Animal</span>
+          </mat-list-item>
+          <mat-list-item routerLink="/lote" routerLinkActive="active">
+            <span>Lote</span>
+          </mat-list-item>
+          <mat-list-item routerLink="/raca" routerLinkActive="active">
+            <span>Raça</span>
+          </mat-list-item>
+          <mat-list-item routerLink="/tanque" routerLinkActive="active">
+            <span>Tanque</span>
+          </mat-list-item>
+          <mat-list-item routerLink="/ordenha" routerLinkActive="active">
+            <span>Ordenha</span>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-list-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+  
+  <mat-toolbar color="primary" class="toolbar">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Agropecuária Leiteira</span>
+  </mat-toolbar>
+  
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
 </mat-drawer-container>

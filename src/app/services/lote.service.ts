@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_CONFIG } from '../config/api.config';
@@ -15,7 +15,7 @@ export class LoteService {
     return this.http.get<Lote>(`${API_CONFIG.baseUrl}/agromilk/lote/${idLote}`);
   }
 
-  findAll(): Observable<Lote[]> {
+  listarLotes(): Observable<Lote[]> {
     return this.http.get<Lote[]>(`${API_CONFIG.baseUrl}/agromilk/lote`);
   }
 
@@ -29,5 +29,9 @@ export class LoteService {
 
   excluir(idLote: any): Observable<Lote> {
     return this.http.delete<Lote>(`${API_CONFIG.baseUrl}/agromilk/lote/${idLote}`);
+  }
+  search(query: string): Observable<Lote[]> {
+    const params = new HttpParams().set('nome', query);
+    return this.http.get<Lote[]>('/api/lotes', { params });
   }
 }

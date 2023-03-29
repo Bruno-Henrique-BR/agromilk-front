@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ThemeService } from 'src/app/theme.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-nav',
@@ -8,17 +10,25 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  isDarkMode: Observable<boolean>;
 
   constructor(
     private router: Router,
-    private toast: ToastrService) { }
+    private toast: ToastrService,
+    private themeService: ThemeService
+  ) {}
+
+  toggleDarkMode() {
+    this.themeService.toggleDarkMode();
+  }
 
   ngOnInit(): void {
+    this.isDarkMode = this.themeService.isDarkMode;
     this.router.navigate(['home'])
   }
 
   logout() {
-    this.router.navigate(['login'])
-    this.toast.info('Logout realizado com sucesso', 'Logout')
+    this.router.navigate(['login']);
+    this.toast.info('Logout realizado com sucesso', 'Logout');
   }
 }
