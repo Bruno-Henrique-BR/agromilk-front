@@ -11,14 +11,9 @@ styleUrls: ['./ordenha-list.component.css']
 })
 export class OrdenhaListComponent implements OnInit {
 
-ordenhas: Ordenha[] = [];
+ordenhas: Ordenha[] = []
 
-idAnimal?: number;
-dataOrdenha?: Date;
-turno?: string;
-qtdLeite?: number;
-
-displayedColumns: string[] = ['id', 'animal', 'data', 'turno', 'quantidade', 'acoes'];
+displayedColumns: string[] = ['idOrdenha', 'data', 'quantidade', 'idAnimal', 'idTanque', 'acoes'];
 dataSource = new MatTableDataSource<Ordenha>(this.ordenhas);
 
 @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -31,15 +26,15 @@ ngOnInit(): void {
 this.findAll();
 }
 
-findAll(): void {
+findAll() : void {
 this.service.listarOrdenhas().subscribe(response => {
 this.ordenhas = response;
 this.dataSource = new MatTableDataSource<Ordenha>(this.ordenhas);
 this.dataSource.paginator = this.paginator;
-});
+})
 }
 
-applyFilter(event: Event): void {
+applyFilter(event: Event) {
 const filterValue = (event.target as HTMLInputElement).value;
 this.dataSource.filter = filterValue.trim().toLowerCase();
 }

@@ -12,10 +12,9 @@
         <input matInput [(ngModel)]="tanque.descricao" name="descricao" [formControl]="descricao" required matInput
           maxlength="50">
       </mat-form-field>
-
       <mat-form-field appearance="outline">
         <mat-label>Capacidade</mat-label>
-        <input [(ngModel)]="tanque.capacidade" name="capacidade" matInput>
+        <input [(ngModel)]="tanque.capacidade" name="capacidade" matInput type="number">
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Data de compra</mat-label>

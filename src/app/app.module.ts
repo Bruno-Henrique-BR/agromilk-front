@@ -116,6 +116,7 @@ import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/orde
     MatAutocompleteModule,
     TextMaskModule,
     MatExpansionModule,
+    FormsModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
