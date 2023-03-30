@@ -26,16 +26,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
-import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TextMaskModule } from 'angular2-text-mask';
 import { MAT_DATE_LOCALE } from '@angular/material/core'
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import { MatOptionModule } from '@angular/material/core';
 
 // Componentes do projeto
-import { NavComponent } from './components/nav/nav.component';NavComponent
+import { NavComponent } from './components/nav/nav.component'; NavComponent
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -60,7 +60,8 @@ import { TanqueUpdateComponent } from './components/tanque/tanque-update/tanque-
 import { TanqueDeleteComponent } from './components/tanque/tanque-delete/tanque-delete.component';
 import { OrdenhaListComponent } from './components/ordenha/ordenha-list/ordenha-list.component';
 import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/ordenha-create.component';
-
+import { LaticinioListComponent } from './components/laticinio/laticinio-list/laticinio-list.component';
+import { LaticinioCreateComponent } from './components/laticinio/laticinio-create/laticinio-create.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +71,7 @@ import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/orde
     RacaListComponent,
     RacaCreateComponent,
     RacaUpdateComponent,
-    RacaDeleteComponent, 
+    RacaDeleteComponent,
     LoteCreateComponent,
     LoteListComponent,
     LoteDeleteComponent,
@@ -86,6 +87,9 @@ import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/orde
     TanqueDeleteComponent,
     OrdenhaListComponent,
     OrdenhaCreateComponent,
+    LaticinioListComponent,
+    LaticinioCreateComponent
+
   ],
   imports: [
     BrowserModule,
@@ -117,6 +121,7 @@ import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/orde
     TextMaskModule,
     MatExpansionModule,
     FormsModule,
+    MatOptionModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
@@ -124,7 +129,7 @@ import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/orde
     }),
     NgxMaskModule.forRoot()
   ],
-  providers: [AuthInterceptorProvider ,{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
+  providers: [AuthInterceptorProvider, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 
   bootstrap: [AppComponent]
 })

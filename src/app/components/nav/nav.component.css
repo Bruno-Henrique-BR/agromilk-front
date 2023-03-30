@@ -1,26 +1,69 @@
+/* Define a altura e largura da classe .container como 100% da altura e largura da viewport */
 .container {
   height: 100vh;
   width: 100%;
 }
 
+/* Define a largura e cor de fundo da classe .sidenav */
 .sidenav {
   width: 240px;
-  background-color: #1c304f; /* Cor de fundo da navegação */
-  color: #fff; /* Cor do texto da navegação */
+  background-image: linear-gradient(to bottom, rgba(15,70,13,0.98), rgba(15,70,13,0.98)), url("//src/assets/img/vaca.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: #fff;
 }
 
+.sidenav img {
+  width: 100%;
+  height: auto;
+}
+
+/* Aplica a cor verde escuro apenas no submenu */
+.mat-menu-panel {
+  background-color: #257222;
+  color: #fff;
+}
+
+/* Define a cor do texto da classe .mat-list-item */
+.mat-list-base .mat-list-item {
+  color: rgb(243 237 237 / 87%);
+}
+
+/* Define a cor do texto dos links dentro da classe .sidenav */
 .sidenav a {
   color: #fff; /* Cor do texto dos links */
 }
 
+/* Define a cor verde escuro para a classe .submenu-item */
+.submenu-item {
+  color: #006400; /* Cor verde escuro */
+}
+
+/* Define a cor de fundo e texto da classe .mat-toolbar.mat-primary */
+.mat-toolbar.mat-primary {
+  background: #257222;
+  color: #fff;
+}
+
+/* Define a cor de fundo e texto da classe .mat-expansion-panel */
+.mat-expansion-panel {
+  background: #4e9f3496;
+  color: rgb(255 240 240 / 87%);
+}
+
+/* Define a cor de fundo dos itens de navegação quando hover na classe .sidenav .mat-list-item:hover */
 .sidenav .mat-list-item:hover {
-  background-color: #6A5ACD; /* Cor de fundo dos itens da navegação quando hover */
+  background-color: #74b479; 
+
 }
 
+/* Define a cor de fundo do item de navegação ativo na classe .sidenav .mat-list-item.active */
 .sidenav .mat-list-item.active {
-  background-color: #6A5ACD; /* Cor de fundo do item de navegação ativo */
+  background-color: #006400; 
 }
 
+/* Define a posição e cor de fundo e texto da classe .toolbar */
 .toolbar {
   position: fixed;
   z-index: 2;
@@ -28,29 +71,30 @@
   color: #fff; /* Cor do texto da barra de ferramentas */
 }
 
+/* Define o espaçamento do texto em relação ao ícone do menu na classe .toolbar span */
 .toolbar span {
-  margin-left: 8px; /* Espaçamento do texto em relação ao ícone do menu */
+  margin-left: 8px; 
 }
 
+/* Define o espaçamento da classe .content e sua margem superior */
 .content {
   padding: 16px;
   margin-top: 64px;
 }
 
+/* Define o espaçamento e alinhamento dos itens da classe .mat-expansion-panel-header */
 .mat-expansion-panel-header {
   display: flex;
   align-items: center;
 }
 
+/* Define o espaçamento e cor do ícone na classe .mat-expansion-panel-header mat-icon */
 .mat-expansion-panel-header mat-icon {
   margin-right: 8px;
+  color: #60bf5e;
 }
 
-.mat-list-item {
-  display: flex;
-  align-items: center;
-}
-
+/* Define o espaçamento e alinhamento do texto na classe .mat-list-item span */
 .mat-list-item span {
   margin-left: 8px;
 }

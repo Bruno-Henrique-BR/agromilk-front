@@ -22,6 +22,8 @@ import { TanqueUpdateComponent } from './components/tanque/tanque-update/tanque-
 import { TanqueDeleteComponent } from './components/tanque/tanque-delete/tanque-delete.component';
 import { OrdenhaListComponent } from './components/ordenha/ordenha-list/ordenha-list.component';
 import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/ordenha-create.component';
+import { LaticinioListComponent } from './components/laticinio/laticinio-list/laticinio-list.component';
+import { LaticinioCreateComponent } from './components/laticinio/laticinio-create/laticinio-create.component';
 const routes: Routes = [
   {
     path: '', component: NavComponent, children: [
@@ -53,6 +55,10 @@ const routes: Routes = [
 
       { path: 'ordenha', component: OrdenhaListComponent },
       { path: 'ordenha/create', component: OrdenhaCreateComponent },
+
+      { path: 'laticinio', component: LaticinioListComponent },
+      { path: 'laticinio/create', component: LaticinioCreateComponent },
+
 
     ]
   }

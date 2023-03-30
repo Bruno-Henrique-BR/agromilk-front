@@ -80,12 +80,12 @@ export class OrdenhaCreateComponent implements OnInit {
   create(): void {
     this.service.cadastrarOrdenha(this.ordenhaForm.value).subscribe(() => {
       this.service.showMessage('Ordenha criada com sucesso!');
-      this.router.navigate(['/ordenhas']);
+      this.router.navigate(['/ordenha']);
     });
   }
 
   cancel(): void {
-    this.router.navigate(['/ordenhas']);
+    this.router.navigate(['/ordenha']);
   }
 
   get form() {
