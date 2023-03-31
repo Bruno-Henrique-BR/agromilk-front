@@ -24,7 +24,7 @@ export class AnimalListComponent implements OnInit {
   nomeLote:            string;
   lactacao:     boolean;
 
-  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'dataNascimento', 'dataCompra', 'cor', 'nomeRaca', 'nomeLote', 'lactacao', 'acoes'];
+  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'dataNascimento', 'dataCompra', 'racaNome', 'loteNome', 'lactacao', 'acoes'];
   dataSource = new MatTableDataSource<Animal>(this.animais);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,13 +38,17 @@ export class AnimalListComponent implements OnInit {
     this.findAll();
   }
 
-  findAll() : void {
+  findAll(): void {
     this.service.findAll().subscribe(response => {
-      this.animais = response;
-      this.dataSource = new MatTableDataSource<Animal>(this.animais);
-      this.dataSource.paginator = this.paginator;
-    })
-  }
+        this.animais = response;
+        this.animais.forEach((animal) => {
+          animal.racaNome = animal.raca.nomeRaca;
+          animal.loteNome = animal.lote.nomeLote;
+        });
+        this.dataSource = new MatTableDataSource<Animal>(this.animais);
+        this.dataSource.paginator = this.paginator;
+      });
+}
     applyFilter(event: Event) {
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLowerCase();

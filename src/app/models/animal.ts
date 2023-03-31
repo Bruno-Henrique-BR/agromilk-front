@@ -1,4 +1,8 @@
 export interface Animal {
+   lote: any;
+   raca: any;
+   loteNome: any;
+   racaNome: any;
    idAnimal?:                any;
    codigo?:   string;
    apelido?:   string;

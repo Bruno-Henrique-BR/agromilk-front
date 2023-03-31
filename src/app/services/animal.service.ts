@@ -23,6 +23,10 @@ export class AnimalService {
     return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/lote/${idLote}`);
   }
 
+  pesquisarAnimais(apelido: string): Observable<Animal[]> {
+    return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/pesquisar?apelido=${apelido}`);
+}
+
   cadastrarAnimal(animal: Animal): Observable<Animal> {
     return this.http.post<Animal>(`${API_CONFIG.baseUrl}/agromilk/animal`, animal);
   }

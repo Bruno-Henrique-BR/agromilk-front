@@ -17,18 +17,21 @@ import { RacaService } from 'src/app/services/raca.service';
 export class AnimalUpdateComponent implements OnInit {
 
   animal: Animal = {
-    idAnimal:                '',
-    codigo:   '',
-    apelido:   '',
-    dataNascimento:   '',
+    idAnimal: '',
+    codigo: '',
+    apelido: '',
+    dataNascimento: '',
     dataCompra: '',
-    cor:      '',
+    cor: '',
     idRaca: '',
     idLote: '',
-    nomeRaca:            '',
-    nomeLote:            '',
-    lactacao:     false,
-   
+    nomeRaca: '',
+    nomeLote: '',
+    lactacao: false,
+    lote: undefined,
+    raca: undefined,
+    loteNome: undefined,
+    racaNome: undefined
   }
 
   lotes: Lote[] = []
@@ -51,7 +54,7 @@ export class AnimalUpdateComponent implements OnInit {
     private toast:    ToastrService,
     private router:          Router,
     private route:   ActivatedRoute,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.animal.idAnimal = this.route.snapshot.paramMap.get('idAnimal');
@@ -98,5 +101,5 @@ export class AnimalUpdateComponent implements OnInit {
   
   validaCampos(): boolean {
     return this.codigo.valid && this.apelido.valid
-  }
+}
 }

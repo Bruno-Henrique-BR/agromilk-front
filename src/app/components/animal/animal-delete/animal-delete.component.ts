@@ -17,18 +17,21 @@ import { RacaService } from 'src/app/services/raca.service';
 export class AnimalDeleteComponent implements OnInit {
 
   animal: Animal = {
-    idAnimal:                '',
-    codigo:   '',
-    apelido:   '',
-    dataNascimento:   '',
+    idAnimal: '',
+    codigo: '',
+    apelido: '',
+    dataNascimento: '',
     dataCompra: '',
-    cor:      '',
+    cor: '',
     idRaca: '',
     idLote: '',
-    nomeRaca:            '',
-    nomeLote:            '',
-    lactacao:     false,
-   
+    nomeRaca: '',
+    nomeLote: '',
+    lactacao: false,
+    lote: undefined,
+    raca: undefined,
+    loteNome: undefined,
+    racaNome: undefined
   }
 
   lotes: Lote[] = []

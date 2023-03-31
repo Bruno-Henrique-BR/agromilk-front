@@ -31,7 +31,10 @@ export class AnimalCreateComponent implements OnInit {
     nomeRaca: '',
     nomeLote: '',
     lactacao: true,
-
+    lote: undefined,
+    raca: undefined,
+    loteNome: undefined,
+    racaNome: undefined
   }
 
   public mask = {
@@ -46,6 +49,8 @@ export class AnimalCreateComponent implements OnInit {
   apelido: FormControl = new FormControl(null, Validators.minLength(3));
   idLote: FormControl = new FormControl(null, [Validators.required]);
   idRaca: FormControl = new FormControl(null, [Validators.required]);
+  dataCompra: FormControl = new FormControl(null, [Validators.required]);
+  dataNascimento: FormControl = new FormControl(null, [Validators.required]);
   searchControl = new FormControl();
   filteredOptions: Observable<Lote[]>;
 
@@ -107,6 +112,6 @@ export class AnimalCreateComponent implements OnInit {
       );
   }
   validaCampos(): boolean {
-    return this.codigo.valid && this.apelido.valid && this.idLote.valid && this.idRaca.valid
+    return this.codigo.valid && this.apelido.valid && this.idLote.valid && this.idRaca.valid && this.dataCompra.valid && this.dataNascimento.valid
   }
 }

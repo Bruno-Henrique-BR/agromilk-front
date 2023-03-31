@@ -13,19 +13,21 @@
         <input matInput [(ngModel)]="animal.apelido" name="apelido" [formControl]="apelido" required matInput
           maxlength="50">
       </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Data de compra</mat-label>
-        <input matInput [textMask]="mask" [matDatepicker]="dataCompra">
-        <mat-datepicker-toggle matSuffix [for]="dataCompra"></mat-datepicker-toggle>
-        <mat-datepicker #dataCompra></mat-datepicker>
-      </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Data de nascimento</mat-label>
-        <input matInput [matDatepicker]="dataNascimento" placeholder="Data de nascimento">
-        <mat-datepicker-toggle matSuffix [for]="dataNascimento"></mat-datepicker-toggle>
-        <mat-datepicker #dataNascimento></mat-datepicker>
+        <mat-label>Data de compra</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="animal.dataCompra" name="dataCompra" [formControl]="dataCompra" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="animal.dataNascimento" name="dataNascimento" [formControl]="dataNascimento" required>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      
 
     </div>
 
@@ -34,11 +36,9 @@
     <div class="status-prioridade">
       <mat-form-field appearance="outline">
         <mat-label>Selecione um lote</mat-label>
-        <input type="text" matInput name="idLote" [formControl]="idLote" required [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
+        <mat-select [(ngModel)]="animal.idLote" name="idLote" [formControl]="idLote" required>
           <mat-option *ngFor="let lot of lotes" value="{{ lot.idLote }}">{{ lot.nomeLote }}</mat-option>
-
-        </mat-autocomplete>
+        </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Selecione uma raça</mat-label>
