@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Laticinio } from 'src/app/models/laticinio';
 import { LaticinioService } from 'src/app/services/laticinio.service';
+import { LaticinioDeleteComponent } from '../laticinio-delete/laticinio-delete.component';
 
 @Component({
   selector: 'app-laticinio-list',
@@ -22,8 +24,30 @@ export class LaticinioListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private service: LaticinioService) { }
-
+  constructor(private service: LaticinioService, 
+    private dialog: MatDialog
+    ) { }
+    openDialog(idLaticinio: number): void {
+      const dialogRef = this.dialog.open(LaticinioDeleteComponent, {
+        width: '350px',
+        data: {
+          title: 'Confirmação',
+          message: 'Tem certeza que deseja excluir o laticinio?',
+          idLaticinio: idLaticinio
+        }
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.deleteLaticinio(result.idLaticinio);
+        }
+      });
+    }
+    deleteLaticinio(idLaticinio: number): void {
+      this.service.excluir(idLaticinio).subscribe(() => {
+        this.dataSource.data = this.dataSource.data.filter(f => f.idLaticinio !== idLaticinio);
+      });
+    }
   ngOnInit(): void {
     this.findAll();
   }

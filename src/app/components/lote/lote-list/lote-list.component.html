@@ -35,9 +35,9 @@
                <a routerLink="update/{{ element.idLote }}">
                   <i class="material-icons edit">edit</i>
                </a>
-               <a routerLink="delete/{{ element.idLote }}">
+               <a (click)="openDialog(element.idLote)">
                   <i class="material-icons delete">delete</i>
-               </a>
+                </a>  
                <a routerLink="listar/{{ element.idLote }}">
                   <i class="material-icons visibility">visibility</i>
                </a>

@@ -28,6 +28,7 @@ import { LaticinioCreateComponent } from './components/laticinio/laticinio-creat
 import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
 import { FuncionarioCreateComponent } from './components/funcionario/funcionario-create/funcionario-create.component';
 import { FuncionarioDeleteComponent } from './components/funcionario/funcionario-delete/funcionario-delete.component';
+import { LaticinioDeleteComponent } from './components/laticinio/laticinio-delete/laticinio-delete.component';
 const routes: Routes = [
   {
     path: '', component: NavComponent, children: [
@@ -65,6 +66,7 @@ const routes: Routes = [
 
       { path: 'laticinio', component: LaticinioListComponent },
       { path: 'laticinio/create', component: LaticinioCreateComponent },
+      { path: 'laticinio/delete/:idLaticinio', component: LaticinioDeleteComponent },
 
       { path: 'funcionario', component: FuncionarioListComponent },
       { path: 'funcionario/create', component: FuncionarioCreateComponent },

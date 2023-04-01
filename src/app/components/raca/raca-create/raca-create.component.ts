@@ -32,7 +32,7 @@ export class RacaCreateComponent implements OnInit {
 
   create(): void {
     this.service.cadastrarRaca(this.raca).subscribe(() => {
-      this.toast.success('Cliente cadastrado com sucesso', 'Cadastro');
+      this.toast.success('Raça cadastrada com sucesso', 'Cadastro');
       this.router.navigate(['raca'])
     }, ex => {
       if(ex.error.errors) {

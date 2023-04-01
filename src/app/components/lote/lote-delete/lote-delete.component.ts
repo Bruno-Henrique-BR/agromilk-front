@@ -1,55 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { Lote } from 'src/app/models/lote';
-import { LoteService } from 'src/app/services/lote.service';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-lote-delete',
   templateUrl: './lote-delete.component.html',
   styleUrls: ['./lote-delete.component.css']
 })
-export class LoteDeleteComponent implements OnInit {
+export class LoteDeleteComponent {
 
-  lote: Lote = {
-    idLote:         '',
-    nomeLote:       '',
-    descricao:        '',
-   
+
+
+  constructor(public dialogRef: MatDialogRef<LoteDeleteComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { title: string, message: string, idLote: number }) { }
+
+  getIdLote(): number {
+    return this.data.idLote;
   }
 
-  constructor(
-    private service: LoteService,
-    private toast:    ToastrService,
-    private router:          Router,
-    private route:   ActivatedRoute,
-    ) { }
-
-  ngOnInit(): void {
-    this.lote.idLote = this.route.snapshot.paramMap.get('idLote');
-    this.findById();
-   }
-
-  findById(): void {
-    this.service.findById(this.lote.idLote).subscribe(resposta => {
-      this.lote = resposta;
-    })
+  onConfirm(): void {
+    this.dialogRef.close(true);
   }
 
-  delete(): void {
-    this.service.excluir(this.lote.idLote).subscribe(() => {
-      this.toast.success('Lote deletado com sucesso', 'Delete');
-      this.router.navigate(['lote'])
-    }, ex => {
-      if(ex.error.errors) {
-        ex.error.errors.forEach(element => {
-          this.toast.error(element.message);
-        });
-      } else {
-        this.toast.error(ex.error.message);
-      }
-    })
+  onCancel(): void {
+    this.dialogRef.close(false);
   }
 
 }

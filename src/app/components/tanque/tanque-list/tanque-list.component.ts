@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tanque } from 'src/app/models/tanque';
 import { TanqueService } from 'src/app/services/tanque.service';
+import { TanqueDeleteComponent } from '../tanque-delete/tanque-delete.component';
 
 @Component({
   selector: 'app-tanque-list',
@@ -20,8 +22,30 @@ export class TanqueListComponent implements OnInit {
 
 
   constructor(
-    private service: TanqueService
-  ) { }
+    private service: TanqueService,
+    private dialog: MatDialog
+    ) { }
+openDialog(idTanque: number): void {
+    const dialogRef = this.dialog.open(TanqueDeleteComponent, {
+        width: '350px',
+        data: {
+            title: 'Confirmação',
+            message: 'Tem certeza que deseja excluir o tanque?',
+            idTanque: idTanque
+        }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+            this.deleteTanque(result.idTanque);
+        }
+    });
+}
+deleteTanque(idTanque: number): void {
+    this.service.excluir(idTanque).subscribe(() => {
+        this.dataSource.data = this.dataSource.data.filter(f => f.idTanque !== idTanque);
+    });
+}
 
   ngOnInit(): void {
     this.findAll();

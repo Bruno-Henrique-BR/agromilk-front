@@ -1,0 +1,30 @@
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  button {
+    margin-left: 16px;
+  }
+ 
+  .cancel-button {
+    color: white;
+    background-color: red;
+  }
+  
+  .confirm-button {
+    color: white;
+    background-color: green;
+  }
+  

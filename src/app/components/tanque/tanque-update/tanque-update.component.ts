@@ -46,7 +46,7 @@ export class TanqueUpdateComponent implements OnInit {
 
   update(): void {
     this.service.atualizarTanque(this.tanque).subscribe(() => {
-      this.toast.success('Cliente atualizado com sucesso', 'Update');
+      this.toast.success('Tanque atualizado com sucesso', 'Update');
       this.router.navigate(['tanque'])
     }, ex => {
       if(ex.error.errors) {

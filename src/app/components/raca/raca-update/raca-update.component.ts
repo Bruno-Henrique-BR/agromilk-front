@@ -44,7 +44,7 @@ export class RacaUpdateComponent implements OnInit {
 
   update(): void {
     this.service.atualizarRaca(this.raca).subscribe(() => {
-      this.toast.success('Cliente atualizado com sucesso', 'Update');
+      this.toast.success('Rala atualizada com sucesso', 'Update');
       this.router.navigate(['raca'])
     }, ex => {
       if(ex.error.errors) {

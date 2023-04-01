@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Lote } from 'src/app/models/lote';
 import { LoteService } from 'src/app/services/lote.service';
+import { LoteDeleteComponent } from '../lote-delete/lote-delete.component';
 
 @Component({
   selector: 'app-lote-list',
@@ -20,24 +22,46 @@ export class LoteListComponent implements OnInit {
 
 
   constructor(
-    private service: LoteService
+    private service: LoteService,
+    private dialog: MatDialog
   ) { }
+  openDialog(idLote: number): void {
+    const dialogRef = this.dialog.open(LoteDeleteComponent, {
+      width: '350px',
+      data: {
+        title: 'Confirmação',
+        message: 'Tem certeza que deseja excluir o lote?',
+        idLote: idLote
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteLote(result.idLote);
+      }
+    });
+  }
+  deleteLote(idLote: number): void {
+    this.service.excluir(idLote).subscribe(() => {
+      this.dataSource.data = this.dataSource.data.filter(f => f.idLote !== idLote);
+    });
+  }
 
   ngOnInit(): void {
     this.findAll();
   }
 
-  findAll() : void {
+  findAll(): void {
     this.service.listarLotes().subscribe(response => {
       this.lotes = response;
       this.dataSource = new MatTableDataSource<Lote>(this.lotes);
       this.dataSource.paginator = this.paginator;
     })
   }
-    applyFilter(event: Event) {
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
 
 }

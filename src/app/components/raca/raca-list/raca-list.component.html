@@ -35,9 +35,9 @@
                <a routerLink="update/{{ element.idRaca }}">
                   <i class="material-icons edit">edit</i>
                </a>
-               <a routerLink="delete/{{ element.idRaca }}">
+               <a (click)="openDialog(element.idRaca)">
                   <i class="material-icons delete">delete</i>
-               </a>
+                </a>  
             </td>
          </ng-container>
 
