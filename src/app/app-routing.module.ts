@@ -24,6 +24,8 @@ import { OrdenhaListComponent } from './components/ordenha/ordenha-list/ordenha-
 import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/ordenha-create.component';
 import { LaticinioListComponent } from './components/laticinio/laticinio-list/laticinio-list.component';
 import { LaticinioCreateComponent } from './components/laticinio/laticinio-create/laticinio-create.component';
+import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
+
 const routes: Routes = [
   {
     path: '', component: NavComponent, children: [
@@ -40,6 +42,8 @@ const routes: Routes = [
       { path: 'lote/delete/:idLote', component: LoteDeleteComponent },
       { path: 'lote/listar/:idLote', component: LoteAnimalComponent },
 
+
+      { path: 'funcionario', component: FuncionarioListComponent },
 
       { path: 'animal', component: AnimalListComponent },
       { path: 'animal/create', component: AnimalCreateComponent },

@@ -62,6 +62,9 @@ import { OrdenhaListComponent } from './components/ordenha/ordenha-list/ordenha-
 import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/ordenha-create.component';
 import { LaticinioListComponent } from './components/laticinio/laticinio-list/laticinio-list.component';
 import { LaticinioCreateComponent } from './components/laticinio/laticinio-create/laticinio-create.component';
+
+import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +91,8 @@ import { LaticinioCreateComponent } from './components/laticinio/laticinio-creat
     OrdenhaListComponent,
     OrdenhaCreateComponent,
     LaticinioListComponent,
-    LaticinioCreateComponent
+    LaticinioCreateComponent,
+    FuncionarioListComponent
 
   ],
   imports: [
