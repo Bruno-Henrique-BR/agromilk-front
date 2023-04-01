@@ -18,9 +18,8 @@ export class TanqueUpdateComponent implements OnInit {
     descricao: '',
     capacidade: '',
     modelo: '',
-    dataFabricacao: '',
     ativo: true,
-   
+    quantidadeAtual: 0
   }
 
   nome: FormControl =  new FormControl(null, Validators.minLength(3));

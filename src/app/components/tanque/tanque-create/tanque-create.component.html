@@ -11,12 +11,6 @@
         <mat-label>Descricao</mat-label>
         <input matInput [(ngModel)]="tanque.descricao" name="descricao" matInput maxlength="100">
       </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Data de compra</mat-label>
-        <input matInput [matDatepicker]="dataFabricacao">
-        <mat-datepicker-toggle matSuffix [for]="dataFabricacao"></mat-datepicker-toggle>
-        <mat-datepicker #dataFabricacao></mat-datepicker>
-      </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Capacidade</mat-label>

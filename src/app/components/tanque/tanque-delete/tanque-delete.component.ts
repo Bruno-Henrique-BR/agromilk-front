@@ -17,8 +17,8 @@ export class TanqueDeleteComponent implements OnInit {
     descricao: '',
     capacidade: '',
     modelo: '',
-    dataFabricacao: '',
     ativo: true,
+    quantidadeAtual: 0
   }
 
   constructor(

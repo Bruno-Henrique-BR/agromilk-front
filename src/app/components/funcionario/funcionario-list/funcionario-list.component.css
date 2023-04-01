@@ -17,6 +17,9 @@
   mat-form-field {
     width: 100%;
   }
+  .delete {
+    cursor: pointer;
+  }
   
   button {
     width: 100%;

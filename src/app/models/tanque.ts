@@ -3,7 +3,6 @@ export interface Tanque {
   descricao: string;
   capacidade: string;
   modelo: string;
-  dataFabricacao?: string;
   ativo: boolean;
-
+  quantidadeAtual: number;
 }

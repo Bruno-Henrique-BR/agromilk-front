@@ -1,75 +1,30 @@
-.container {
-    width: 80%;
-    margin: auto;
-    padding: 5%;
-    border-radius: .2rem;
-    background: antiquewhite;
- 
- }
- 
- .fullWidth {
-    width: 80%;
-    
- }
- 
- .status-prioridade {
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .mat-dialog-actions {
     display: flex;
- }
- .status-prioridade mat-form-field {
-    width: auto;
-    padding: 10px;
- }
- 
- .lactacao {
-    display: flex;
-    width: auto;
-    padding: 10px;
- }
- 
- 
- .raca {
-    width: 35%;
- }
- .lote {
-    width: 35%;
- }
- .cor {
-    width: 35%;
- }
- 
- 
- h1, p {
-    text-align: center;
- }
- 
- img {
-    height: 12rem;
-    margin: auto;
- }
- 
- .section {
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
- }
- 
- button {
-    margin-top: .5rem;
- }
- 
- p {
-    margin-top: 4rem;
-    opacity: .5;
- }
- .criar {
-    float: left;
- }
- .voltar {
-    float: right;
- }
- .form {
-    width: auto;
- }
- mat-icon {
-    opacity: .8;
- }
+    justify-content: flex-end;
+  }
+  
+  button {
+    margin-left: 16px;
+  }
+
+  .cancel-button {
+    color: white;
+    background-color: red;
+  }
+  
+  .confirm-button {
+    color: white;
+    background-color: green;
+  }
+  

@@ -1,94 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { Animal } from 'src/app/models/animal';
-import { AnimalService } from 'src/app/services/animal.service';
-import { Lote } from 'src/app/models/lote';
-import { Raca } from 'src/app/models/raca';
-import { LoteService } from 'src/app/services/lote.service';
-import { RacaService } from 'src/app/services/raca.service';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-animal-delete',
   templateUrl: './animal-delete.component.html',
   styleUrls: ['./animal-delete.component.css']
 })
-export class AnimalDeleteComponent implements OnInit {
+export class AnimalDeleteComponent {
 
-  animal: Animal = {
-    idAnimal: '',
-    codigo: '',
-    apelido: '',
-    dataNascimento: '',
-    dataCompra: '',
-    cor: '',
-    idRaca: '',
-    idLote: '',
-    nomeRaca: '',
-    nomeLote: '',
-    lactacao: false,
-    lote: undefined,
-    raca: undefined,
-    loteNome: undefined,
-    racaNome: undefined
+
+
+  constructor(public dialogRef: MatDialogRef<AnimalDeleteComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { title: string, message: string, idAnimal: number }) { }
+
+  getIdAnimal(): number {
+    return this.data.idAnimal;
   }
 
-  lotes: Lote[] = []
-  racas: Raca[] = []
-  public mask = {
-    guide: true,
-    showMask : true,
-    mask: [/\d/, /\d/, '/', /\M/, /\M/, '/',/\y/, /\y/,/\y/, /\y/]
-  };
-  constructor(
-    private service: AnimalService,
-    private loteService: LoteService,
-    private racaService: RacaService,
-    private toast:    ToastrService,
-    private router:          Router,
-    private route:   ActivatedRoute,
-    ) { }
-
-  ngOnInit(): void {
-    this.animal.idAnimal = this.route.snapshot.paramMap.get('idAnimal');
-    this.findById();
-    this.findAllLotes();
-    this.findAllRacas();
-    
-   }
-
-  findById(): void {
-    this.service.findById(this.animal.idAnimal).subscribe(resposta => {
-      this.animal = resposta;
-    })
+  onConfirm(): void {
+    this.dialogRef.close(true);
   }
 
-  findAllLotes(): void {
-    this.loteService.listarLotes().subscribe(resposta => {
-      this.lotes = resposta;
-    })
-  }
-
-  findAllRacas(): void {
-    this.racaService.findAll().subscribe(resposta => {
-      this.racas = resposta;
-    })
-  }
-
-  delete(): void {
-    this.service.excluir(this.animal.idAnimal).subscribe(() => {
-      this.toast.success('Animal deletado com sucesso', 'Delete');
-      this.router.navigate(['animal'])
-    }, ex => {
-      if(ex.error.errors) {
-        ex.error.errors.forEach(element => {
-          this.toast.error(element.message);
-        });
-      } else {
-        this.toast.error(ex.error.message);
-      }
-    })
+  onCancel(): void {
+    this.dialogRef.close(false);
   }
 
 }

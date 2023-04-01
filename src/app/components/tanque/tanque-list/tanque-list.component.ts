@@ -13,7 +13,7 @@ export class TanqueListComponent implements OnInit {
 
   tanques: Tanque[] = []
 
-  displayedColumns: string[] = ['idTanque', 'modelo', 'descricao', 'capacidade', 'dataFabricacao', 'ativo', 'acoes'];
+  displayedColumns: string[] = ['idTanque', 'modelo', 'descricao', 'capacidade', 'quantidadeAtual','ativo', 'acoes'];
   dataSource = new MatTableDataSource<Tanque>(this.tanques);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

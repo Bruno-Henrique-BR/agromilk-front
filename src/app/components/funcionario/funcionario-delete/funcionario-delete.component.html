@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Confirmação de exclusão</h2>
+<mat-dialog-content>
+  Deseja excluir este funcionário?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="false" class="cancel-button">Cancelar</button>
+    <button mat-button [mat-dialog-close]="{ idFuncionario: data.idFuncionario }" cdkFocusInitial class="confirm-button">Sim</button>
+  </mat-dialog-actions>
+  
+  
+</mat-dialog-actions>

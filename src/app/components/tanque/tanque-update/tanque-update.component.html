@@ -16,12 +16,6 @@
         <mat-label>Capacidade</mat-label>
         <input [(ngModel)]="tanque.capacidade" name="capacidade" matInput type="number">
       </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Data de compra</mat-label>
-        <input matInput [matDatepicker]="dataFabricacao">
-        <mat-datepicker-toggle matSuffix [for]="dataFabricacao"></mat-datepicker-toggle>
-        <mat-datepicker #dataFabricacao></mat-datepicker>
-      </mat-form-field>
 
     </div>
     <div class="ativo">

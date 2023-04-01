@@ -33,6 +33,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { MAT_DATE_LOCALE } from '@angular/material/core'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatOptionModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Componentes do projeto
 import { NavComponent } from './components/nav/nav.component'; NavComponent
@@ -60,11 +61,12 @@ import { TanqueUpdateComponent } from './components/tanque/tanque-update/tanque-
 import { TanqueDeleteComponent } from './components/tanque/tanque-delete/tanque-delete.component';
 import { OrdenhaListComponent } from './components/ordenha/ordenha-list/ordenha-list.component';
 import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/ordenha-create.component';
+import { OrdenhaDeleteComponent } from './components/ordenha/ordenha-delete/ordenha-delete.component';
 import { LaticinioListComponent } from './components/laticinio/laticinio-list/laticinio-list.component';
 import { LaticinioCreateComponent } from './components/laticinio/laticinio-create/laticinio-create.component';
-
 import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
-
+import { FuncionarioCreateComponent } from './components/funcionario/funcionario-create/funcionario-create.component';
+import { FuncionarioDeleteComponent } from './components/funcionario/funcionario-delete/funcionario-delete.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,9 +92,12 @@ import { FuncionarioListComponent } from './components/funcionario/funcionario-l
     TanqueDeleteComponent,
     OrdenhaListComponent,
     OrdenhaCreateComponent,
+    OrdenhaDeleteComponent,
     LaticinioListComponent,
     LaticinioCreateComponent,
-    FuncionarioListComponent
+    FuncionarioListComponent,
+    FuncionarioCreateComponent,
+    FuncionarioDeleteComponent
 
   ],
   imports: [
@@ -126,6 +131,7 @@ import { FuncionarioListComponent } from './components/funcionario/funcionario-l
     MatExpansionModule,
     FormsModule,
     MatOptionModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

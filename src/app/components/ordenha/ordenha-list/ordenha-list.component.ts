@@ -7,6 +7,8 @@ import { Animal } from 'src/app/models/animal';
 import { AnimalService } from 'src/app/services/animal.service';
 import { Observable } from 'rxjs';
 import { Tanque } from 'src/app/models/tanque';
+import { OrdenhaDeleteComponent } from '../ordenha-delete/ordenha-delete.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-ordenha-list',
@@ -26,25 +28,47 @@ export class OrdenhaListComponent implements OnInit {
     tanque: Tanque;
 
     constructor(
-        private service: OrdenhaService    ) { }
+        private service: OrdenhaService,
+        private dialog: MatDialog
+        ) { }
+    openDialog(idOrdenha: number): void {
+        const dialogRef = this.dialog.open(OrdenhaDeleteComponent, {
+            width: '350px',
+            data: {
+                title: 'Confirmação',
+                message: 'Tem certeza que deseja excluir o animal?',
+                idOrdenha: idOrdenha
+            }
+        });
 
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.deleteOrdenha(result.idOrdenha);
+            }
+        });
+    }
+    deleteOrdenha(idOrdenha: number): void {
+        this.service.excluir(idOrdenha).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(f => f.idOrdenha !== idOrdenha);
+        });
+    }
     ngOnInit(): void {
         this.findAll();
     }
 
-    
+
 
 
     findAll(): void {
         this.service.listarOrdenhas().subscribe(response => {
             this.ordenhas = response;
             this.ordenhas.forEach((ordenha) => {
-              ordenha.apelidoAnimal = ordenha.animal.apelido;
-              ordenha.modeloTanque = ordenha.tanque.modelo;
+                ordenha.apelidoAnimal = ordenha.animal.apelido;
+                ordenha.modeloTanque = ordenha.tanque.modelo;
             });
             this.dataSource = new MatTableDataSource<Ordenha>(this.ordenhas);
             this.dataSource.paginator = this.paginator;
-          });
+        });
     }
 
 

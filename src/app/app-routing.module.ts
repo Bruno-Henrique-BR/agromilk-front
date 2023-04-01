@@ -22,10 +22,12 @@ import { TanqueUpdateComponent } from './components/tanque/tanque-update/tanque-
 import { TanqueDeleteComponent } from './components/tanque/tanque-delete/tanque-delete.component';
 import { OrdenhaListComponent } from './components/ordenha/ordenha-list/ordenha-list.component';
 import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/ordenha-create.component';
+import { OrdenhaDeleteComponent } from './components/ordenha/ordenha-delete/ordenha-delete.component';
 import { LaticinioListComponent } from './components/laticinio/laticinio-list/laticinio-list.component';
 import { LaticinioCreateComponent } from './components/laticinio/laticinio-create/laticinio-create.component';
 import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
-
+import { FuncionarioCreateComponent } from './components/funcionario/funcionario-create/funcionario-create.component';
+import { FuncionarioDeleteComponent } from './components/funcionario/funcionario-delete/funcionario-delete.component';
 const routes: Routes = [
   {
     path: '', component: NavComponent, children: [
@@ -59,10 +61,14 @@ const routes: Routes = [
 
       { path: 'ordenha', component: OrdenhaListComponent },
       { path: 'ordenha/create', component: OrdenhaCreateComponent },
+      { path: 'ordenha/delete/:idOrdenha', component: OrdenhaDeleteComponent },
 
       { path: 'laticinio', component: LaticinioListComponent },
       { path: 'laticinio/create', component: LaticinioCreateComponent },
 
+      { path: 'funcionario', component: FuncionarioListComponent },
+      { path: 'funcionario/create', component: FuncionarioCreateComponent },
+      { path: 'funcionario/delete/:idFuncionario', component: FuncionarioDeleteComponent },
 
     ]
   }

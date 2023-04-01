@@ -35,7 +35,9 @@
   .delete {
     color: red;
   }
-  
+  .delete {
+    cursor: pointer;
+  }
   /* Adicionando estilo para campo de input numérico */
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {

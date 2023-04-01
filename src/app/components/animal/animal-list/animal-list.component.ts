@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Animal } from 'src/app/models/animal';
 import { AnimalService } from 'src/app/services/animal.service';
+import { AnimalDeleteComponent } from '../animal-delete/animal-delete.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-animal-list',
@@ -31,9 +33,32 @@ export class AnimalListComponent implements OnInit {
 
 
   constructor(
-    private service: AnimalService
-  ) { }
+    private service: AnimalService,
+    private dialog: MatDialog
 
+  ) { }
+  openDialog(idAnimal: number): void {
+    const dialogRef = this.dialog.open(AnimalDeleteComponent, {
+      width: '350px',
+      data: {
+        title: 'Confirmação',
+        message: 'Tem certeza que deseja excluir o animal?',
+        idAnimal: idAnimal
+      }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteAnimal(result.idAnimal);
+      }
+    });
+  }
+
+  deleteAnimal(idAnimal: number): void {
+    this.service.excluir(idAnimal).subscribe(() => {
+      this.dataSource.data = this.dataSource.data.filter(f => f.idAnimal !== idAnimal);
+    });
+  }
   ngOnInit(): void {
     this.findAll();
   }
