@@ -28,6 +28,7 @@ import { LaticinioCreateComponent } from './components/laticinio/laticinio-creat
 import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
 import { FuncionarioCreateComponent } from './components/funcionario/funcionario-create/funcionario-create.component';
 import { FuncionarioDeleteComponent } from './components/funcionario/funcionario-delete/funcionario-delete.component';
+import { FuncionarioUpdateComponent } from './components/funcionario/funcionario-update/funcionario-update.component';
 import { LaticinioDeleteComponent } from './components/laticinio/laticinio-delete/laticinio-delete.component';
 const routes: Routes = [
   {
@@ -45,8 +46,6 @@ const routes: Routes = [
       { path: 'lote/delete/:idLote', component: LoteDeleteComponent },
       { path: 'lote/listar/:idLote', component: LoteAnimalComponent },
 
-
-      { path: 'funcionario', component: FuncionarioListComponent },
 
       { path: 'animal', component: AnimalListComponent },
       { path: 'animal/create', component: AnimalCreateComponent },
@@ -71,6 +70,7 @@ const routes: Routes = [
       { path: 'funcionario', component: FuncionarioListComponent },
       { path: 'funcionario/create', component: FuncionarioCreateComponent },
       { path: 'funcionario/delete/:idFuncionario', component: FuncionarioDeleteComponent },
+      { path: 'funcionario/update/:idFuncionario', component: FuncionarioUpdateComponent},
 
     ]
   }

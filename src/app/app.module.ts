@@ -67,6 +67,7 @@ import { LaticinioCreateComponent } from './components/laticinio/laticinio-creat
 import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
 import { FuncionarioCreateComponent } from './components/funcionario/funcionario-create/funcionario-create.component';
 import { FuncionarioDeleteComponent } from './components/funcionario/funcionario-delete/funcionario-delete.component';
+import { FuncionarioUpdateComponent } from './components/funcionario/funcionario-update/funcionario-update.component';
 import { LaticinioDeleteComponent } from './components/laticinio/laticinio-delete/laticinio-delete.component';
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { LaticinioDeleteComponent } from './components/laticinio/laticinio-delet
     LaticinioDeleteComponent,
     FuncionarioListComponent,
     FuncionarioCreateComponent,
-    FuncionarioDeleteComponent
+    FuncionarioDeleteComponent,
+    FuncionarioUpdateComponent
 
   ],
   imports: [
