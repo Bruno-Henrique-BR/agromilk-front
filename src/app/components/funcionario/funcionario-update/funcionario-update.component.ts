@@ -38,6 +38,7 @@ export class FuncionarioUpdateComponent implements OnInit {
     this.funcionario.idFuncionario = this.route.snapshot.paramMap.get('idFuncionario');
     this.findById();
    }
+   
 
   findById(): void {
     this.service.findById(this.funcionario.idFuncionario).subscribe(resposta => {
@@ -59,9 +60,6 @@ export class FuncionarioUpdateComponent implements OnInit {
       }
     })
   }
-
-  
-  
   validaCampos(): boolean {
     return this.nomeFuncionario.valid && this.descricao.valid
   }
