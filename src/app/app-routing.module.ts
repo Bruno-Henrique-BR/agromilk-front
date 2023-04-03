@@ -25,11 +25,12 @@ import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/orde
 import { OrdenhaDeleteComponent } from './components/ordenha/ordenha-delete/ordenha-delete.component';
 import { LaticinioListComponent } from './components/laticinio/laticinio-list/laticinio-list.component';
 import { LaticinioCreateComponent } from './components/laticinio/laticinio-create/laticinio-create.component';
+import { LaticinioDeleteComponent } from './components/laticinio/laticinio-delete/laticinio-delete.component';
+import { LaticinioUpdateComponent } from './components/laticinio/laticinio-update/laticinio-update.component';
 import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
 import { FuncionarioCreateComponent } from './components/funcionario/funcionario-create/funcionario-create.component';
 import { FuncionarioDeleteComponent } from './components/funcionario/funcionario-delete/funcionario-delete.component';
 import { FuncionarioUpdateComponent } from './components/funcionario/funcionario-update/funcionario-update.component';
-import { LaticinioDeleteComponent } from './components/laticinio/laticinio-delete/laticinio-delete.component';
 const routes: Routes = [
   {
     path: '', component: NavComponent, children: [
@@ -66,6 +67,7 @@ const routes: Routes = [
       { path: 'laticinio', component: LaticinioListComponent },
       { path: 'laticinio/create', component: LaticinioCreateComponent },
       { path: 'laticinio/delete/:idLaticinio', component: LaticinioDeleteComponent },
+      { path: 'laticinio/update/:idLaticinio', component: LaticinioUpdateComponent},
 
       { path: 'funcionario', component: FuncionarioListComponent },
       { path: 'funcionario/create', component: FuncionarioCreateComponent },

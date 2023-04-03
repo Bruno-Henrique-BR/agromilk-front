@@ -11,6 +11,7 @@ import { LoteService } from 'src/app/services/lote.service';
 import { RacaService } from 'src/app/services/raca.service';
 import { HttpClient } from '@angular/common/http';
 import { map, startWith } from 'rxjs/operators';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-animal-create',
@@ -77,6 +78,9 @@ export class AnimalCreateComponent implements OnInit {
   }
 
   create(): void {
+    // formatar as datas
+    this.animal.dataNascimento = moment(this.animal.dataNascimento).format('DD/MM/YYYY');
+    this.animal.dataCompra = moment(this.animal.dataCompra).format('DD/MM/YYYY');
     this.service.cadastrarAnimal(this.animal).subscribe(() => {
       this.toast.success('Animal cadastrado com sucesso', 'Cadastro');
       this.router.navigate(['animal']);

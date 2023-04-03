@@ -23,12 +23,10 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Data de nascimento</mat-label>
-        <input matInput [textMask]="mask" [matDatepicker]="dataNascimento" placeholder="Data de nascimento">
+        <input matInput [textMask]="mask" [matDatepicker]="dataNascimento">
         <mat-datepicker-toggle matSuffix [for]="dataNascimento"></mat-datepicker-toggle>
         <mat-datepicker #dataNascimento></mat-datepicker>
       </mat-form-field>
-
-
     </div>
 
     <div class="status-prioridade">

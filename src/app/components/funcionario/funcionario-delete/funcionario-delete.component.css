@@ -19,8 +19,8 @@ h1 {
   }
 
   .cancel-button {
-    color: white;
-    background-color: red;
+    color: rgb(250, 246, 246);
+    background-color: rgb(177, 176, 176)
   }
   
   .confirm-button {

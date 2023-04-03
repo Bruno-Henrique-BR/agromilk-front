@@ -6,7 +6,7 @@ export interface Animal {
    idAnimal?:                any;
    codigo?:   string;
    apelido?:   string;
-   dataNascimento?:   string;
+   dataNascimento:   string;
    dataCompra?: string;
    cor:      string;
    idRaca: any;

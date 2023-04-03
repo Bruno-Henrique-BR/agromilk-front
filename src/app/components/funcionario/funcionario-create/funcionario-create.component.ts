@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Funcionario } from 'src/app/models/funcionario';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-funcionario-create',
@@ -16,11 +17,10 @@ export class FuncionarioCreateComponent implements OnInit {
         idFuncionario: '',
         nomeFuncionario: '',
         cpf: '',
-        dataNascimento: null,
+        dataNascimento: '',
         endereco: '',
         telefone: '',
     }
-    dataSemHoras = new Date(this.funcionario.dataNascimento).toISOString().slice(0, 10);
 
     nomeFuncionario: FormControl = new FormControl(null, Validators.minLength(3));
     cpf: FormControl = new FormControl(null, [Validators.required, Validators.minLength(11), Validators.maxLength(11)]);
@@ -37,6 +37,8 @@ export class FuncionarioCreateComponent implements OnInit {
     ngOnInit(): void { }
 
     create(): void {
+        // formatar as datas
+    this.funcionario.dataNascimento = moment(this.funcionario.dataNascimento).format('DD/MM/YYYY');
         this.service.cadastrarFuncionario(this.funcionario).subscribe(() => {
             this.toast.success('Funcionário cadastrado com sucesso', 'Cadastro');
             this.router.navigate(['funcionario'])

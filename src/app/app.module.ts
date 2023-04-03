@@ -64,11 +64,13 @@ import { OrdenhaCreateComponent } from './components/ordenha/ordenha-create/orde
 import { OrdenhaDeleteComponent } from './components/ordenha/ordenha-delete/ordenha-delete.component';
 import { LaticinioListComponent } from './components/laticinio/laticinio-list/laticinio-list.component';
 import { LaticinioCreateComponent } from './components/laticinio/laticinio-create/laticinio-create.component';
+import { LaticinioDeleteComponent } from './components/laticinio/laticinio-delete/laticinio-delete.component';
+import { LaticinioUpdateComponent } from './components/laticinio/laticinio-update/laticinio-update.component';
 import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
 import { FuncionarioCreateComponent } from './components/funcionario/funcionario-create/funcionario-create.component';
 import { FuncionarioDeleteComponent } from './components/funcionario/funcionario-delete/funcionario-delete.component';
 import { FuncionarioUpdateComponent } from './components/funcionario/funcionario-update/funcionario-update.component';
-import { LaticinioDeleteComponent } from './components/laticinio/laticinio-delete/laticinio-delete.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,6 +100,7 @@ import { LaticinioDeleteComponent } from './components/laticinio/laticinio-delet
     LaticinioListComponent,
     LaticinioCreateComponent,
     LaticinioDeleteComponent,
+    LaticinioUpdateComponent,
     FuncionarioListComponent,
     FuncionarioCreateComponent,
     FuncionarioDeleteComponent,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { Funcionario } from 'src/app/models/funcionario';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
@@ -17,12 +18,12 @@ export class FuncionarioUpdateComponent implements OnInit {
     idFuncionario:         '',
     nomeFuncionario:       '',
     cpf:                   '',
-    dataNascimento: null,
+    dataNascimento: '',
     endereco:              '',
     telefone:              '',
    
   }
-
+ 
   nomeFuncionario: FormControl =  new FormControl(null, Validators.minLength(3));
   descricao: FormControl =  new FormControl(null, Validators.minLength(3));
 
@@ -47,6 +48,7 @@ export class FuncionarioUpdateComponent implements OnInit {
   }
 
   update(): void {
+    this.funcionario.dataNascimento = moment(this.funcionario.dataNascimento).format('DD/MM/YYYY');
     this.service.atualizarFuncionario(this.funcionario).subscribe(() => {
       this.toast.success('Funcionario atualizado com sucesso', 'Update');
       this.router.navigate(['funcionario'])
