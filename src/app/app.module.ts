@@ -70,7 +70,9 @@ import { FuncionarioListComponent } from './components/funcionario/funcionario-l
 import { FuncionarioCreateComponent } from './components/funcionario/funcionario-create/funcionario-create.component';
 import { FuncionarioDeleteComponent } from './components/funcionario/funcionario-delete/funcionario-delete.component';
 import { FuncionarioUpdateComponent } from './components/funcionario/funcionario-update/funcionario-update.component';
-
+import { ColetaListComponent } from './components/coleta/coleta-list/coleta-list.component';
+import { ColetaDeleteComponent } from './components/coleta/coleta-delete/coleta-delete.component';
+import { LoteAddAnimalComponent } from './components/lote/lote-add-animal/lote-add-animal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +88,7 @@ import { FuncionarioUpdateComponent } from './components/funcionario/funcionario
     LoteDeleteComponent,
     LoteUpdateComponent,
     LoteAnimalComponent,
+    LoteAddAnimalComponent,
     AnimalCreateComponent,
     AnimalListComponent,
     AnimalDeleteComponent,
@@ -104,7 +107,9 @@ import { FuncionarioUpdateComponent } from './components/funcionario/funcionario
     FuncionarioListComponent,
     FuncionarioCreateComponent,
     FuncionarioDeleteComponent,
-    FuncionarioUpdateComponent
+    FuncionarioUpdateComponent,
+    ColetaListComponent,
+    ColetaDeleteComponent,
 
   ],
   imports: [

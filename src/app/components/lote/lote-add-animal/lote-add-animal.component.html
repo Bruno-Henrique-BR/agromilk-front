@@ -1,0 +1,13 @@
+<h2 class="title">Adicionar animal ao lote {{ idLote }}</h2>
+
+<div *ngIf="animais && animais.length > 0" class="form-container">
+    <form (ngSubmit)="adicionar()" class="form">
+        <mat-form-field appearance="outline">
+            <mat-label>Selecione um animal</mat-label>
+            <mat-select [(ngModel)]="animal.idAnimal" name="idAnimal">
+                <mat-option *ngFor="let ani of animais" [value]="ani.idAnimal">{{ ani.apelido }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button type="submit" mat-raised-button class="submit-btn">Adicionar</button>
+    </form>
+</div>

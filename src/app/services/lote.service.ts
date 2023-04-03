@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_CONFIG } from '../config/api.config';
 import { Lote } from '../models/lote';
+import { Animal } from '../models/animal';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,8 @@ export class LoteService {
   search(query: string): Observable<Lote[]> {
     const params = new HttpParams().set('nome', query);
     return this.http.get<Lote[]>('/api/lotes', { params });
+  }
+  adicionarAnimal(lote: Lote, animal: Animal): Observable<Lote> {
+    return this.http.put<Lote>(`${API_CONFIG.baseUrl}/agromilk/lotes/${lote.idLote}/adicionar-animal`, animal);
   }
 }

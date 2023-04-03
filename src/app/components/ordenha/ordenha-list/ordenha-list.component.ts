@@ -18,7 +18,6 @@ import { MatDialog } from '@angular/material/dialog';
 export class OrdenhaListComponent implements OnInit {
 
     ordenhas: Ordenha[] = []
-    animais: Animal[] = [];
 
     displayedColumns: string[] = ['idOrdenha', 'data', 'quantidade', 'apelidoAnimal', 'modeloTanque', 'acoes'];
     dataSource = new MatTableDataSource<Ordenha>(this.ordenhas);
@@ -36,7 +35,7 @@ export class OrdenhaListComponent implements OnInit {
             width: '350px',
             data: {
                 title: 'Confirmação',
-                message: 'Tem certeza que deseja excluir o animal?',
+                message: 'Tem certeza que deseja excluir a ordenha?',
                 idOrdenha: idOrdenha
             }
         });

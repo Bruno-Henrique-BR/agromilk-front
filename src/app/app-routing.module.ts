@@ -31,6 +31,9 @@ import { FuncionarioListComponent } from './components/funcionario/funcionario-l
 import { FuncionarioCreateComponent } from './components/funcionario/funcionario-create/funcionario-create.component';
 import { FuncionarioDeleteComponent } from './components/funcionario/funcionario-delete/funcionario-delete.component';
 import { FuncionarioUpdateComponent } from './components/funcionario/funcionario-update/funcionario-update.component';
+import { ColetaListComponent } from './components/coleta/coleta-list/coleta-list.component';
+import { ColetaDeleteComponent } from './components/coleta/coleta-delete/coleta-delete.component';
+import { LoteAddAnimalComponent } from './components/lote/lote-add-animal/lote-add-animal.component';
 const routes: Routes = [
   {
     path: '', component: NavComponent, children: [
@@ -46,7 +49,7 @@ const routes: Routes = [
       { path: 'lote/update/:idLote', component: LoteUpdateComponent },
       { path: 'lote/delete/:idLote', component: LoteDeleteComponent },
       { path: 'lote/listar/:idLote', component: LoteAnimalComponent },
-
+      { path: 'lote/listar/:idLote/adicionar', component: LoteAddAnimalComponent },
 
       { path: 'animal', component: AnimalListComponent },
       { path: 'animal/create', component: AnimalCreateComponent },
@@ -67,12 +70,16 @@ const routes: Routes = [
       { path: 'laticinio', component: LaticinioListComponent },
       { path: 'laticinio/create', component: LaticinioCreateComponent },
       { path: 'laticinio/delete/:idLaticinio', component: LaticinioDeleteComponent },
-      { path: 'laticinio/update/:idLaticinio', component: LaticinioUpdateComponent},
+      { path: 'laticinio/update/:idLaticinio', component: LaticinioUpdateComponent },
 
       { path: 'funcionario', component: FuncionarioListComponent },
       { path: 'funcionario/create', component: FuncionarioCreateComponent },
       { path: 'funcionario/delete/:idFuncionario', component: FuncionarioDeleteComponent },
-      { path: 'funcionario/update/:idFuncionario', component: FuncionarioUpdateComponent},
+      { path: 'funcionario/update/:idFuncionario', component: FuncionarioUpdateComponent },
+
+      { path: 'coleta', component: ColetaListComponent },
+      { path: 'coleta/delete/:idColeta', component: ColetaDeleteComponent },
+
 
     ]
   }

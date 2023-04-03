@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Animal } from 'src/app/models/animal';
 import { AnimalService } from 'src/app/services/animal.service';
 import { ActivatedRoute } from '@angular/router';
+import { AnimalDeleteComponent } from '../../animal/animal-delete/animal-delete.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-lote-animal',
   templateUrl: './lote-animal.component.html',
@@ -24,30 +26,55 @@ export class LoteAnimalComponent implements OnInit {
   nomeLote:            string;
   lactacao:     boolean;
 
-  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'dataNascimento', 'dataCompra', 'cor', 'nomeRaca', 'nomeLote', 'lactacao', 'acoes'];
+  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'dataNascimento', 'dataCompra', 'racaNome', 'loteNome', 'lactacao', 'acoes'];
   dataSource = new MatTableDataSource<Animal>(this.animais);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
-
   constructor(
     private service: AnimalService,
     private route:   ActivatedRoute,
+    private dialog: MatDialog
 
-  ) { }
+    ) { }
+    openDialog(idAnimal: number): void {
+      const dialogRef = this.dialog.open(AnimalDeleteComponent, {
+        width: '350px',
+        data: {
+          title: 'Confirmação',
+          message: 'Tem certeza que deseja excluir o animal?',
+          idAnimal: idAnimal
+        }
+      });
+    
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.deleteAnimal(result.idAnimal);
+        }
+      });
+    }
+  
+    deleteAnimal(idAnimal: number): void {
+      this.service.excluir(idAnimal).subscribe(() => {
+        this.dataSource.data = this.dataSource.data.filter(f => f.idAnimal !== idAnimal);
+      });
+    }
 
   ngOnInit(): void {
     this.idLote = this.route.snapshot.paramMap.get('idLote');
     this.findAll();
   }
- 
-  findAll() : void {
+
+  findAll(): void {
     this.service.findByIdLote(this.idLote).subscribe(response => {
-      this.animais = response;
-      this.dataSource = new MatTableDataSource<Animal>(this.animais);
-      this.dataSource.paginator = this.paginator;
-    })
-  }
+        this.animais = response;
+        this.animais.forEach((animal) => {
+          animal.racaNome = animal.raca.nomeRaca;
+          animal.loteNome = animal.lote.nomeLote;
+        });
+        this.dataSource = new MatTableDataSource<Animal>(this.animais);
+        this.dataSource.paginator = this.paginator;
+      });
+}
     applyFilter(event: Event) {
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLowerCase();
