@@ -7,36 +7,39 @@ import { Router } from '@angular/router';
 import { Ordenha } from 'src/app/models/ordenha';
 import { Animal } from 'src/app/models/animal';
 import { Tanque } from 'src/app/models/tanque';
-import { OrdenhaService } from 'src/app/services/ordenha.service';
+
 import { AnimalService } from 'src/app/services/animal.service';
 import { TanqueService } from 'src/app/services/tanque.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
+import { ColetaService } from 'src/app/services/coleta.service';
+import { Coleta } from 'src/app/models/coleta';
 
 @Component({
-  selector: 'app-ordenha-create',
-  templateUrl: './ordenha-create.component.html',
-  styleUrls: ['./ordenha-create.component.css']
+  selector: 'app-coleta-create',
+  templateUrl: './coleta-create.component.html',
+  styleUrls: ['./coleta-create.component.css']
 })
-export class OrdenhaCreateComponent implements OnInit {
+export class ColetaCreateComponent implements OnInit {
 
   tanques: Tanque[] = [];
-  animais: any[] = [];
+  //animais: any[] = [];
   filteredAnimais: any[] = [];
-  ordenha: Ordenha = {
-    idOrdenha: '',
+  coleta: Coleta = {
+    idColeta: null,
     data: null,
     quantidade: null,
-    idAnimal: null,
     idTanque: null,
-    animal: null,
+    idAnimal: null,
     tanque: null,
-    apelidoAnimal: '',
+    laticinio: null  ,
+    razaoSocial: '',
     modeloTanque: undefined
   };
-  dataSemHoras = new Date(this.ordenha.data).toISOString().slice(0, 10);
+
+  dataSemHoras = new Date(this.coleta.data).toISOString().slice(0, 10);
 
   data: FormControl = new FormControl(null, [Validators.required]);
   quantidade: FormControl = new FormControl(null, [Validators.required]);
@@ -46,7 +49,7 @@ export class OrdenhaCreateComponent implements OnInit {
   animalControl = new FormControl();
 
   constructor(
-    private service: OrdenhaService,
+    private service: ColetaService,
     private animalService: AnimalService,
     private tanqueService: TanqueService,
     private fb: FormBuilder,
@@ -59,10 +62,9 @@ export class OrdenhaCreateComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.findAllAnimais();
+   // this.findAllAnimais();
     this.findAllTanques();
 }
-
 
 displayAnimalName(animal: any): string {
   console.log('displayAnimalName', animal);
@@ -71,9 +73,9 @@ displayAnimalName(animal: any): string {
 
 
   create(): void {
-    this.service.cadastrarOrdenha(this.ordenha).subscribe(() => {
-      this.toast.success('Ordenha cadastrada com sucesso', 'Cadastro');
-      this.router.navigate(['ordenha']);
+    this.service.cadastrarColeta(this.coleta).subscribe(() => {
+      this.toast.success('Coleta cadastrada com sucesso', 'Cadastro');
+      this.router.navigate(['coleta']);
     }, ex => {
       if(ex.error.errors) {
         ex.error.errors.forEach(element => {
@@ -91,7 +93,7 @@ displayAnimalName(animal: any): string {
     });
   }
 
-  findAllAnimais(): void {
+  /*findAllAnimais(): void {
     this.animalService.findAll().subscribe(
       response => {
         this.animais = response;
@@ -100,20 +102,20 @@ displayAnimalName(animal: any): string {
         console.error(error);
       }
     );
-  }
+  }*/
 
 
   cancel(): void {
-    this.router.navigate(['/ordenha']);
+    this.router.navigate(['/coleta']);
   }
 
  
-  filtrarAnimais(event: any): void {
+ /* filtrarAnimais(event: any): void {
     const filtro = event.target.value.toLowerCase();
     this.filteredAnimais = this.animais.filter(
       animal => animal.apelido.toLowerCase().indexOf(filtro) !== -1
     );
-  }
+  }*/
 
   
   displayFn(animal: any): string {

@@ -34,6 +34,7 @@ import { FuncionarioUpdateComponent } from './components/funcionario/funcionario
 import { ColetaListComponent } from './components/coleta/coleta-list/coleta-list.component';
 import { ColetaDeleteComponent } from './components/coleta/coleta-delete/coleta-delete.component';
 import { LoteAddAnimalComponent } from './components/lote/lote-add-animal/lote-add-animal.component';
+import { ColetaCreateComponent } from './components/coleta/coleta-create/coleta-create.component';
 const routes: Routes = [
   {
     path: '', component: NavComponent, children: [
@@ -78,6 +79,7 @@ const routes: Routes = [
       { path: 'funcionario/update/:idFuncionario', component: FuncionarioUpdateComponent },
 
       { path: 'coleta', component: ColetaListComponent },
+      { path: 'coleta/create', component: ColetaCreateComponent},
       { path: 'coleta/delete/:idColeta', component: ColetaDeleteComponent },
 
 
