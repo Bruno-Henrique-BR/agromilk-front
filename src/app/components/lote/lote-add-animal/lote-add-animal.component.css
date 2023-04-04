@@ -1,30 +1,75 @@
-.title {
-    font-size: 24px;
-    margin-bottom: 16px;
-}
-
-.form-container {
+.container {
+    width: auto;
+    margin: auto;
+    padding: 5%;
+    border-radius: .2rem;
+    background: antiquewhite;
+ 
+ }
+ 
+ .fullWidth {
+    width: 80%;
+    
+ }
+ 
+ .status-prioridade {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.form {
+ }
+ .status-prioridade mat-form-field {
+    width: auto;
+    padding: 10px;
+ }
+ 
+ .lactacao {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.mat-form-field {
-    width: 100%;
-    margin-bottom: 16px;
-}
-
-.submit-btn {
-    margin-top: 16px;
-}
+    width: auto;
+    padding: 10px;
+ }
+ 
+ 
+ .raca {
+    width: 35%;
+ }
+ .lote {
+    width: 35%;
+ }
+ .cor {
+    width: 35%;
+ }
+ 
+ 
+ h1, p {
+    text-align: center;
+ }
+ 
+ img {
+    height: 12rem;
+    margin: auto;
+ }
+ 
+ .section {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+ }
+ 
+ button {
+    margin-top: .5rem;
+ }
+ 
+ p {
+    margin-top: 4rem;
+    opacity: .5;
+ }
+ .criar {
+    float: left;
+ }
+ .voltar {
+    float: right;
+ }
+ .form {
+    width: auto;
+ }
+ mat-icon {
+    opacity: .8;
+ }

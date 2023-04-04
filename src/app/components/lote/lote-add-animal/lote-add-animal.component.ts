@@ -1,47 +1,84 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { Animal } from 'src/app/models/animal';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Lote } from 'src/app/models/lote';
+import { Raca } from 'src/app/models/raca';
+import { Animal } from 'src/app/models/animal';
 import { AnimalService } from 'src/app/services/animal.service';
 import { LoteService } from 'src/app/services/lote.service';
+import { RacaService } from 'src/app/services/raca.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-    selector: 'lote-add-animal',
+    selector: 'app-lote-add-animal',
     templateUrl: './lote-add-animal.component.html',
     styleUrls: ['./lote-add-animal.component.css']
 })
 export class LoteAddAnimalComponent implements OnInit {
+    loteId: number;
+
     animalForm: FormGroup;
-    lotes: any[];
+    idAnimal: number;
+    loteSelecionado: string;
     animais: any[] = [];
-    animal: Animal;
+    idRaca: number;
     idLote: number;
+    raca: Raca = {
+        nomeRaca: '',
+        descricao: ''
+    }
+
+    lote: Lote = {
+        nomeLote: '',
+        descricao: ''
+    }
+    animal: Animal = {
+        codigo: '',
+        apelido: '',
+        dataNascimento: '',
+        dataCompra: '',
+        lote: '',
+        raca: '',
+        lactacao: null,
+        loteNome: undefined,
+        racaNome: undefined,
+        cor: '',
+        idRaca: '',
+        idLote: '',
+        nomeRaca: '',
+        nomeLote: ''
+    };
     constructor(
         private fb: FormBuilder,
-        private router: Router,
-        private activatedRoute: ActivatedRoute,
         private animalService: AnimalService,
-        private loteService: LoteService
+        private loteService: LoteService,
+        private racaService: RacaService,
+        private toast: ToastrService,
+        private router: Router,
+        private route: ActivatedRoute,
+
     ) { }
 
     ngOnInit(): void {
         this.findAllAnimais();
-        this.idLote = +this.activatedRoute.snapshot.paramMap.get('id'); // Obter o valor do parâmetro da rota
-        this.loteService.listarLotes().subscribe(res => {
-            this.lotes = res;
-            // Definir o valor do select de lotes com o idLote obtido da rota
-            this.animalForm.get('idLote').setValue(this.idLote);
-        });
+        this.loteId = +this.route.snapshot.paramMap.get('idLote');
 
-
-        this.animalForm = this.fb.group({
-            idAnimal: [null, Validators.required], // adicione essa linha
-            idLote: [null, Validators.required]
-        });
     }
+    update(): void {
+        this.animalService.atualizarAnimal(this.animal).subscribe(() => {
+            this.toast.success('Animal atualizado com sucesso', 'Update');
+            this.router.navigate(['animal'])
+        }, ex => {
+            if (ex.error.errors) {
+                ex.error.errors.forEach(element => {
+                    this.toast.error(element.message);
+                });
+            } else {
+                this.toast.error(ex.error.message);
+            }
+        })
+    }
+
     findAllAnimais(): void {
         this.animalService.findAll().subscribe(
             response => {
@@ -52,21 +89,26 @@ export class LoteAddAnimalComponent implements OnInit {
             }
         );
     }
-    adicionar(): void {
-        const idAnimal = this.animalForm.get('idAnimal').value;
-        if (!idAnimal) {
-            console.error('Animal inválido');
-            return;
-        }
-        const animalSelecionado = this.animais.find(animal => animal.idAnimal === idAnimal);
-        if (!animalSelecionado) {
-            console.error('Animal inválido');
-            return;
-        }
-        const idLote = this.animalForm.get('idLote').value;
-        this.loteService.adicionarAnimal(animalSelecionado, idLote).subscribe(() => {
-            this.router.navigate(['lotes']);
+
+    consultarAnimal(idAnimal: number): void {
+        this.animalService.findById(idAnimal).subscribe((animal: Animal) => {
+            this.animal = animal;
+            this.animalForm.setValue({
+                codigo: this.animal.codigo,
+                apelido: this.animal.apelido,
+                dataCompra: this.animal.dataCompra,
+                dataNascimento: this.animal.dataNascimento,
+                lactacao: this.animal.lactacao,
+                lote: this.animal.idLote,
+                raca: this.animal.idRaca
+
+            });
         });
     }
-    
+
+
+    validaCampos(): boolean {
+        return this.animalForm.valid;
+    }
+
 }
