@@ -4,19 +4,19 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl, } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Ordenha } from 'src/app/models/ordenha';
-import { Animal } from 'src/app/models/animal';
-import { Tanque } from 'src/app/models/tanque';
 
-import { AnimalService } from 'src/app/services/animal.service';
+import { Tanque } from 'src/app/models/tanque';
 import { TanqueService } from 'src/app/services/tanque.service';
+import { OrdenhaService } from 'src/app/services/ordenha.service';
+import { AnimalService } from 'src/app/services/animal.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
-import { ColetaService } from 'src/app/services/coleta.service';
 import { Coleta } from 'src/app/models/coleta';
-
+import { LaticinioService } from 'src/app/services/laticinio.service';
+import { ColetaService } from 'src/app/services/coleta.service';
+import * as moment from 'moment';
 @Component({
   selector: 'app-coleta-create',
   templateUrl: './coleta-create.component.html',
@@ -25,59 +25,55 @@ import { Coleta } from 'src/app/models/coleta';
 export class ColetaCreateComponent implements OnInit {
 
   tanques: Tanque[] = [];
-  //animais: any[] = [];
-  filteredAnimais: any[] = [];
+  laticinios: any[] = [];
   coleta: Coleta = {
-    idColeta: null,
-    data: null,
-    quantidade: null,
-    idTanque: null,
-    idAnimal: null,
-    tanque: null,
-    laticinio: null  ,
+    data: '',
+    quantidade: 0,
+    idTanque: 0,
+    tanque: undefined,
+    laticinio: undefined,
     razaoSocial: '',
-    modeloTanque: undefined
+    modeloTanque: '',
+    idLaticinio: 0
   };
-
-  dataSemHoras = new Date(this.coleta.data).toISOString().slice(0, 10);
 
   data: FormControl = new FormControl(null, [Validators.required]);
   quantidade: FormControl = new FormControl(null, [Validators.required]);
-  idAnimal: FormControl = new FormControl(null, [Validators.required]);
+  idLaticinio: FormControl = new FormControl(null, [Validators.required]);
   idTanque: FormControl = new FormControl(null, [Validators.required]);
 
   animalControl = new FormControl();
 
   constructor(
     private service: ColetaService,
-    private animalService: AnimalService,
+    private laticinioService: LaticinioService,
     private tanqueService: TanqueService,
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private toast: ToastrService,
   ) {
-   
+
   }
 
 
   ngOnInit(): void {
-   // this.findAllAnimais();
+    this.findAllLaticinios();
     this.findAllTanques();
-}
+  }
 
-displayAnimalName(animal: any): string {
-  console.log('displayAnimalName', animal);
-  return animal ? animal.apelido : '';
-}
+
+
 
 
   create(): void {
+    this.coleta.data = moment(this.coleta.data).format('DD/MM/YYYY');
+
     this.service.cadastrarColeta(this.coleta).subscribe(() => {
-      this.toast.success('Coleta cadastrada com sucesso', 'Cadastro');
+      this.toast.success('Coleta de leite cadastrada com sucesso', 'Cadastro');
       this.router.navigate(['coleta']);
     }, ex => {
-      if(ex.error.errors) {
+      if (ex.error.errors) {
         ex.error.errors.forEach(element => {
           this.toast.error(element.message);
         });
@@ -93,37 +89,25 @@ displayAnimalName(animal: any): string {
     });
   }
 
-  /*findAllAnimais(): void {
-    this.animalService.findAll().subscribe(
+  findAllLaticinios(): void {
+    this.laticinioService.findAll().subscribe(
       response => {
-        this.animais = response;
+        this.laticinios = response;
       },
       error => {
         console.error(error);
       }
     );
-  }*/
+  }
 
 
   cancel(): void {
     this.router.navigate(['/coleta']);
   }
 
- 
- /* filtrarAnimais(event: any): void {
-    const filtro = event.target.value.toLowerCase();
-    this.filteredAnimais = this.animais.filter(
-      animal => animal.apelido.toLowerCase().indexOf(filtro) !== -1
-    );
-  }*/
-
-  
-  displayFn(animal: any): string {
-    return animal ? animal.apelido : '';
-  }
   validaCampos(): boolean {
     return this.data.valid && this.quantidade.valid && this.idTanque.valid;
   }
 
- 
+
 }

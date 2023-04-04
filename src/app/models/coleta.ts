@@ -3,19 +3,19 @@ import { Tanque } from "./tanque";
 
 export class Coleta {
     idColeta?: any;
-    data: Date;
+    data: string;
     quantidade: number;
-    idAnimal: number;
+    idLaticinio: number;
     idTanque: number;
     tanque: Tanque;
     laticinio: Laticinio;
     razaoSocial: string;
     modeloTanque: string;
   
-    constructor(data: Date, quantidade: number, idAnimal: number, idTanque: number, tanque: Tanque, laticinio: Laticinio, razaoSocial: string, modeloTanque: string) {
+    constructor(data: string, quantidade: number, idLaticinio: number, idTanque: number, tanque: Tanque, laticinio: Laticinio, razaoSocial: string, modeloTanque: string) {
       this.data = data;
       this.quantidade = quantidade;
-      this.idAnimal = idAnimal;
+      this.idLaticinio = idLaticinio;
       this.idTanque = idTanque;
       this.tanque = tanque;
       this.laticinio = laticinio;
