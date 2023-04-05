@@ -25,7 +25,7 @@ export class AnimalService {
 
   pesquisarAnimais(apelido: string): Observable<Animal[]> {
     return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/pesquisar?apelido=${apelido}`);
-}
+  }
 
   cadastrarAnimal(animal: Animal): Observable<Animal> {
     return this.http.post<Animal>(`${API_CONFIG.baseUrl}/agromilk/animal`, animal);
@@ -38,4 +38,25 @@ export class AnimalService {
   excluir(idAnimal: any): Observable<Animal> {
     return this.http.delete<Animal>(`${API_CONFIG.baseUrl}/agromilk/animal/${idAnimal}`);
   }
+  getQtsAnimal(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/qtsAnimal`);
+  }
+  getMediaLitro(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/mediaLitro`);
+  }
+
+  getAnimalLactacao(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/qtsAnimalLactacao`);
+  }
+
+  getAnimalSeca(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/qtsAnimalSeca`);
+  }
+  getPorcentagemLactantes(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/porcentagemLactantes`);
+  }
+  getPorcentagemSecas(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/porcentagemSecas`);
+  }
+
 }

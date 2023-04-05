@@ -31,7 +31,8 @@ export class AnimalUpdateComponent implements OnInit {
     lote: undefined,
     raca: undefined,
     loteNome: undefined,
-    racaNome: undefined
+    racaNome: undefined,
+    qtsAnimal: 0
   }
 
   lotes: Lote[] = []

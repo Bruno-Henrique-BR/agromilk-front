@@ -34,6 +34,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 // Componentes do projeto
 import { NavComponent } from './components/nav/nav.component'; NavComponent
@@ -145,6 +146,7 @@ import { ColetaCreateComponent } from './components/coleta/coleta-create/coleta-
     FormsModule,
     MatOptionModule,
     MatDialogModule,
+    MatGridListModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

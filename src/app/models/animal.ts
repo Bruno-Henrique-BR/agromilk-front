@@ -14,4 +14,5 @@ export interface Animal {
    nomeRaca:            string;
    nomeLote:            string;
    lactacao:     boolean;
+   qtsAnimal: number;
 }
