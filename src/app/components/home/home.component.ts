@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from 'src/app/models/animal';
 import { AnimalService } from 'src/app/services/animal.service';
+import { FuncionarioService } from 'src/app/services/funcionario.service';
+import { LoteService } from 'src/app/services/lote.service';
+import { TanqueService } from 'src/app/services/tanque.service';
 
 @Component({
   selector: 'app-home',
@@ -15,8 +18,15 @@ export class HomeComponent implements OnInit {
   qtsAnimaisSeca: number;
   porcentagemLactacao: number;
   porcentagemSeca: number;
-
-  constructor(private animalService: AnimalService) { }
+  qtdTanque: number;
+  qtdFuncionario: number;
+  qtdLote: number;
+  qtdTotalLeite: number;
+  constructor(private animalService: AnimalService,
+    private loteService: LoteService,
+    private tanqueService: TanqueService,
+    private funcionarioService: FuncionarioService,
+    ) { }
 
   ngOnInit(): void {
     this.animalService.getQtsAnimal().subscribe(
@@ -47,6 +57,27 @@ export class HomeComponent implements OnInit {
     this.animalService.getPorcentagemSecas().subscribe(
       animal => {
         this.porcentagemSeca = animal; // Atribuir diretamente o valor numérico retornado pela requisição
+      }
+    );
+
+    this.loteService.getQtsLote().subscribe(
+      lote => {
+        this.qtdLote = lote; // Atribuir diretamente o valor numérico retornado pela requisição
+      }
+    );
+    this.funcionarioService.getQtsFuncionarios().subscribe(
+      funcionario => {
+        this.qtdFuncionario = funcionario; // Atribuir diretamente o valor numérico retornado pela requisição
+      }
+    );
+    this.tanqueService.getQtsTanque().subscribe(
+      tanque => {
+        this.qtdTanque = tanque; // Atribuir diretamente o valor numérico retornado pela requisição
+      }
+    );
+    this.tanqueService.getTotalLeite().subscribe(
+      tanque => {
+        this.qtdTotalLeite = tanque; // Atribuir diretamente o valor numérico retornado pela requisição
       }
     );
   }

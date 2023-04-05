@@ -38,4 +38,8 @@ export class LoteService {
   adicionarAnimal(lote: Lote, animal: Animal): Observable<Lote> {
     return this.http.put<Lote>(`${API_CONFIG.baseUrl}/agromilk/lotes/${lote.idLote}/adicionar-animal`, animal);
   }
+
+  getQtsLote(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/lote/qtsLotes`);
+  }
 }

@@ -30,4 +30,12 @@ export class TanqueService {
   excluir(idTanque: any): Observable<Tanque> {
     return this.http.delete<Tanque>(`${API_CONFIG.baseUrl}/agromilk/tanque/${idTanque}`);
   }
+
+  getQtsTanque(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/tanque/qtsTanques`);
+  }
+
+  getTotalLeite(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/tanque/qtdTotalLeite`);
+  }
 }

@@ -34,4 +34,8 @@ export class FuncionarioService {
     const params = new HttpParams().set('nome', query);
     return this.http.get<Funcionario[]>('/api/funcionarios', { params });
   }
+
+  getQtsFuncionarios(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/funcionario/qtsFuncionario`);
+  }
 }
