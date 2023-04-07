@@ -1,3 +1,5 @@
+import { MessageService } from './../services/message.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -7,22 +9,26 @@ import {
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { StorageService } from '../services/storage.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor() { }
+  constructor(
+    private storage:       StorageService, 
+    public messageService: MessageService, 
+    ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let token = localStorage.getItem('token');
+    let localUser = this.storage.getLocalUser();
 
-    if (token) {
-      const cloneReq = 
-        request.clone({ headers: request.headers.set('Authorization', `Bearer ${token}`) });
-        return next.handle(cloneReq);
+    if (localUser) {
+      const cloneReq = request.clone({ headers: request.headers.set('Authorization', `Bearer ${localUser.token}`) });
+      return next.handle(cloneReq);
     } else {
       return next.handle(request);
     }
+
   }
 }
 
@@ -31,5 +37,5 @@ export const AuthInterceptorProvider = [
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }
-]
+  },
+];

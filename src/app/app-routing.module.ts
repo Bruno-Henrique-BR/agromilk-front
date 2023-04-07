@@ -35,9 +35,13 @@ import { ColetaListComponent } from './components/coleta/coleta-list/coleta-list
 import { ColetaDeleteComponent } from './components/coleta/coleta-delete/coleta-delete.component';
 import { LoteAddAnimalComponent } from './components/lote/lote-add-animal/lote-add-animal.component';
 import { ColetaCreateComponent } from './components/coleta/coleta-create/coleta-create.component';
+import { LoginComponent } from './login/login-component';
+import { AuthGuard } from './guard/auth.guard';
+
 const routes: Routes = [
   {
-    path: '', component: NavComponent, children: [
+    path: '', component: NavComponent, canActivate: [AuthGuard], children:
+      [
       { path: 'home', component: HomeComponent },
 
       { path: 'raca', component: RacaListComponent },
@@ -81,11 +85,14 @@ const routes: Routes = [
       { path: 'coleta', component: ColetaListComponent },
       { path: 'coleta/create', component: ColetaCreateComponent},
       { path: 'coleta/delete/:idColeta', component: ColetaDeleteComponent },
-
-
     ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -33,16 +33,17 @@
    </mat-grid-tile>
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
-         <mat-card-content>
-            <p class="dashboard-card-value dashboard-card-value-large">{{ porcentagemLactacao.toFixed(2)}} %</p>
-            <p class="dashboard-card-label">Porcentagem em lactação</p>
-         </mat-card-content>
+        <mat-card-content>
+         <p class="dashboard-card-value dashboard-card-value-large">{{ (+porcentagemLactacao).toFixed(2) }} %</p>
+         <p class="dashboard-card-label">Porcentagem em lactação</p>
+        </mat-card-content>
       </mat-card>
-   </mat-grid-tile>
+    </mat-grid-tile>
+    
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
-            <p class="dashboard-card-value dashboard-card-value-large">{{ porcentagemSeca.toFixed(2)}} %</p>
+            <p class="dashboard-card-value dashboard-card-value-large">{{ (+porcentagemSeca).toFixed(2)}} %</p>
             <p class="dashboard-card-label">Porcentagem em secas</p>
          </mat-card-content>
       </mat-card>

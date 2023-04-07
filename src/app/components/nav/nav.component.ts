@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ThemeService } from 'src/app/theme.service';
 import { Observable } from 'rxjs';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-nav',
@@ -10,25 +11,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  isDarkMode: Observable<boolean>;
+  
 
   constructor(
-    private router: Router,
-    private toast: ToastrService,
-    private themeService: ThemeService
-  ) {}
-
-  toggleDarkMode() {
-    this.themeService.toggleDarkMode();
-  }
+    private storage: StorageService, 
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
-    this.isDarkMode = this.themeService.isDarkMode;
-    this.router.navigate(['home'])
+    this.router.navigate(['home']);
   }
 
   logout() {
+    this.storage.setLocalUser(null);
     this.router.navigate(['login']);
-    this.toast.info('Logout realizado com sucesso', 'Logout');
   }
 }

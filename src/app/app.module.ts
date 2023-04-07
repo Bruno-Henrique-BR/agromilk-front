@@ -75,6 +75,7 @@ import { ColetaListComponent } from './components/coleta/coleta-list/coleta-list
 import { ColetaDeleteComponent } from './components/coleta/coleta-delete/coleta-delete.component';
 import { LoteAddAnimalComponent } from './components/lote/lote-add-animal/lote-add-animal.component';
 import { ColetaCreateComponent } from './components/coleta/coleta-create/coleta-create.component';
+import { LoginComponent } from './login/login-component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -113,6 +114,7 @@ import { ColetaCreateComponent } from './components/coleta/coleta-create/coleta-
     ColetaListComponent,
     ColetaDeleteComponent,
     ColetaCreateComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
