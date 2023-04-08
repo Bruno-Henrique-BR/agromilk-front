@@ -15,14 +15,17 @@ import { FuncionarioService } from 'src/app/services/funcionario.service';
 export class FuncionarioUpdateComponent implements OnInit {
 
     funcionario: Funcionario = {
-    idFuncionario:         '',
-    nomeFuncionario:       '',
-    cpf:                   '',
-    dataNascimento: '',
-    endereco:              '',
-    telefone:              '',
-   
-  }
+      idFuncionario: '',
+      nomeFuncionario: '',
+      cpf: '',
+      dataNascimento: '',
+      endereco: '',
+      telefone: '',
+      email: '',
+      senha: '',
+      perfis: null,
+      perfil: 0
+    }
  
   nomeFuncionario: FormControl =  new FormControl(null, Validators.minLength(3));
   descricao: FormControl =  new FormControl(null, Validators.minLength(3));

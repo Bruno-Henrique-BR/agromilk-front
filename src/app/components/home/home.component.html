@@ -10,7 +10,7 @@
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
-            <p class="dashboard-card-value dashboard-card-value-large">{{ mediaLitro || 'N/A' }}</p>
+            <p class="dashboard-card-value dashboard-card-value-large">{{(+mediaLitro).toFixed(2)  || 'N/A' }}</p>
             <p class="dashboard-card-label">Litros por média</p>
          </mat-card-content>
       </mat-card>
@@ -75,7 +75,7 @@
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
-            <p class="dashboard-card-value dashboard-card-value-large">{{ qtdTotalLeite}}</p>
+            <p class="dashboard-card-value dashboard-card-value-large">{{ (+qtdTotalLeite).toFixed(2)}}</p>
             <p class="dashboard-card-label">Quantidade leite armazenado</p>
          </mat-card-content>
       </mat-card>

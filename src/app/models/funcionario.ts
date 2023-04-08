@@ -5,5 +5,9 @@ export interface Funcionario {
   dataNascimento: string;
   endereco: string;
   telefone: string;
+  email:    string;
+  senha:    string;
+  perfil: number;
+  perfis: number[];
 
 }
