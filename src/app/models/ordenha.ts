@@ -3,7 +3,7 @@ import { Tanque } from "./tanque";
 
 export class Ordenha {
     idOrdenha: any;
-    data: Date;
+    data: string;
     quantidade: number;
     idAnimal: number;
     idTanque: number;
@@ -12,7 +12,7 @@ export class Ordenha {
     apelidoAnimal: string;
     modeloTanque: any;
   
-    constructor(idOrdenha?: number, data?: Date, quantidade?: number, idAnimal?: number, tanque?: Tanque, animal?: Animal) {
+    constructor(idOrdenha?: number, data?: string, quantidade?: number, idAnimal?: number, tanque?: Tanque, animal?: Animal) {
       this.idOrdenha = idOrdenha;
       this.data = data;
       this.quantidade = quantidade;

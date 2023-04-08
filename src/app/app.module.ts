@@ -76,6 +76,8 @@ import { ColetaDeleteComponent } from './components/coleta/coleta-delete/coleta-
 import { LoteAddAnimalComponent } from './components/lote/lote-add-animal/lote-add-animal.component';
 import { ColetaCreateComponent } from './components/coleta/coleta-create/coleta-create.component';
 import { LoginComponent } from './login/login-component';
+import { OrdenhaUpdateComponent } from './components/ordenha/ordenha-update/ordenha-update.component';
+import { ColetaUpdateComponent } from './components/coleta/coleta-update/coleta-update.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,6 +105,7 @@ import { LoginComponent } from './login/login-component';
     OrdenhaListComponent,
     OrdenhaCreateComponent,
     OrdenhaDeleteComponent,
+    OrdenhaUpdateComponent,
     LaticinioListComponent,
     LaticinioCreateComponent,
     LaticinioDeleteComponent,
@@ -114,6 +117,7 @@ import { LoginComponent } from './login/login-component';
     ColetaListComponent,
     ColetaDeleteComponent,
     ColetaCreateComponent,
+    ColetaUpdateComponent,
     LoginComponent,
   ],
   imports: [

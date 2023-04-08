@@ -37,6 +37,8 @@ import { LoteAddAnimalComponent } from './components/lote/lote-add-animal/lote-a
 import { ColetaCreateComponent } from './components/coleta/coleta-create/coleta-create.component';
 import { LoginComponent } from './login/login-component';
 import { AuthGuard } from './guard/auth.guard';
+import { OrdenhaUpdateComponent } from './components/ordenha/ordenha-update/ordenha-update.component';
+import { ColetaUpdateComponent } from './components/coleta/coleta-update/coleta-update.component';
 
 const routes: Routes = [
   {
@@ -71,6 +73,7 @@ const routes: Routes = [
       { path: 'ordenha', component: OrdenhaListComponent },
       { path: 'ordenha/create', component: OrdenhaCreateComponent },
       { path: 'ordenha/delete/:idOrdenha', component: OrdenhaDeleteComponent },
+      { path: 'ordenha/update/:idOrdenha', component: OrdenhaUpdateComponent },
 
       { path: 'laticinio', component: LaticinioListComponent },
       { path: 'laticinio/create', component: LaticinioCreateComponent },
@@ -85,6 +88,8 @@ const routes: Routes = [
       { path: 'coleta', component: ColetaListComponent },
       { path: 'coleta/create', component: ColetaCreateComponent},
       { path: 'coleta/delete/:idColeta', component: ColetaDeleteComponent },
+      { path: 'coleta/update/:idColeta', component: ColetaUpdateComponent },
+
     ]
   },
   {
