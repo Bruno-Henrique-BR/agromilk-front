@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-ordenha-create',
@@ -71,6 +72,8 @@ displayAnimalName(animal: any): string {
 
 
   create(): void {
+    this.ordenha.data = moment(this.ordenha.data).format('DD/MM/YYYY');
+
     this.service.cadastrarOrdenha(this.ordenha).subscribe(() => {
       this.toast.success('Ordenha cadastrada com sucesso', 'Cadastro');
       this.router.navigate(['ordenha']);

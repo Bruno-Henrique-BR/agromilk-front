@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Animal } from 'src/app/models/animal';
 import { AnimalService } from 'src/app/services/animal.service';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
@@ -11,7 +13,23 @@ import { TanqueService } from 'src/app/services/tanque.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  animais: Animal[] = []
 
+  codigo?:   string;
+  apelido?:   string;
+  dataNascimento?:   string;
+  dataCompra?: string;
+  cor:      string;
+  idRaca: any;
+  idLote: any;
+  nomeRaca:            string;
+  nomeLote:            string;
+  lactacao:     boolean;
+  media: string;
+  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'media'];
+  dataSource = new MatTableDataSource<Animal>(this.animais);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   qtsAnimal: number;
   mediaLitro: number;
   qtsAnimaisLactacao: number;
@@ -32,6 +50,12 @@ export class HomeComponent implements OnInit {
     this.animalService.getQtsAnimal().subscribe(
       animal => {
         this.qtsAnimal = animal; // Atribuir diretamente o valor numérico retornado pela requisição
+      }
+    );
+    this.animalService.getAnimais().subscribe(
+      animais => {
+        this.animais = animais;
+        this.dataSource.data = this.animais;
       }
     );
     this.animalService.getMediaLitro().subscribe(

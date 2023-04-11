@@ -2,7 +2,7 @@
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
-            <p class="dashboard-card-value dashboard-card-value-large">{{ qtsAnimal || 'N/A' }}</p>
+            <p class="dashboard-card-value dashboard-card-value-large">{{ qtsAnimal || '0' }}</p>
             <p class="dashboard-card-label">Animais</p>
          </mat-card-content>
       </mat-card>
@@ -10,7 +10,7 @@
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
-            <p class="dashboard-card-value dashboard-card-value-large">{{(+mediaLitro).toFixed(2)  || 'N/A' }}</p>
+            <p class="dashboard-card-value dashboard-card-value-large">{{(+mediaLitro).toFixed(2)  || '0,00' }}</p>
             <p class="dashboard-card-label">Litros por média</p>
          </mat-card-content>
       </mat-card>
@@ -18,7 +18,7 @@
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
-            <p class="dashboard-card-value dashboard-card-value-large">{{ qtsAnimaisLactacao || 'N/A' }}</p>
+            <p class="dashboard-card-value dashboard-card-value-large">{{ qtsAnimaisLactacao || '0' }}</p>
             <p class="dashboard-card-label">Animais em lactação</p>
          </mat-card-content>
       </mat-card>
@@ -26,7 +26,7 @@
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
-            <p class="dashboard-card-value dashboard-card-value-large">{{ qtsAnimaisSeca || 'N/A' }} </p>
+            <p class="dashboard-card-value dashboard-card-value-large">{{ qtsAnimaisSeca || '0' }} </p>
             <p class="dashboard-card-label">Animais em secas</p>
          </mat-card-content>
       </mat-card>
@@ -34,7 +34,7 @@
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
         <mat-card-content>
-         <p class="dashboard-card-value dashboard-card-value-large">{{ (+porcentagemLactacao).toFixed(2) }} %</p>
+         <p class="dashboard-card-value dashboard-card-value-large">{{ (+porcentagemLactacao).toFixed(2) || '0' }} %</p>
          <p class="dashboard-card-label">Porcentagem em lactação</p>
         </mat-card-content>
       </mat-card>
@@ -43,7 +43,7 @@
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
-            <p class="dashboard-card-value dashboard-card-value-large">{{ (+porcentagemSeca).toFixed(2)}} %</p>
+            <p class="dashboard-card-value dashboard-card-value-large">{{ (+porcentagemSeca).toFixed(2) || '0'}} %</p>
             <p class="dashboard-card-label">Porcentagem em secas</p>
          </mat-card-content>
       </mat-card>

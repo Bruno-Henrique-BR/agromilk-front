@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_CONFIG } from '../config/api.config';
@@ -58,5 +58,9 @@ export class AnimalService {
   getPorcentagemSecas(): Observable<number> {
     return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/porcentagemSecas`);
   }
-
+  getAnimais(): Observable<Animal[]> {
+    const params = new HttpParams().set('sort', 'idAnimal'); // Add the sort parameter with the desired field to sort by
+    return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/{ params }`);
+  }
+  
 }
