@@ -1,4 +1,4 @@
-<mat-grid-list cols="5" rowHeight="1:1" class="dashboard-grid">
+   <mat-grid-list cols="5" rowHeight="1:1" class="dashboard-grid text-center">   
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
@@ -19,7 +19,7 @@
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
             <p class="dashboard-card-value dashboard-card-value-large">{{ qtsAnimaisLactacao || '0' }}</p>
-            <p class="dashboard-card-label">Animais em lactação</p>
+            <p class="dashboard-card-label large-label">Animais em lactação</p>
          </mat-card-content>
       </mat-card>
    </mat-grid-tile>
@@ -35,7 +35,7 @@
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
         <mat-card-content>
          <p class="dashboard-card-value dashboard-card-value-large">{{ (+porcentagemLactacao).toFixed(2) || '0' }} %</p>
-         <p class="dashboard-card-label">Porcentagem em lactação</p>
+         <p class="dashboard-card-label  large-label">Porcentagem em lactação</p>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -44,7 +44,7 @@
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
             <p class="dashboard-card-value dashboard-card-value-large">{{ (+porcentagemSeca).toFixed(2) || '0'}} %</p>
-            <p class="dashboard-card-label">Porcentagem em secas</p>
+            <p class="dashboard-card-label  large-label">Porcentagem em secas</p>
          </mat-card-content>
       </mat-card>
    </mat-grid-tile>
@@ -76,7 +76,7 @@
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
             <p class="dashboard-card-value dashboard-card-value-large">{{ (+qtdTotalLeite).toFixed(2)}}</p>
-            <p class="dashboard-card-label">Quantidade leite armazenado</p>
+            <p class="dashboard-card-label large-label">Leite armazenado</p>
          </mat-card-content>
       </mat-card>
    </mat-grid-tile>

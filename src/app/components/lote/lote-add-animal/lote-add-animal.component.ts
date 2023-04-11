@@ -48,7 +48,8 @@ export class LoteAddAnimalComponent implements OnInit {
         nomeRaca: '',
         nomeLote: '',
         qtsAnimal: 0,
-        media: ''
+        media: '',
+        categoria: ''
     };
     constructor(
         private fb: FormBuilder,

@@ -52,12 +52,7 @@ export class HomeComponent implements OnInit {
         this.qtsAnimal = animal; // Atribuir diretamente o valor numérico retornado pela requisição
       }
     );
-    this.animalService.getAnimais().subscribe(
-      animais => {
-        this.animais = animais;
-        this.dataSource.data = this.animais;
-      }
-    );
+  
     this.animalService.getMediaLitro().subscribe(
       animal => {
         this.mediaLitro = animal; // Atribuir diretamente o valor numérico retornado pela requisição

@@ -45,7 +45,10 @@
             <th mat-header-cell *matHeaderCellDef> Media de Leite </th>
             <td mat-cell *matCellDef="let animal"> {{(+animal.media).toFixed(2) || 0}} litros </td>
          </ng-container>
-
+         <ng-container matColumnDef="categoria">
+            <th mat-header-cell *matHeaderCellDef> Categoria </th>
+            <td mat-cell *matCellDef="let animal"> {{animal.categoria | titlecase}} </td>
+         </ng-container>
 
          <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef> Ações </th>

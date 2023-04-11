@@ -12,6 +12,7 @@ import { RacaService } from 'src/app/services/raca.service';
 import { HttpClient } from '@angular/common/http';
 import { map, startWith } from 'rxjs/operators';
 import * as moment from 'moment';
+import { CategoriaAnimal } from 'src/app/models/categoriaAnimal';
 
 @Component({
   selector: 'app-animal-create',
@@ -37,8 +38,10 @@ export class AnimalCreateComponent implements OnInit {
     loteNome: undefined,
     racaNome: undefined,
     qtsAnimal: 0,
-    media: ''
+    media: '',
+    categoria: ''
   }
+  categorias: CategoriaAnimal[] = [CategoriaAnimal.BEZERRA, CategoriaAnimal.BEZERRO, CategoriaAnimal.NOVILHA, CategoriaAnimal.NOVILHO, CategoriaAnimal.TOURO, CategoriaAnimal.VACA];
 
   public mask = {
     guide: true,
@@ -52,6 +55,7 @@ export class AnimalCreateComponent implements OnInit {
   apelido: FormControl = new FormControl(null, Validators.minLength(3));
   idLote: FormControl = new FormControl(null, [Validators.required]);
   idRaca: FormControl = new FormControl(null, [Validators.required]);
+  categoria: FormControl = new FormControl(null, [Validators.required]);
   dataCompra: FormControl = new FormControl(null, [Validators.required]);
   dataNascimento: FormControl = new FormControl(null, [Validators.required]);
   searchControl = new FormControl();

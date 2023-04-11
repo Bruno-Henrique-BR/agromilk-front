@@ -27,8 +27,6 @@
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
-      
-
     </div>
 
 
@@ -46,10 +44,15 @@
           <mat-option *ngFor="let rac of racas" value="{{ rac.idRaca }}">{{ rac.nomeRaca }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Cor</mat-label>
-        <input [(ngModel)]="animal.cor" name="cor" matInput>
-      </mat-form-field>
+      <div class="status-prioridade">
+        <mat-form-field appearance="outline">
+          <mat-label>Categoria</mat-label>
+          <mat-select [(ngModel)]="animal.categoria" name="categoria" [formControl]="categoria" required>
+            <mat-option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>      
+      
     </div>
     <div class="lactacao">
       <mat-checkbox [(ngModel)]="animal.lactacao"

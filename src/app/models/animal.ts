@@ -16,4 +16,6 @@ export interface Animal {
    lactacao:     boolean;
    qtsAnimal: number;
    media: string;
+   categoria: string;
+
 }

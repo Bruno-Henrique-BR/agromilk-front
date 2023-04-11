@@ -1,9 +1,17 @@
+.dashboard-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
 .dashboard-grid {
   max-width: 800px;
   margin: 0 auto;
-  }
-  
-  .dashboard-card {
+}
+
+.dashboard-card {
   width: 120px;
   height: 90px;
   display: flex;
@@ -13,35 +21,37 @@
   border-radius: 10px;
   background-color: #0b814a;
   color: bisque;
-  }
-  
- 
-    
-  .dashboard-card-spacing {
+}
+
+.large-label {
+  font-size: 1px; /* Ajuste o tamanho da fonte conforme necessário */
+  white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+  overflow: hidden; /* Impede que o texto saia do elemento pai */
+  text-overflow: ellipsis; /* Adiciona reticências (...) no final do texto se ele ultrapassar o tamanho do elemento */
+}
+
+
+.dashboard-card-spacing {
   margin: 8px;
-  }
-  
- 
+}
 
-  .dashboard-card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-    align-items: center;
-    height: 10%;
-  }
-  
-  .dashboard-card-value {
-    font-size: 25px;
-    margin-top: 5px;
-    font-weight: bold;
-  }
-  
-  .dashboard-card-label {
-    font-size: 12px;
-    margin-top: 5px;
-    font: bold;
+.dashboard-card-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 10%;
+}
 
-  }
-  
+.dashboard-card-value {
+  font-size: 25px;
+  margin-top: 5px;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+.dashboard-card-label {
+  font-size: 12px;
+  margin-top: 5px;
+  font: bold;
+}

@@ -16,11 +16,10 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Data de compra</mat-label>
-        <input matInput [(ngModel)]="animal.dataCompra" [textMask]="mask">
+        <input matInput [textMask]="mask" [matDatepicker]="dataCompra">
         <mat-datepicker-toggle matSuffix [for]="dataCompra"></mat-datepicker-toggle>
         <mat-datepicker #dataCompra></mat-datepicker>
       </mat-form-field>
-
       <mat-form-field appearance="outline">
         <mat-label>Data de nascimento</mat-label>
         <input matInput [textMask]="mask" [matDatepicker]="dataNascimento">
@@ -47,12 +46,14 @@
           <mat-option *ngFor="let rac of racas" value="{{ rac.idRaca }}">{{ rac.nomeRaca }}</mat-option>
         </mat-select>
       </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Cor</mat-label>
-        <input [(ngModel)]="animal.cor" name="cor" matInput >
-      </mat-form-field>
-
+      <div class="status-prioridade">
+        <mat-form-field appearance="outline">
+          <mat-label>Categoria</mat-label>
+          <mat-select [(ngModel)]="animal.categoria" name="categoria" required>
+            <mat-option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>  
     </div>
     <div class="lactacao">
       <mat-checkbox [(ngModel)]="animal.lactacao"
