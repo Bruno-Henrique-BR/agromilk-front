@@ -13,6 +13,13 @@
     background-color: green;
     color: #ffffff;
   }
+
+  .gerenciar {
+    width: 25%;
+    float: left;
+    background-color: rgb(41, 0, 190);
+    color: #ffffff;
+  }
   
   mat-form-field {
     width: 100%;

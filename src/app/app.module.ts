@@ -14,7 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
 // Imports para componentes do Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -35,7 +34,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 // Componentes do projeto
 import { NavComponent } from './components/nav/nav.component'; NavComponent
 import { HomeComponent } from './components/home/home.component';
@@ -78,6 +77,7 @@ import { ColetaCreateComponent } from './components/coleta/coleta-create/coleta-
 import { LoginComponent } from './login/login-component';
 import { OrdenhaUpdateComponent } from './components/ordenha/ordenha-update/ordenha-update.component';
 import { ColetaUpdateComponent } from './components/coleta/coleta-update/coleta-update.component';
+import { LoteGerenciarComponent } from './components/lote/gerenciamento-lote/lote-gerenciar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +94,7 @@ import { ColetaUpdateComponent } from './components/coleta/coleta-update/coleta-
     LoteUpdateComponent,
     LoteAnimalComponent,
     LoteAddAnimalComponent,
+    LoteGerenciarComponent,
     AnimalCreateComponent,
     AnimalListComponent,
     AnimalDeleteComponent,
@@ -153,6 +154,7 @@ import { ColetaUpdateComponent } from './components/coleta/coleta-update/coleta-
     MatOptionModule,
     MatDialogModule,
     MatGridListModule,
+    MatSnackBarModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
