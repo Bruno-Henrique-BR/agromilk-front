@@ -38,6 +38,8 @@ export class AnimalCreateComponent implements OnInit {
     racaNome: undefined,
     qtsAnimal: 0,
     media: '',
+    quantidade: 0,
+    idTanque: 0
   }
 
   public mask = {

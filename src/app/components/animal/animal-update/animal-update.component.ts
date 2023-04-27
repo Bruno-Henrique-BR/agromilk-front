@@ -34,6 +34,8 @@ export class AnimalUpdateComponent implements OnInit {
     racaNome: undefined,
     qtsAnimal: 0,
     media: '',
+    quantidade: 0,
+    idTanque: 0
   }
 
   lotes: Lote[] = []

@@ -22,8 +22,10 @@ export class OrdenhaService {
   listarOrdenhas(): Observable<Ordenha[]> {
     return this.http.get<Ordenha[]>(`${API_CONFIG.baseUrl}/agromilk/ordenha`);
   }
-
-  cadastrarOrdenha(ordenha: Ordenha): Observable<Ordenha> {
+  cadastrarOrdenha(ordenha: any): Observable<any> {
+    return this.http.post<Ordenha>(`${API_CONFIG.baseUrl}/agromilk/ordenha/ordenhas`, ordenha);
+  }
+  cadastrarOrdenhaa(ordenha: Ordenha): Observable<Ordenha> {
     return this.http.post<Ordenha>(`${API_CONFIG.baseUrl}/agromilk/ordenha`, ordenha);
   }
 

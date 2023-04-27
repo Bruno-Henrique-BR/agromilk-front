@@ -1,4 +1,6 @@
 export interface Animal {
+   quantidade: number;
+   idTanque: number;
    lote: any;
    raca: any;
    loteNome: any;
