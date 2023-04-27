@@ -51,7 +51,11 @@ export class LoteService {
     return this.http.post(url, {});
   }
   
-
+  adicionarAnimaisAoLote(idLote: number, idAnimais: number[]): Observable<any> {
+    const url = `${API_CONFIG.baseUrl}/agromilk/lote/${idLote}/animais`;
+    return this.http.post(url, idAnimais);
+  }
+  
  
   
   

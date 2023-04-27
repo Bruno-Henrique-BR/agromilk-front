@@ -26,7 +26,7 @@ export class LoteAnimalComponent implements OnInit {
   nomeLote:            string;
   lactacao:     boolean;
 
-  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'dataNascimento', 'dataCompra', 'racaNome', 'loteNome', 'lactacao', 'acoes'];
+  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'dataNascimento', 'dataCompra', 'racaNome', 'loteNome', 'lactacao'];
   dataSource = new MatTableDataSource<Animal>(this.animais);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -36,28 +36,7 @@ export class LoteAnimalComponent implements OnInit {
     private dialog: MatDialog
 
     ) { }
-    openDialog(idAnimal: number): void {
-      const dialogRef = this.dialog.open(AnimalDeleteComponent, {
-        width: '350px',
-        data: {
-          title: 'Confirmação',
-          message: 'Tem certeza que deseja excluir o animal?',
-          idAnimal: idAnimal
-        }
-      });
-    
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          this.deleteAnimal(result.idAnimal);
-        }
-      });
-    }
   
-    deleteAnimal(idAnimal: number): void {
-      this.service.excluir(idAnimal).subscribe(() => {
-        this.dataSource.data = this.dataSource.data.filter(f => f.idAnimal !== idAnimal);
-      });
-    }
 
   ngOnInit(): void {
     this.idLote = this.route.snapshot.paramMap.get('idLote');
@@ -75,6 +54,8 @@ export class LoteAnimalComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       });
 }
+
+
     applyFilter(event: Event) {
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLowerCase();

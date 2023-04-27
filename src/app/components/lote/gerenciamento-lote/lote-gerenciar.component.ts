@@ -1,5 +1,8 @@
 import { Component } from "@angular/core";
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { Animal } from "src/app/models/animal";
 import { AnimalService } from "src/app/services/animal.service";
 import { LoteService } from "src/app/services/lote.service";
 
@@ -15,27 +18,56 @@ export class LoteGerenciarComponent {
   idLote: number;
   idAnimal: number;
   lotes: any[];
-  animais: any[];
   animalAdicionado: boolean;
+  animais: Animal[] = [];
+  animaisFiltered: Animal[] = [];
 
-  constructor(private loteService: LoteService, private animalService: AnimalService, private toast: ToastrService,) { }
+  constructor(private loteService: LoteService, 
+    private animalService: AnimalService, 
+    private toast: ToastrService,     
+    private route:   ActivatedRoute,
+    private location: Location
+    ) { }
 
   ngOnInit(): void {
-    this.carregarLotes();
+    this.carregarAnimaisNaoContemNoLote();
     this.carregarAnimais();
-  }
 
-  carregarLotes(): void {
-    this.loteService.listarLotes().subscribe(
-      (response) => {
-        this.lotes = response;
+  }
+  animaisSelecionados: number[] = [];
+
+  // ...
+
+  
+  adicionarAnimais() {
+    // Enviar a lista de animais selecionados para o backend
+    const idLote = this.route.snapshot.params.idLote; // Obter o idLote da rota atual
+    
+    this.loteService.adicionarAnimaisAoLote(idLote, this.animaisSelecionados).subscribe(
+      () => {
+        // Sucesso - exibir mensagem ou executar ação desejada
+        this.toast.success('Animal adicionado com sucesso', 'Cadastro');    
+        this.location.back()
       },
       (error) => {
-        this.errorMessage = 'Erro ao carregar os lotes.';
+        // Tratar erro - exibir mensagem de erro ou executar ação desejada
+        this.toast.error('O animal ja pertence a este lote.');
       }
     );
   }
 
+
+  carregarAnimaisNaoContemNoLote(): void {
+    const idLote = this.route.snapshot.params.idLote;
+    this.animalService.findAnimaisNaoContemNoLote(idLote).subscribe(
+      animais => {
+        this.animaisFiltered = animais;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
   carregarAnimais(): void {
     this.animalService.findAll().subscribe(
       (response) => {
@@ -47,27 +79,6 @@ export class LoteGerenciarComponent {
     );
   }
 
-  adicionarAnimal(): void {
-    this.loteService.adicionarAnimalAoLote(this.idLote, this.idAnimal).subscribe(
-      () => {
-        // Limpar os campos
-        this.idLote = null;
-        this.idAnimal = null;
-        this.animalAdicionado = true;
-        this.toast.success('Animal adicionado com sucesso', 'Cadastro');    
-
-        // Recarregar os lotes após 2 segundos
-        setTimeout(() => {
-          this.carregarLotes();
-          this.animalAdicionado = false;
-        }, 2000);
-      },
-
-      (error) => {
-        this.toast.error('O animal ja pertence a este lote.');
-      }
-
-    );
-  }
+  
 }
 

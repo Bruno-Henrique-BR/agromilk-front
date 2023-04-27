@@ -57,8 +57,7 @@ const routes: Routes = [
       { path: 'lote/update/:idLote', component: LoteUpdateComponent },
       { path: 'lote/delete/:idLote', component: LoteDeleteComponent },
       { path: 'lote/listar/:idLote', component: LoteAnimalComponent },
-      { path: 'lote/listar/:idLote/adicionar', component: LoteAddAnimalComponent },
-      { path: 'lote/gerenciar', component: LoteGerenciarComponent },
+      { path: 'lote/listar/:idLote/gerenciar', component: LoteGerenciarComponent },
 
 
 
