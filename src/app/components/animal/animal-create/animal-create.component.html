@@ -44,14 +44,7 @@
           <mat-option *ngFor="let rac of racas" value="{{ rac.idRaca }}">{{ rac.nomeRaca }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <div class="status-prioridade">
-        <mat-form-field appearance="outline">
-          <mat-label>Categoria</mat-label>
-          <mat-select [(ngModel)]="animal.categoria" name="categoria" [formControl]="categoria" required>
-            <mat-option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>      
+         
       
     </div>
     <div class="lactacao">

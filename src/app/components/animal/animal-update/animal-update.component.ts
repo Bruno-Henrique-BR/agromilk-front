@@ -3,7 +3,6 @@ import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Animal } from 'src/app/models/animal';
-import { CategoriaAnimal } from 'src/app/models/categoriaAnimal';
 import { Lote } from 'src/app/models/lote';
 import { Raca } from 'src/app/models/raca';
 import { AnimalService } from 'src/app/services/animal.service';
@@ -35,9 +34,7 @@ export class AnimalUpdateComponent implements OnInit {
     racaNome: undefined,
     qtsAnimal: 0,
     media: '',
-    categoria: ''
   }
-  categorias: CategoriaAnimal[] = [CategoriaAnimal.BEZERRA, CategoriaAnimal.BEZERRO, CategoriaAnimal.NOVILHA, CategoriaAnimal.NOVILHO, CategoriaAnimal.TOURO, CategoriaAnimal.VACA];
 
   lotes: Lote[] = []
   racas: Raca[] = []

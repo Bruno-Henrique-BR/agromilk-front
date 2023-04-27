@@ -1,1 +1,0 @@
-export enum CategoriaAnimal {   BEZERRO = 'Bezerro',   BEZERRA = 'Bezerra',   NOVILHA = 'Novilha',   NOVILHO = 'Novilho',   TOURO = 'Touro',   VACA = 'Vaca' }
