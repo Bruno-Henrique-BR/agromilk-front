@@ -12,6 +12,7 @@ import { RacaService } from 'src/app/services/raca.service';
 import { HttpClient } from '@angular/common/http';
 import { map, startWith } from 'rxjs/operators';
 import * as moment from 'moment';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-animal-create',
@@ -19,6 +20,8 @@ import * as moment from 'moment';
   styleUrls: ['./animal-create.component.css']
 })
 export class AnimalCreateComponent implements OnInit {
+  animalComprado: boolean = false;
+  private erroDataNascimento: boolean = false;
 
   animal: Animal = {
     idAnimal: '',
@@ -47,7 +50,12 @@ export class AnimalCreateComponent implements OnInit {
     showMask: true,
     mask: [/\d/, /\d/, '/', /\M/, /\M/, '/', /\y/, /\y/, /\y/, /\y/]
   };
-
+  toggleDataCompra(): void {
+    this.animalComprado = !this.animalComprado;
+    if (!this.animalComprado) {
+      this.dataCompra.reset();
+    }
+  }
   lotes: Lote[] = [];
   racas: Raca[] = [];
   codigo: FormControl = new FormControl(null, Validators.minLength(3));
@@ -66,6 +74,7 @@ export class AnimalCreateComponent implements OnInit {
     private racaService: RacaService,
     private toast: ToastrService,
     private router: Router,
+    private snackBar: MatSnackBar,
 
   ) { }
   private _filterLote(value: string): Lote[] {
@@ -120,6 +129,23 @@ export class AnimalCreateComponent implements OnInit {
       );
   }
   validaCampos(): boolean {
-    return this.codigo.valid && this.apelido.valid && this.idLote.valid && this.idRaca.valid && this.dataCompra.valid && this.dataNascimento.valid
+    if (this.animalComprado && this.dataNascimento.value > this.dataCompra.value && !this.erroDataNascimento) {
+      this.toast.error('A data de nascimento não pode ser maior que a data de compra', 'Erro');
+      this.erroDataNascimento = true; // Define a variável de controle como true para indicar que a mensagem de erro já foi exibida
+  
+      return false;
+    }
+    
+  
+    return (
+      this.codigo.valid &&
+      this.apelido.valid &&
+      this.idLote.valid &&
+      this.idRaca.valid &&
+      this.dataNascimento.valid &&
+      (!this.animalComprado || this.dataCompra.valid)
+    );
   }
+  
+  
 }
