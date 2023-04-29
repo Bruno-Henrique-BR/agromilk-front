@@ -8,17 +8,16 @@
         <input [(ngModel)]="tanque.modelo" name="modelo" matInput>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>Descricao</mat-label>
-        <input matInput [(ngModel)]="tanque.descricao" name="descricao" matInput maxlength="100">
+        <mat-label>Descrição</mat-label>
+        <input matInput [(ngModel)]="tanque.descricao" name="descricao" matInput matInput maxlength="50">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Capacidade</mat-label>
-        <input [(ngModel)]="tanque.capacidade" name="capacidade" matInput type="number">
+        <input [(ngModel)]="tanque.capacidade" name="capacidade" matInput type="text" (input)="limitarCapacidade($event)" [pattern]="'[0-9]{1,5}(\.[0-9]{0,2})?'">
       </mat-form-field>
-    </div>
-    <div class="ativo">
-      <mat-checkbox [(ngModel)]="tanque.ativo" [ngModelOptions]="{standalone: true}">Ativo? </mat-checkbox>
+      
+      
     </div>
     <div>
       <button (click)="create()" class="mat-elevation-z4" mat-flat-button color="primary">Cadastrar</button>

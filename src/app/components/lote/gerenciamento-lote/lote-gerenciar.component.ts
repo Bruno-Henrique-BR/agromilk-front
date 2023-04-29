@@ -38,6 +38,12 @@ export class LoteGerenciarComponent implements OnInit {
 
   adicionarAnimais() {
     const idLote = this.route.snapshot.params.idLote;
+  
+    if (this.animaisSelecionados.length === 0) {
+      this.toast.error("Selecione pelo menos um animal.", "Erro");
+      return;
+    }
+  
     this.loteService.adicionarAnimaisAoLote(idLote, this.animaisSelecionados).subscribe(
       () => {
         this.toast.success("Animal adicionado com sucesso", "Cadastro");
@@ -48,7 +54,7 @@ export class LoteGerenciarComponent implements OnInit {
       }
     );
   }
-
+  
 
   carregarAnimaisNaoContemNoLote(): void {
     const idLote = this.route.snapshot.params.idLote;

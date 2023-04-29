@@ -35,18 +35,13 @@
             <th mat-header-cell *matHeaderCellDef> Quantidade atual </th>
             <td mat-cell *matCellDef="let ordenha"> {{ordenha.quantidadeAtual}} litros de leite </td>
          </ng-container>
-         <ng-container matColumnDef="ativo">
-            <th mat-header-cell *matHeaderCellDef> Status </th>
-            <td mat-cell *matCellDef="let element"> {{ element.ativo ? 'Ativo' : 'Desativado' }} </td>
-         </ng-container>
-
          <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
             <td mat-cell *matCellDef="let element">
-               <a routerLink="update/{{ element.idTanque }}">
+               <a routerLink="update/{{element.idTanque}}">
                   <i class="material-icons edit">edit</i>
                </a>
-               <a (click)="openDialog(element.idRaca)">
+               <a (click)="openDialog(element.idTanque)">
                   <i class="material-icons delete">delete</i>
                 </a>  
             </td>

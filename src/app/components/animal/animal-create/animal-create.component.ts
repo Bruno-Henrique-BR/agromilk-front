@@ -93,7 +93,9 @@ export class AnimalCreateComponent implements OnInit {
   create(): void {
     // formatar as datas
     this.animal.dataNascimento = moment(this.animal.dataNascimento).format('DD/MM/YYYY');
-    this.animal.dataCompra = moment(this.animal.dataCompra).format('DD/MM/YYYY');
+    if (this.animal.dataCompra) {
+      this.animal.dataCompra = moment(this.animal.dataCompra).format('DD/MM/YYYY');
+    }
     this.service.cadastrarAnimal(this.animal).subscribe(() => {
       this.toast.success('Animal cadastrado com sucesso', 'Cadastro');
       this.router.navigate(['animal']);
@@ -106,7 +108,7 @@ export class AnimalCreateComponent implements OnInit {
       }
     });
   }
-
+  
   findAllLotes(): void {
     this.loteService.listarLotes().subscribe((data: Lote[]) => {
       this.lotes = data;
@@ -135,17 +137,13 @@ export class AnimalCreateComponent implements OnInit {
   
       return false;
     }
-    
   
     return (
       this.codigo.valid &&
       this.apelido.valid &&
       this.idLote.valid &&
       this.idRaca.valid &&
-      this.dataNascimento.valid &&
-      (!this.animalComprado || this.dataCompra.valid)
+      this.dataNascimento.valid
     );
   }
-  
-  
-}
+}  

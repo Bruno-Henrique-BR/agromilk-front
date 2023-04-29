@@ -11,7 +11,7 @@ export class TanqueService {
 
   constructor(private http: HttpClient) { }
 
-  findById(idTanque: any): Observable<Tanque> {
+  findById(idTanque: number): Observable<Tanque> {
     return this.http.get<Tanque>(`${API_CONFIG.baseUrl}/agromilk/tanque/${idTanque}`);
   }
 
@@ -27,7 +27,7 @@ export class TanqueService {
     return this.http.put<Tanque>(`${API_CONFIG.baseUrl}/agromilk/tanque/${tanque.idTanque}`, tanque);
   }
 
-  excluir(idTanque: any): Observable<Tanque> {
+  excluir(idTanque: number): Observable<Tanque> {
     return this.http.delete<Tanque>(`${API_CONFIG.baseUrl}/agromilk/tanque/${idTanque}`);
   }
 

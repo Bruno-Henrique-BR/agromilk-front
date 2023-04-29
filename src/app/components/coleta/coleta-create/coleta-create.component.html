@@ -10,9 +10,10 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Quantidade</mat-label>
-        <input matInput [(ngModel)]="coleta.quantidade" name="quantidade" [formControl]="quantidade" required matInput
+        <input matInput [(ngModel)]="coleta.quantidade" name="quantidade" [formControl]="quantidade" required matInput type="number" min="0" pattern="[0-9]{1,5}"
           type="number">
       </mat-form-field>
+      
       <mat-form-field appearance="outline">
         <mat-label>Selecione um laticínio</mat-label>
         <mat-select [(ngModel)]="coleta.idLaticinio" name="idLaticinio" [formControl]="idLaticinio" required>

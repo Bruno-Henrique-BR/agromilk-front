@@ -94,6 +94,14 @@ export class OrdenhaCreateComponent implements OnInit {
       );
     });
   }
+  limitarQuantidade(event: any) {
+    const input = event.target as HTMLInputElement;
+    const regex = /^[0-9]{0,2}(\.[0-9]{0,2})?$/;
+  
+    if (!regex.test(input.value)) {
+      input.value = input.value.slice(0, -1);
+    }
+  }
   
 
   cancel(): void {

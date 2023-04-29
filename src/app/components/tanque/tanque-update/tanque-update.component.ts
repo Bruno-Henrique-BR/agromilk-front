@@ -18,7 +18,6 @@ export class TanqueUpdateComponent implements OnInit {
     descricao: '',
     capacidade: '',
     modelo: '',
-    ativo: true,
     quantidadeAtual: 0
   }
 
@@ -58,10 +57,19 @@ export class TanqueUpdateComponent implements OnInit {
       }
     })
   }
-
+  limitarCapacidade(event: any) {
+    const input = event.target as HTMLInputElement;
+    const regex = /^[0-9]{0,5}(\.[0-9]{0,2})?$/;
+  
+    if (!regex.test(input.value)) {
+      input.value = input.value.slice(0, -1);
+    }
+  }
+  
   
   
   validaCampos(): boolean {
     return this.nome.valid && this.descricao.valid
   }
+
 }

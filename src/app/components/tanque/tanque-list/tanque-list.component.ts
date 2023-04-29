@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Tanque } from 'src/app/models/tanque';
 import { TanqueService } from 'src/app/services/tanque.service';
 import { TanqueDeleteComponent } from '../tanque-delete/tanque-delete.component';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tanque-list',
@@ -15,7 +16,7 @@ export class TanqueListComponent implements OnInit {
 
   tanques: Tanque[] = []
 
-  displayedColumns: string[] = ['idTanque', 'modelo', 'descricao', 'capacidade', 'quantidadeAtual','ativo', 'acoes'];
+  displayedColumns: string[] = ['idTanque', 'modelo', 'descricao', 'capacidade', 'quantidadeAtual', 'acoes'];
   dataSource = new MatTableDataSource<Tanque>(this.tanques);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -23,7 +24,8 @@ export class TanqueListComponent implements OnInit {
 
   constructor(
     private service: TanqueService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private toast: ToastrService
     ) { }
 openDialog(idTanque: number): void {
     const dialogRef = this.dialog.open(TanqueDeleteComponent, {
@@ -41,11 +43,20 @@ openDialog(idTanque: number): void {
         }
     });
 }
+
 deleteTanque(idTanque: number): void {
-    this.service.excluir(idTanque).subscribe(() => {
+  this.service.findById(idTanque).subscribe((tanque: Tanque) => {
+    if (tanque.quantidadeAtual > 0) {
+      this.toast.error("Não é possível excluir o tanque pois possui leite.", "Erro");
+    } else {
+      this.service.excluir(idTanque).subscribe(() => {
         this.dataSource.data = this.dataSource.data.filter(f => f.idTanque !== idTanque);
-    });
+        this.toast.success("Tanque excluído com sucesso.", "Sucesso");
+      });
+    }
+  });
 }
+
 
   ngOnInit(): void {
     this.findAll();

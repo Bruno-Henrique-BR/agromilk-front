@@ -22,9 +22,14 @@ export class AnimalService {
     return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/lote/${idLote}/nao-contem`);
 
   }
-  findByIdLote(idLote: any): Observable<Animal[]> {
-    return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/lote/${idLote}`);
+  findByIdLote(idLote: number): Observable<Animal[]> {
+    return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/lote/${idLote}/animais`);
   }
+
+  findByIdRaca(idRaca: number): Observable<Animal[]> {
+    return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/raca/${idRaca}/animais`);
+  }
+  
 
   pesquisarAnimais(apelido: string): Observable<Animal[]> {
     return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/pesquisar?apelido=${apelido}`);

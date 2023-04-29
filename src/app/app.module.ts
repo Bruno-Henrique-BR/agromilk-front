@@ -72,7 +72,6 @@ import { FuncionarioDeleteComponent } from './components/funcionario/funcionario
 import { FuncionarioUpdateComponent } from './components/funcionario/funcionario-update/funcionario-update.component';
 import { ColetaListComponent } from './components/coleta/coleta-list/coleta-list.component';
 import { ColetaDeleteComponent } from './components/coleta/coleta-delete/coleta-delete.component';
-import { LoteAddAnimalComponent } from './components/lote/lote-add-animal/lote-add-animal.component';
 import { ColetaCreateComponent } from './components/coleta/coleta-create/coleta-create.component';
 import { LoginComponent } from './login/login-component';
 import { OrdenhaUpdateComponent } from './components/ordenha/ordenha-update/ordenha-update.component';
@@ -93,7 +92,6 @@ import { LoteGerenciarComponent } from './components/lote/gerenciamento-lote/lot
     LoteDeleteComponent,
     LoteUpdateComponent,
     LoteAnimalComponent,
-    LoteAddAnimalComponent,
     LoteGerenciarComponent,
     AnimalCreateComponent,
     AnimalListComponent,

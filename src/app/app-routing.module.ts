@@ -33,7 +33,6 @@ import { FuncionarioDeleteComponent } from './components/funcionario/funcionario
 import { FuncionarioUpdateComponent } from './components/funcionario/funcionario-update/funcionario-update.component';
 import { ColetaListComponent } from './components/coleta/coleta-list/coleta-list.component';
 import { ColetaDeleteComponent } from './components/coleta/coleta-delete/coleta-delete.component';
-import { LoteAddAnimalComponent } from './components/lote/lote-add-animal/lote-add-animal.component';
 import { ColetaCreateComponent } from './components/coleta/coleta-create/coleta-create.component';
 import { LoginComponent } from './login/login-component';
 import { AuthGuard } from './guard/auth.guard';
@@ -53,12 +52,11 @@ const routes: Routes = [
       { path: 'raca/delete/:idRaca', component: RacaDeleteComponent },
 
       { path: 'lote', component: LoteListComponent },
+      { path: 'lote/listar/:idLote', component: LoteAnimalComponent },
       { path: 'lote/create', component: LoteCreateComponent },
       { path: 'lote/update/:idLote', component: LoteUpdateComponent },
       { path: 'lote/delete/:idLote', component: LoteDeleteComponent },
-      { path: 'lote/listar/:idLote', component: LoteAnimalComponent },
       { path: 'lote/listar/:idLote/gerenciar', component: LoteGerenciarComponent },
-
 
 
       { path: 'animal', component: AnimalListComponent },

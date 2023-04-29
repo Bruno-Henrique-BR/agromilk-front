@@ -11,8 +11,8 @@
     </mat-form-field>
 
     <mat-form-field class="fullWidth" appearance="outline">
-      <mat-label>Descricao</mat-label>
-      <input [(ngModel)]="lote.descricao" name="descricao" [formControl]="descricao" required matInput>
+      <mat-label>Descrição</mat-label>
+      <input [(ngModel)]="lote.descricao" name="descricao" [formControl]="descricao" required matInput maxlength="50">
     </mat-form-field>
     <div>
       <button (click)="create()" [disabled]="!validaCampos()" class="mat-elevation-z4" mat-flat-button

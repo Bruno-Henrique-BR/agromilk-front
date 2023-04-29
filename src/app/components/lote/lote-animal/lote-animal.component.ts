@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Animal } from 'src/app/models/animal';
 import { AnimalService } from 'src/app/services/animal.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnimalDeleteComponent } from '../../animal/animal-delete/animal-delete.component';
 import { MatDialog } from '@angular/material/dialog';
 @Component({
@@ -25,15 +25,16 @@ export class LoteAnimalComponent implements OnInit {
   nomeRaca:            string;
   nomeLote:            string;
   lactacao:     boolean;
-
-  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'dataNascimento', 'dataCompra', 'racaNome', 'loteNome', 'lactacao'];
+  media: string;
+  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'racaNome', 'loteNome', 'lactacao'];
   dataSource = new MatTableDataSource<Animal>(this.animais);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(
     private service: AnimalService,
     private route:   ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
 
     ) { }
   
@@ -43,16 +44,18 @@ export class LoteAnimalComponent implements OnInit {
     this.findAll();
   }
 
-  findAll(): void {
-    this.service.findByIdLote(this.idLote).subscribe(response => {
-        this.animais = response;
-        this.animais.forEach((animal) => {
-          animal.racaNome = animal.raca.nomeRaca;
-          animal.loteNome = animal.lote.nomeLote;
-        });
-        this.dataSource = new MatTableDataSource<Animal>(this.animais);
-        this.dataSource.paginator = this.paginator;
+
+
+findAll(): void {
+  this.service.findByIdLote(this.idLote).subscribe(response => {
+    this.animais = response;
+      this.animais.forEach((animal) => {
+        animal.racaNome = animal.raca.nomeRaca;
+        animal.loteNome = animal.lote.nomeLote;
       });
+      this.dataSource = new MatTableDataSource<Animal>(this.animais);
+      this.dataSource.paginator = this.paginator;
+    });
 }
 
 
@@ -60,5 +63,9 @@ export class LoteAnimalComponent implements OnInit {
       const filterValue = (event.target as HTMLInputElement).value;
       this.dataSource.filter = filterValue.trim().toLowerCase();
     }
+
+    cancelar() {
+      this.router.navigate(['/lote']);
+    }  
 
 }

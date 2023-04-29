@@ -5,6 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Raca } from 'src/app/models/raca';
 import { RacaService } from 'src/app/services/raca.service';
 import { RacaDeleteComponent } from '../raca-delete/raca-delete.component';
+import { Animal } from 'src/app/models/animal';
+import { ToastrService } from 'ngx-toastr';
+import { AnimalService } from 'src/app/services/animal.service';
 
 @Component({
   selector: 'app-raca-list',
@@ -23,7 +26,9 @@ export class RacaListComponent implements OnInit {
 
   constructor(
     private service: RacaService,
-    private dialog: MatDialog
+    private animalService: AnimalService,
+    private dialog: MatDialog,
+    private toast: ToastrService
     ) { }
 openDialog(idRaca: number): void {
     const dialogRef = this.dialog.open(RacaDeleteComponent, {
@@ -40,12 +45,23 @@ openDialog(idRaca: number): void {
             this.deleteRaca(result.idRaca);
         }
     });
-}
+  }
+
 deleteRaca(idRaca: number): void {
-    this.service.excluir(idRaca).subscribe(() => {
-        this.dataSource.data = this.dataSource.data.filter(f => f.idRaca !== idRaca);
-    });
+  this.animalService.findByIdRaca(idRaca).subscribe(
+    (animais: Animal[]) => {
+      if (animais.length > 0) {
+        this.toast.error("Não é possível excluir a raça pois ela contém animais.", "Erro");
+      } else {
+        this.service.excluir(idRaca).subscribe(() => {
+          this.dataSource.data = this.dataSource.data.filter(f => f.idRaca !== idRaca);
+          this.toast.success("Raça excluída com sucesso.", "Sucesso");
+        });
+      }
+    }
+  );
 }
+
   ngOnInit(): void {
     this.findAll();
   }

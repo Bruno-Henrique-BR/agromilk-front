@@ -88,4 +88,14 @@ export class OrdenhaUpdateComponent implements OnInit {
   validaCampos(): boolean {
     return this.data.valid && this.quantidade.valid && this.idAnimal.valid && this.idTanque.valid;
   }
+
+  limitarQuantidade(event: any) {
+    const input = event.target as HTMLInputElement;
+    const regex = /^[0-9]{0,2}(\.[0-9]{0,2})?$/;
+  
+    if (!regex.test(input.value)) {
+      input.value = input.value.slice(0, -1);
+    }
+  }
+  
 }

@@ -5,6 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Lote } from 'src/app/models/lote';
 import { LoteService } from 'src/app/services/lote.service';
 import { LoteDeleteComponent } from '../lote-delete/lote-delete.component';
+import { AnimalService } from 'src/app/services/animal.service';
+import { Animal } from 'src/app/models/animal';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-lote-list',
@@ -23,7 +26,9 @@ export class LoteListComponent implements OnInit {
 
   constructor(
     private service: LoteService,
-    private dialog: MatDialog
+    private animalService: AnimalService,
+    private dialog: MatDialog,
+    private toast: ToastrService
   ) { }
   openDialog(idLote: number): void {
     const dialogRef = this.dialog.open(LoteDeleteComponent, {
@@ -41,12 +46,24 @@ export class LoteListComponent implements OnInit {
       }
     });
   }
-  deleteLote(idLote: number): void {
-    this.service.excluir(idLote).subscribe(() => {
-      this.dataSource.data = this.dataSource.data.filter(f => f.idLote !== idLote);
-    });
-  }
+  
 
+  deleteLote(idLote: number): void {
+    this.animalService.findByIdLote(idLote).subscribe(
+      (animais: Animal[]) => {
+        if (animais.length > 0) {
+          this.toast.error("Não é possível excluir o lote pois ele contém animais.", "Erro");
+        } else {
+          this.service.excluir(idLote).subscribe(() => {
+            this.dataSource.data = this.dataSource.data.filter(f => f.idLote !== idLote);
+            this.toast.success("Lote excluído com sucesso.", "Sucesso");
+
+          });
+        }
+      }
+    );
+  }
+  
   ngOnInit(): void {
     this.findAll();
   }

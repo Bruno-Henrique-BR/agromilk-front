@@ -29,8 +29,9 @@
         <td>
           <mat-form-field appearance="outline">
             <mat-label>Quantidade</mat-label>
-            <input matInput type="number" [(ngModel)]="animal.quantidade" name="quantidade" />
+            <input matInput type="number" [(ngModel)]="animal.quantidade" name="quantidade" (input)="limitarQuantidade($event)" matInput type="number" min="0" pattern="[0-9]{1,5}"/>
           </mat-form-field>
+          
         </td>
         <td>
           <mat-form-field appearance="outline">

@@ -26,14 +26,18 @@ export class FuncionarioCreateComponent implements OnInit {
         perfil: null,
         perfis: [] 
     }
-    
+    checkboxMarcada: boolean = false;
+
     addPerfil(perfil: number): void {
+        this.checkboxMarcada = true;
+
         if (!this.funcionario.perfis.includes(perfil)) {
           this.funcionario.perfis.push(perfil);
         } else {
           const index = this.funcionario.perfis.indexOf(perfil);
           this.funcionario.perfis.splice(index, 1);
         }
+
       }
     nomeFuncionario: FormControl = new FormControl(null, Validators.minLength(3));
     cpf: FormControl = new FormControl(null, [Validators.required, Validators.minLength(11), Validators.maxLength(11)]);
@@ -55,6 +59,11 @@ export class FuncionarioCreateComponent implements OnInit {
      }
 
     create(): void {
+      if (!this.checkboxMarcada) {
+        // Exibir mensagem de erro
+        this.toast.error('Selecione pelo menos uma opção', 'Erro');
+        return;
+      }
         this.funcionario.dataNascimento = moment(this.funcionario.dataNascimento).format('DD/MM/YYYY');
 
         this.service.cadastrarFuncionario(this.funcionario).subscribe(() => {
@@ -87,4 +96,6 @@ export class FuncionarioCreateComponent implements OnInit {
     validaCampos(): boolean {
         return this.nomeFuncionario.valid && this.cpf.valid && this.dataNascimento.valid && this.endereco.valid && this.telefone.valid;
     }
+
+    
 }
