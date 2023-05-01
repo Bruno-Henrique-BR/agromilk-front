@@ -15,17 +15,17 @@
             type="number">
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label>Selecione um laticínio</mat-label>
-          <mat-select [(ngModel)]="coleta.idLaticinio" name="idLaticinio" [formControl]="idLaticinio" required>
+          <mat-label>Laticínio</mat-label>
+          <mat-select [(ngModel)]="coleta.idLaticinio" name="laticinio" [formControl]="idLaticinio" required>
             <mat-option *ngFor="let lac of laticinios" [value]="lac.idLaticinio">{{ lac.razaoSocial }}</mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field>      
         <mat-form-field appearance="outline">
-          <mat-label>Selecione um tanque</mat-label>
-          <mat-select [(ngModel)]="coleta.idTanque" name="idTanque" [formControl]="idTanque" required>
+          <mat-label>Tanque</mat-label>
+          <mat-select [(ngModel)]="coleta.idTanque" name="tanque" [formControl]="idTanque" required>
             <mat-option *ngFor="let tan of tanques" [value]="tan.idTanque">{{ tan.modelo }}</mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field>            
       </div>
       <div>
         <button (click)="update()" [disabled]="!validaCampos()" class="mat-elevation-z4" mat-flat-button

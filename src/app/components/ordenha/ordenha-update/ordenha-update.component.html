@@ -4,10 +4,10 @@
       <div class="status-prioridade">
         <mat-form-field appearance="outline">
           <mat-label>Data</mat-label>
-          <input matInput [matDatepicker]="picker" [(ngModel)]="ordenha.data" name="data" [formControl]="data" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+          <input matInput [matDatepicker]="dataPicker"  [formControl]="data" required>
+          <mat-datepicker-toggle matSuffix [for]="dataPicker"></mat-datepicker-toggle>
+          <mat-datepicker #dataPicker></mat-datepicker>
+        </mat-form-field>       
         <mat-form-field appearance="outline">
           <mat-label>Quantidade</mat-label>
           <input matInput type="number" [(ngModel)]="ordenha.quantidade" name="quantidade" (input)="limitarQuantidade($event)" matInput type="number" min="0" pattern="[0-9]{1,5}"/>
@@ -19,6 +19,7 @@
             <mat-option *ngFor="let ani of animais" [value]="ani.idAnimal">{{ ani.apelido }}</mat-option>
           </mat-select>
         </mat-form-field>
+        
         <mat-form-field appearance="outline">
           <mat-label>Selecione um tanque</mat-label>
           <mat-select [(ngModel)]="ordenha.idTanque" name="idTanque" [formControl]="idTanque" required>

@@ -8,6 +8,7 @@ import { Ordenha } from 'src/app/models/ordenha';
 import { AnimalService } from 'src/app/services/animal.service';
 import { TanqueService } from 'src/app/services/tanque.service';
 import { OrdenhaService } from 'src/app/services/ordenha.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-ordenha-update',
@@ -55,6 +56,10 @@ export class OrdenhaUpdateComponent implements OnInit {
   findById(): void {
     this.service.findById(this.ordenha.idOrdenha).subscribe(resposta => {
       this.ordenha = resposta;
+      this.data.setValue(new Date(resposta.data));
+      this.quantidade.setValue(resposta.quantidade);
+      this.idAnimal.setValue(resposta.animal);
+      this.idTanque.setValue(resposta.tanque);
     })
   }
 
@@ -71,6 +76,11 @@ export class OrdenhaUpdateComponent implements OnInit {
   }
 
   update(): void {
+    this.ordenha.idAnimal = this.idAnimal.value;
+    this.ordenha.idTanque = this.idTanque.value;
+    this.ordenha.data = this.data.value;
+    this.ordenha.data = moment(this.ordenha.data).format('DD/MM/YYYY');
+    
     this.service.atualizarOrdenha(this.ordenha).subscribe(() => {
       this.toast.success('Ordenha atualizada com sucesso', 'Update');
       this.router.navigate(['ordenha'])

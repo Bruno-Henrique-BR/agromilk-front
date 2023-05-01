@@ -7,12 +7,12 @@ export class Coleta {
     quantidade: number;
     idLaticinio: number;
     idTanque: number;
-    tanque: Tanque;
-    laticinio: Laticinio;
+    tanque: any;
+    laticinio: any;
     razaoSocial: string;
     modeloTanque: string;
   
-    constructor(data: string, quantidade: number, idLaticinio: number, idTanque: number, tanque: Tanque, laticinio: Laticinio, razaoSocial: string, modeloTanque: string) {
+    constructor(data: string, quantidade: number, idLaticinio: number, idTanque: number, tanque: any, laticinio: any, razaoSocial: string, modeloTanque: string) {
       this.data = data;
       this.quantidade = quantidade;
       this.idLaticinio = idLaticinio;

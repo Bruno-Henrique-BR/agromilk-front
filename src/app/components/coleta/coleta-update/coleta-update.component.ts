@@ -8,6 +8,7 @@ import { Tanque } from 'src/app/models/tanque';
 import { LaticinioService } from 'src/app/services/laticinio.service';
 import { TanqueService } from 'src/app/services/tanque.service';
 import { ColetaService } from 'src/app/services/coleta.service';
+import * as moment from 'moment';
 
 @Component({
 selector: 'app-coleta-update',
@@ -22,10 +23,10 @@ coleta: Coleta = {
     quantidade: 0,
     idLaticinio: 0,
     idTanque: 0,
-    tanque: undefined,
-    laticinio: undefined,
     razaoSocial: '',
-    modeloTanque: ''
+    modeloTanque: '',
+    tanque: undefined,
+    laticinio: undefined
 }
 
 laticinios: Laticinio[] = []
@@ -33,8 +34,9 @@ tanques: Tanque[] = []
 
 data: FormControl = new FormControl(null, [Validators.required]);
 quantidade: FormControl = new FormControl(null, [Validators.required, Validators.min(0)]);
-idLaticinio: FormControl = new FormControl(null, [Validators.required]);
-idTanque: FormControl = new FormControl(null, [Validators.required]);
+idLaticinio: FormControl = new FormControl(this.coleta.laticinio?.idLaticinio, [Validators.required]);
+idTanque: FormControl = new FormControl(this.coleta.tanque?.idTanque, [Validators.required]);
+
 
 constructor(
 private service: ColetaService,
@@ -53,39 +55,49 @@ this.findAllTanques();
 }
 
 findById(): void {
-this.service.findById(this.coleta.idColeta).subscribe(resposta => {
-this.coleta = resposta;
-})
+        this.service.findById(this.coleta.idColeta).subscribe(resposta => {
+        this.coleta = resposta;
+        this.data.setValue(new Date(resposta.data));
+        this.quantidade.setValue(resposta.quantidade);
+        this.idLaticinio.setValue(resposta.laticinio);
+        this.idTanque.setValue(resposta.tanque)
+    })
 }
 
+
+
 findAllLaticinios(): void {
-this.laticinioService.findAll().subscribe(resposta => {
-this.laticinios = resposta;
-})
+        this.laticinioService.findAll().subscribe(resposta => {
+        this.laticinios = resposta;
+    })
 }
 
 findAllTanques(): void {
-this.tanqueService.findAll().subscribe(resposta => {
-this.tanques = resposta;
-})
+        this.tanqueService.findAll().subscribe(resposta => {
+        this.tanques = resposta;
+    })
 }
 
 update(): void {
-this.service.atualizarColeta(this.coleta).subscribe(() => {
-this.toast.success('Coleta atualizada com sucesso', 'Update');
-this.router.navigate(['coleta'])
-}, ex => {
-if(ex.error.errors) {
-ex.error.errors.forEach(element => {
-this.toast.error(element.message);
-});
-} else {
-this.toast.error(ex.error.message);
-}
-})
+        this.coleta.idLaticinio = this.idLaticinio.value;
+        this.coleta.idTanque = this.idTanque.value;
+        this.coleta.data = this.data.value;
+        this.coleta.data = moment(this.coleta.data).format('DD/MM/YYYY');
+        this.service.atualizarColeta(this.coleta).subscribe(() => {
+        this.toast.success('Coleta atualizada com sucesso', 'Update');
+        this.router.navigate(['coleta'])
+    }, ex => {
+        if(ex.error.errors) {
+        ex.error.errors.forEach(element => {
+        this.toast.error(element.message);
+    });
+        } else {
+        this.toast.error(ex.error.message);
+        }
+    })
 }
 
 validaCampos(): boolean {
-return this.data.valid && this.quantidade.valid && this.idLaticinio.valid && this.idTanque.valid;
-}
+        return this.data.valid && this.quantidade.valid && this.idLaticinio.valid && this.idTanque.valid;
+    }
 }
