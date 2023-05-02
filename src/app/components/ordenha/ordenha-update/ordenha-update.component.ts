@@ -56,12 +56,13 @@ export class OrdenhaUpdateComponent implements OnInit {
   findById(): void {
     this.service.findById(this.ordenha.idOrdenha).subscribe(resposta => {
       this.ordenha = resposta;
-      this.data.setValue(new Date(resposta.data));
+      this.data.setValue(moment(this.ordenha.data, 'DD/MM/YYYY').toDate());
       this.quantidade.setValue(resposta.quantidade);
       this.idAnimal.setValue(resposta.animal);
       this.idTanque.setValue(resposta.tanque);
-    })
+    });
   }
+  
 
   findAllAnimais(): void {
     this.animalService.findAll().subscribe(resposta => {

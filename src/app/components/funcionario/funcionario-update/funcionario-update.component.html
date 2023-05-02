@@ -20,12 +20,13 @@
         <input [(ngModel)]="funcionario.cpf" name="cpf" matInput [mask]="'000.000.000-00'" class="cpf-input" disabled>
       </mat-form-field>
 
-      <mat-form-field class="fullWidth" appearance="outline">
+      <mat-form-field appearance="outline">
         <mat-label>Data de Nascimento</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="funcionario.dataNascimento" name="dataNascimento" >
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <input matInput [matDatepicker]="dataNascimentoPicker" placeholder="Data de Nascimento" [formControl]="dataNascimento" required>
+        <mat-datepicker-toggle matSuffix [for]="dataNascimentoPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dataNascimentoPicker></mat-datepicker>
       </mat-form-field>
+      
 
 
       <mat-form-field class="fullWidth" appearance="outline">

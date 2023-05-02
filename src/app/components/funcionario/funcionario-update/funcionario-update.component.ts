@@ -24,11 +24,15 @@ export class FuncionarioUpdateComponent implements OnInit {
       email: '',
       senha: '',
       perfis: null,
-      perfil: 0
+      perfil: 0,
     }
  
   nomeFuncionario: FormControl =  new FormControl(null, Validators.minLength(3));
   descricao: FormControl =  new FormControl(null, Validators.minLength(3));
+  endereco: FormControl =  new FormControl(null, Validators.minLength(3));
+  cpf: FormControl =  new FormControl(null, Validators.required);
+  telefone: FormControl =  new FormControl(null, Validators.required);
+  dataNascimento: FormControl =  new FormControl(null, Validators.minLength(3));
 
 
   constructor(
@@ -47,8 +51,15 @@ export class FuncionarioUpdateComponent implements OnInit {
   findById(): void {
     this.service.findById(this.funcionario.idFuncionario).subscribe(resposta => {
       this.funcionario = resposta;
+      this.nomeFuncionario.setValue(resposta.nomeFuncionario);
+      this.endereco.setValue(resposta.endereco);
+      this.cpf.setValue(resposta.cpf);
+      this.telefone.setValue(resposta.telefone);
+      this.dataNascimento.setValue(moment(this.funcionario.dataNascimento, 'DD/MM/YYYY').toDate());
     })
   }
+
+ 
 
   update(): void {
     this.funcionario.dataNascimento = moment(this.funcionario.dataNascimento).format('DD/MM/YYYY');
