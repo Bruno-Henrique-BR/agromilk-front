@@ -10,6 +10,8 @@ import { Tanque } from 'src/app/models/tanque';
 import { OrdenhaDeleteComponent } from '../ordenha-delete/ordenha-delete.component';
 import { MatDialog } from '@angular/material/dialog';
 
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 @Component({
     selector: 'app-ordenha-list',
     templateUrl: './ordenha-list.component.html',
@@ -19,7 +21,7 @@ export class OrdenhaListComponent implements OnInit {
 
     ordenhas: Ordenha[] = []
 
-    displayedColumns: string[] = ['idOrdenha', 'data', 'quantidade', 'apelidoAnimal', 'modeloTanque', 'acoes'];
+    displayedColumns: string[] = ['idOrdenha', 'apelidoAnimal','data', 'primeiraOrdenha', 'segundaOrdenha', 'modeloTanque', 'acoes'];
     dataSource = new MatTableDataSource<Ordenha>(this.ordenhas);
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -76,4 +78,44 @@ export class OrdenhaListComponent implements OnInit {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
+    gerarRelatorioPDF(): void {
+        const doc = new jsPDF();
+      
+        // Cabeçalho do Relatório
+        const headers = ['ID', 'Animal', 'Data', '1º Ord', '2º Ord', 'Tanque'];
+      
+        // Dados do Relatório
+        const data = this.ordenhas.map(ordenha => [
+          ordenha.idOrdenha.toString(),
+          ordenha.apelidoAnimal,
+          ordenha.data.toString(),
+          ordenha.primeiraOrdenha.toString(),
+          ordenha.segundaOrdenha.toString(),
+          ordenha.modeloTanque
+        ]);
+      
+        // Definir a posição inicial da tabela
+        let startY = 20;
+      
+        // Definir a largura das colunas
+        const columnWidths = [20, 40, 40, 30, 30, 40];
+      
+        // Adicionar o cabeçalho da tabela
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'normal');
+        doc.text(headers.join(', '), 10, startY);
+        startY += 10;
+      
+        // Adicionar os dados da tabela
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        data.forEach((row, rowIndex) => {
+          row.forEach((cell, cellIndex) => {
+            doc.text(cell, 10 + (columnWidths.slice(0, cellIndex).reduce((sum, width) => sum + width, 0)), startY + (rowIndex + 1) * 10);
+          });
+        });
+      
+        // Salvar o PDF
+        doc.save('relatorio.pdf');
+      }
 }

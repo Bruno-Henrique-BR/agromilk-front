@@ -17,20 +17,26 @@
             <td mat-cell *matCellDef="let element"> {{element.idOrdenha}} </td>
          </ng-container>
 
+         <ng-container matColumnDef="apelidoAnimal">
+            <th mat-header-cell *matHeaderCellDef> Animal </th>
+            <td mat-cell *matCellDef="let ordenha"> {{ordenha.apelidoAnimal}} </td>
+         </ng-container>
+
          <ng-container matColumnDef="data">
             <th mat-header-cell *matHeaderCellDef> Data </th>
             <td mat-cell *matCellDef="let element"> {{element.data}} </td>
          </ng-container>
 
-         <ng-container matColumnDef="quantidade">
-            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
-            <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+         <ng-container matColumnDef="primeiraOrdenha">
+            <th mat-header-cell *matHeaderCellDef> 1º Ord </th>
+            <td mat-cell *matCellDef="let element"> {{element.primeiraOrdenha}} </td>
          </ng-container>
 
-         <ng-container matColumnDef="apelidoAnimal">
-            <th mat-header-cell *matHeaderCellDef> Animal </th>
-            <td mat-cell *matCellDef="let ordenha"> {{ordenha.apelidoAnimal}} </td>
+         <ng-container matColumnDef="segundaOrdenha">
+            <th mat-header-cell *matHeaderCellDef> 2º Ord </th>
+            <td mat-cell *matCellDef="let element"> {{element.segundaOrdenha}} </td>
          </ng-container>
+
          <ng-container matColumnDef="modeloTanque">
             <th mat-header-cell *matHeaderCellDef> Tanque </th>
             <td mat-cell *matCellDef="let ordenha"> {{ordenha.modeloTanque}} </td>
@@ -51,8 +57,13 @@
          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-
-      <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+      <div >
+         <button mat-button color="primary" (click)="gerarRelatorioPDF()">
+           Gerar Relatório
+         </button>
+         <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+       </div>
+       
    </div>
 
 </div>

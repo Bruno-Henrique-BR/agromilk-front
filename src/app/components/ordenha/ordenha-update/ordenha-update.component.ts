@@ -19,7 +19,8 @@ export class OrdenhaUpdateComponent implements OnInit {
 
   ordenha: Ordenha = {
       idOrdenha: '',
-      quantidade: 0,
+      primeiraOrdenha: 0,
+      segundaOrdenha: 0,
       animal: undefined,
       tanque: undefined,
       data: '',
@@ -33,7 +34,8 @@ export class OrdenhaUpdateComponent implements OnInit {
   tanques: Tanque[] = []
 
   data: FormControl = new FormControl(null, [Validators.required]);
-  quantidade: FormControl = new FormControl(null, [Validators.required, Validators.min(0)]);
+  primeiraOrdenha: FormControl = new FormControl(null, [Validators.required, Validators.min(0)]);
+  segundaOrdenha: FormControl = new FormControl(null, [Validators.required, Validators.min(0)]);
   idAnimal: FormControl = new FormControl(null, [Validators.required]);
   idTanque: FormControl = new FormControl(null, [Validators.required]);
 
@@ -57,7 +59,8 @@ export class OrdenhaUpdateComponent implements OnInit {
     this.service.findById(this.ordenha.idOrdenha).subscribe(resposta => {
       this.ordenha = resposta;
       this.data.setValue(moment(this.ordenha.data, 'DD/MM/YYYY').toDate());
-      this.quantidade.setValue(resposta.quantidade);
+      this.primeiraOrdenha.setValue(resposta.primeiraOrdenha);
+      this.segundaOrdenha.setValue(resposta.segundaOrdenha);
       this.idAnimal.setValue(resposta.animal);
       this.idTanque.setValue(resposta.tanque);
     });
@@ -97,7 +100,7 @@ export class OrdenhaUpdateComponent implements OnInit {
   }
 
   validaCampos(): boolean {
-    return this.data.valid && this.quantidade.valid && this.idAnimal.valid && this.idTanque.valid;
+    return this.data.valid && this.primeiraOrdenha.valid && this.idAnimal.valid && this.idTanque.valid;
   }
 
   limitarQuantidade(event: any) {

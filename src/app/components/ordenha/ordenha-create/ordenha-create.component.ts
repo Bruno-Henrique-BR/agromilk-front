@@ -21,13 +21,14 @@ export class OrdenhaCreateComponent implements OnInit {
   ordenha: Ordenha = {
     idOrdenha: '',
     data: null,
-    quantidade: null,
+    primeiraOrdenha: null,
+    segundaOrdenha: null,
     idAnimal: null,
     idTanque: null,
     animal: null,
     tanque: null,
     apelidoAnimal: '',
-    modeloTanque: undefined
+    modeloTanque: undefined,
   };
 
   constructor(
@@ -72,7 +73,8 @@ export class OrdenhaCreateComponent implements OnInit {
       const ordenha: Ordenha = {
         idOrdenha: '',
         data: null,
-        quantidade: animal.quantidade,
+        primeiraOrdenha: animal.primeiraOrdenha,
+        segundaOrdenha: animal.segundaOrdenha,
         idAnimal: animal.idAnimal,
         idTanque: animal.idTanque,
         animal: null,

@@ -9,10 +9,13 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>    
         <mat-form-field appearance="outline">
-          <mat-label>Quantidade</mat-label>
-          <input matInput type="number" [(ngModel)]="ordenha.quantidade" name="quantidade" (input)="limitarQuantidade($event)" matInput type="number" min="0" pattern="[0-9]{1,5}"/>
+          <mat-label>1º Ordenha</mat-label>
+          <input matInput type="number" [(ngModel)]="ordenha.primeiraOrdenha" name="primeiraOrdenha" (input)="limitarQuantidade($event)" matInput type="number" min="0" pattern="[0-9]{1,5}"/>
         </mat-form-field>
-        
+        <mat-form-field appearance="outline">
+          <mat-label>2º Ordenha</mat-label>
+          <input matInput type="number" [(ngModel)]="ordenha.segundaOrdenha" name="segundaOrdenha" (input)="limitarQuantidade($event)" matInput type="number" min="0" pattern="[0-9]{1,5}"/>
+        </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Selecione um animal</mat-label>
           <mat-select [(ngModel)]="ordenha.idAnimal" name="idAnimal" [formControl]="idAnimal" required>

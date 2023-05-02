@@ -10,7 +10,10 @@ h1 {
 table {
   width: 100%;
   border-collapse: collapse;
+  max-height: 70vh; /* Defina a altura desejada para a tabela */
+  overflow-y: auto;
 }
+
 
 th, td {
   padding: 10px;
@@ -37,7 +40,33 @@ tr:nth-child(even) {
 .button-group button {
   margin: 5px;
 }
+
 .custom-card {
   max-height: 500px;
   overflow-y: auto;
+}
+
+.small-column {
+  width: 60px;
+}
+
+.small-input {
+  width: 60px;
+}
+.small-inputt {
+  width: 100px;
+}
+
+@media (max-width: 600px) {
+  table {
+      max-height: 50vh; /* Defina a altura desejada para a tabela em dispositivos móveis */
+  }
+  
+  .small-column {
+    width: 40px;
+  }
+  
+  .small-input {
+    width: 40px;
+  }
 }
