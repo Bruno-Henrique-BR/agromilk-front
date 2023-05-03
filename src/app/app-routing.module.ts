@@ -39,6 +39,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { OrdenhaUpdateComponent } from './components/ordenha/ordenha-update/ordenha-update.component';
 import { ColetaUpdateComponent } from './components/coleta/coleta-update/coleta-update.component';
 import { LoteGerenciarComponent } from './components/lote/gerenciamento-lote/lote-gerenciar.component';
+import { AnimalHistoricoComponent } from './components/animal/animal-historico/animal-historico.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,7 @@ const routes: Routes = [
       { path: 'animal/create', component: AnimalCreateComponent },
       { path: 'animal/delete/:idAnimal', component: AnimalDeleteComponent },
       { path: 'animal/update/:idAnimal', component: AnimalUpdateComponent },
+      { path: 'animal/historico/:idAnimal', component: AnimalHistoricoComponent },
 
 
       { path: 'tanque', component: TanqueListComponent },

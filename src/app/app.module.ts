@@ -77,6 +77,7 @@ import { LoginComponent } from './login/login-component';
 import { OrdenhaUpdateComponent } from './components/ordenha/ordenha-update/ordenha-update.component';
 import { ColetaUpdateComponent } from './components/coleta/coleta-update/coleta-update.component';
 import { LoteGerenciarComponent } from './components/lote/gerenciamento-lote/lote-gerenciar.component';
+import { AnimalHistoricoComponent } from './components/animal/animal-historico/animal-historico.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +98,7 @@ import { LoteGerenciarComponent } from './components/lote/gerenciamento-lote/lot
     AnimalListComponent,
     AnimalDeleteComponent,
     AnimalUpdateComponent,
+    AnimalHistoricoComponent,
     TanqueCreateComponent,
     TanqueListComponent,
     TanqueUpdateComponent,
