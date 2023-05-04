@@ -7,6 +7,7 @@ export interface Movimento {
     lote: any;
     dataEntrada: string;
     dataSaida: string;
+    dias: number;
 
   }
   

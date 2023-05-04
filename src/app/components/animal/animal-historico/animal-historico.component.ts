@@ -26,7 +26,7 @@ import { MovimentoService } from "src/app/services/movimento.service";
     nomeLote:            string;
     lactacao:     boolean;
     media: string;
-    displayedColumns: string[] = ['id', 'apelidoAnimal', 'loteNome', 'dataEntrada', 'dataSaida'];
+    displayedColumns: string[] = ['id', 'apelidoAnimal', 'loteNome', 'dataEntrada', 'dataSaida','dias'];
     dataSource = new MatTableDataSource<Movimento>(this.movimentos);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
