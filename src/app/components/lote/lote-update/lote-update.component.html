@@ -14,7 +14,14 @@
       <input matInput [(ngModel)]="lote.descricao" name="descricao" [formControl]="descricao" required matInput maxlength="50"
         maxlength="50">
     </mat-form-field>
-
+    
+    <mat-form-field class="fullWidth" appearance="outline">
+      <mat-label>Tipo de lote</mat-label>
+      <mat-select [(ngModel)]="lote.tipoLote" name="tipoLote" [formControl]="tipoLote" required>
+        <mat-option *ngFor="let tipo of tiposLote" [value]="tipo">{{ tipo }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
 
     <div>
       <button (click)="update()" [disabled]="!validaCampos()" class="mat-elevation-z4" mat-flat-button

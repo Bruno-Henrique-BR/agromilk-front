@@ -68,7 +68,7 @@ export class OrdenhaUpdateComponent implements OnInit {
   
 
   findAllAnimais(): void {
-    this.animalService.findAll().subscribe(resposta => {
+    this.animalService.findAllLactantes().subscribe(resposta => {
       this.animais = resposta;
     })
   }

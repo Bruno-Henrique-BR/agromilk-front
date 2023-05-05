@@ -18,6 +18,11 @@ export class AnimalService {
   findAll(): Observable<Animal[]> {
     return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal`);
   }
+
+  findAllLactantes(): Observable<Animal[]> {
+    return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/lactantes`);
+  }
+
   findAnimaisNaoContemNoLote(idLote: any): Observable<Animal[]> {
     return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/lote/${idLote}/nao-contem`);
 

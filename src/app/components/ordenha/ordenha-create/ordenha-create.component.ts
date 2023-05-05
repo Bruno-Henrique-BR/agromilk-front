@@ -47,7 +47,7 @@ export class OrdenhaCreateComponent implements OnInit {
   }
 
   carregarAnimais(): void {
-    this.animalService.findAll().subscribe(
+    this.animalService.findAllLactantes().subscribe(
       (response) => {
         this.animais = response;
       },

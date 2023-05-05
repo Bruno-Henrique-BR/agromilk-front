@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { TipoLoteEnum } from 'src/app/models/TipoLoteEnum';
 import { Lote } from 'src/app/models/lote';
 import { LoteService } from 'src/app/services/lote.service';
 
@@ -14,14 +15,17 @@ import { LoteService } from 'src/app/services/lote.service';
 export class LoteUpdateComponent implements OnInit {
 
   lote: Lote = {
-    idLote:         '',
-    nomeLote:       '',
-    descricao:        '',
-   
+    idLote: '',
+    nomeLote: '',
+    descricao: '',
+    tipoLote: ''
   }
 
   nomeLote: FormControl =  new FormControl(null, Validators.minLength(3));
   descricao: FormControl =  new FormControl(null, Validators.minLength(3));
+  tipoLote: FormControl =  new FormControl(null, Validators.required);
+
+  tiposLote: string[] = Object.values(TipoLoteEnum);
 
 
   constructor(
