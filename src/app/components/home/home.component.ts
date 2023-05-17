@@ -1,10 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Chart, registerables } from 'chart.js';
+import 'chartjs-adapter-date-fns';
+import { LineController } from 'chart.js';
+
+Chart.register(...registerables, LineController);
 import { Animal } from 'src/app/models/animal';
 import { AnimalService } from 'src/app/services/animal.service';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 import { LoteService } from 'src/app/services/lote.service';
+import { OrdenhaService } from 'src/app/services/ordenha.service';
 import { TanqueService } from 'src/app/services/tanque.service';
 
 @Component({
@@ -14,6 +21,7 @@ import { TanqueService } from 'src/app/services/tanque.service';
 })
 export class HomeComponent implements OnInit {
   animais: Animal[] = []
+  graficoData: any[] = [];
 
   codigo?:   string;
   apelido?:   string;
@@ -42,11 +50,14 @@ export class HomeComponent implements OnInit {
   qtdTotalLeite: number;
   constructor(private animalService: AnimalService,
     private loteService: LoteService,
+    private ordenhaService: OrdenhaService,
     private tanqueService: TanqueService,
     private funcionarioService: FuncionarioService,
+    private http: HttpClient,
     ) { }
 
   ngOnInit(): void {
+    this.obterDadosGrafico();
     this.animalService.getQtsAnimal().subscribe(
       animal => {
         this.qtsAnimal = animal; // Atribuir diretamente o valor numérico retornado pela requisição
@@ -100,4 +111,68 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+
+  obterDadosGrafico() {
+    this.ordenhaService.obterGraficoProducaoLeite().subscribe((data) => {
+      this.graficoData = data;
+      this.exibirGrafico();
+    });
+  }
+  
+  exibirGrafico() {
+    const labels = this.graficoData.map((item) => item.mes);
+    const dataset = this.graficoData.map((item) => item.producaoLeite);
+  
+    const canvas = document.getElementById('meuGrafico') as HTMLCanvasElement;
+    if (!canvas) {
+      return;
+    }
+  
+    new Chart(canvas, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Produção de Leite',
+            data: dataset,
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 123, 255, 0.2)', // Cor de fundo do gráfico
+            borderWidth: 2, // Espessura da linha
+            pointRadius: 4, // Tamanho dos pontos
+            pointBackgroundColor: 'blue', // Cor dos pontos
+            fill: true, // Preenchimento abaixo da linha
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function (value) {
+                return value + ' litros';
+              },
+            },
+          },
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Produção de Leite por Mês',
+            font: {
+              size: 18, // Tamanho da fonte do título
+              weight: 'bold', // Peso da fonte do título
+            },
+          },
+          legend: {
+            display: false, // Ocultar a legenda
+          },
+        },
+      },
+    });
+  }
+  
+  
 }

@@ -35,6 +35,8 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
 // Componentes do projeto
 import { NavComponent } from './components/nav/nav.component'; NavComponent
 import { HomeComponent } from './components/home/home.component';

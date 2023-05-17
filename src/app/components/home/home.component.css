@@ -55,3 +55,49 @@
   margin-top: 5px;
   font: bold;
 }
+
+
+.dashboard-container {
+  position: relative;
+}
+
+.graph-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.graph-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.graph-card {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.fullscreen-chart {
+  width: 100%;
+  height: 400px; /* Defina a altura desejada */
+}
+
+.graph-label {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+canvas {
+  height: 300px; /* Defina a altura desejada para o gráfico */
+}
+
+
+
+
+

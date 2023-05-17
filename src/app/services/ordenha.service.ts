@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Ordenha } from '../models/ordenha';
 import { API_CONFIG } from '../config/api.config';
 import { MatSnackBar } from '@angular/material/snack-bar'; // import do MatSnackBar
+import { ProducaoLeiteMensalDTO } from '../models/ProducaoLeiteMensalDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,11 @@ export class OrdenhaService {
   excluir(idOrdenha: any): Observable<Ordenha> {
     return this.http.delete<Ordenha>(`${API_CONFIG.baseUrl}/agromilk/ordenha/${idOrdenha}`);
   }
+
+  obterGraficoProducaoLeite(): Observable<ProducaoLeiteMensalDTO[]> {
+    return this.http.get<ProducaoLeiteMensalDTO[]>(`${API_CONFIG.baseUrl}/agromilk/ordenha/grafico-producao-leite`);
+  }
+  
   
   buscarOrdenhasPorFiltro(animal: string, data: string, tanque: string): Observable<Ordenha[]> {
     return this.http.get<Ordenha[]>(`${API_CONFIG.baseUrl}/agromilk/ordenha?animal=${animal}&data=${data}&tanque=${tanque}`);

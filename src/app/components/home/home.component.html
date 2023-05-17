@@ -1,4 +1,5 @@
-   <mat-grid-list cols="5" rowHeight="1:1" class="dashboard-grid text-center">   
+ <div class="dashboard-container">
+   <mat-grid-list cols="5" rowHeight="1:1" class="dashboard-grid text-center">
    <mat-grid-tile>
       <mat-card class="dashboard-card mat-elevation-z8 dashboard-card-spacing">
          <mat-card-content>
@@ -79,6 +80,19 @@
             <p class="dashboard-card-label large-label">Leite armazenado</p>
          </mat-card-content>
       </mat-card>
-   </mat-grid-tile>
+   </mat-grid-tile> 
+   <div class="graph-line"></div>
+
    <!-- Outros quadros do dashboard -->
-</mat-grid-list>
+   </mat-grid-list>
+
+   <div class="graph-container">
+   <mat-card class="graph-card">
+      <mat-card-content>
+         <canvas id="meuGrafico" class="fullscreen-chart"></canvas>
+      </mat-card-content>
+   </mat-card>
+   </div>
+</div>
+
+
