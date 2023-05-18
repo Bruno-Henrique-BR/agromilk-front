@@ -102,6 +102,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
               pointRadius: 4, // Tamanho dos pontos
               pointBackgroundColor: 'blue', // Cor dos pontos
               fill: true, // Preenchimento abaixo da linha
+              cubicInterpolationMode: 'monotone', // Suavizar a curva com interpolação cúbica
             },
           ],
         },
@@ -162,6 +163,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
               pointRadius: 4, // Tamanho dos pontos
               pointBackgroundColor: 'blue', // Cor dos pontos
               fill: true, // Preenchimento abaixo da linha
+              cubicInterpolationMode: 'monotone', // Suavizar a curva com interpolação cúbica
             },
           ],
         },

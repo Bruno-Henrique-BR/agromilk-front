@@ -147,11 +147,11 @@ export class HomeComponent implements OnInit {
           {
             label: 'Produção de Leite',
             data: dataset,
-            borderColor: 'blue', // Cor da linha (azul)
+            borderColor: 'blue',
             backgroundColor: 'rgba(0, 123, 255, 0.2)', // Cor de fundo do gráfico
             borderWidth: 2, // Espessura da linha
             pointRadius: 4, // Tamanho dos pontos
-            pointBackgroundColor: '#3366ff', // Cor dos pontos (azul)
+            pointBackgroundColor: 'blue', // Cor dos pontos
             fill: true, // Preenchimento abaixo da linha
             cubicInterpolationMode: 'monotone', // Suavizar a curva com interpolação cúbica
           },
