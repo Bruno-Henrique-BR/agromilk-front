@@ -7,7 +7,7 @@
 /* Define a largura e cor de fundo da classe .sidenav */
 .sidenav {
   width: 240px;
-  background-image: linear-gradient(to bottom, rgba(15,70,13,0.98), rgba(15,70,13,0.98)), url("//src/assets/img/vaca.png");
+  background-color: #0e310b;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -60,9 +60,12 @@
 
 /* Define a cor de fundo do item de navegação ativo na classe .sidenav .mat-list-item.active */
 .sidenav .mat-list-item.active {
-  background-color: #006400; 
+  background-color: #164910de; 
 }
-
+.mat-toolbar.mat-primary{
+  background: #31662c;
+  color: #fff;
+}
 /* Define a posição e cor de fundo e texto da classe .toolbar */
 .toolbar {
   position: fixed;

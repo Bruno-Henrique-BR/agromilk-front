@@ -141,17 +141,19 @@ export class HomeComponent implements OnInit {
           {
             label: 'Produção de Leite',
             data: dataset,
-            borderColor: 'blue',
+            borderColor: 'blue', // Cor da linha (azul)
             backgroundColor: 'rgba(0, 123, 255, 0.2)', // Cor de fundo do gráfico
             borderWidth: 2, // Espessura da linha
             pointRadius: 4, // Tamanho dos pontos
-            pointBackgroundColor: 'blue', // Cor dos pontos
+            pointBackgroundColor: '#3366ff', // Cor dos pontos (azul)
             fill: true, // Preenchimento abaixo da linha
+            cubicInterpolationMode: 'monotone', // Suavizar a curva com interpolação cúbica
           },
         ],
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false, // Permitir que o gráfico se ajuste ao tamanho do contêiner
         scales: {
           y: {
             beginAtZero: true,
@@ -172,12 +174,15 @@ export class HomeComponent implements OnInit {
             },
           },
           legend: {
-            display: false, // Ocultar a legenda
+            display: true, // Ocultar a legenda
           },
         },
       },
     });
   }
+  
+  
+  
   obterDadosGraficoSemanal() {
     this.ordenhaService.obterGraficoProducaoLeitePorSemana().subscribe((data) => {
       this.graficoData = data;
@@ -207,6 +212,7 @@ export class HomeComponent implements OnInit {
             pointRadius: 4, // Tamanho dos pontos
             pointBackgroundColor: 'blue', // Cor dos pontos
             fill: true, // Preenchimento abaixo da linha
+            cubicInterpolationMode: 'monotone', // Suavizar a curva com interpolação cúbica
           },
         ],
       },

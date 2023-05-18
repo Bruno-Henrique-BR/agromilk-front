@@ -13,13 +13,13 @@
 
 .dashboard-card {
   width: 180px;
-  height: 150px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background-color: #0b814a;
+  background-color: #417b34;
   color: bisque;
 }
 
