@@ -42,6 +42,9 @@ export class OrdenhaService {
     return this.http.get<ProducaoLeiteMensalDTO[]>(`${API_CONFIG.baseUrl}/agromilk/ordenha/grafico-producao-leite`);
   }
   
+  obterGraficoProducaoLeiteAnimal(idAnimal: any): Observable<ProducaoLeiteMensalDTO[]> {
+    return this.http.get<ProducaoLeiteMensalDTO[]>(`${API_CONFIG.baseUrl}/agromilk/ordenha/grafico-producao-leite/${idAnimal}`);
+  }
   
   buscarOrdenhasPorFiltro(animal: string, data: string, tanque: string): Observable<Ordenha[]> {
     return this.http.get<Ordenha[]>(`${API_CONFIG.baseUrl}/agromilk/ordenha?animal=${animal}&data=${data}&tanque=${tanque}`);
