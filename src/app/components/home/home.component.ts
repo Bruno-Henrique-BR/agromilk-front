@@ -25,7 +25,8 @@ export class HomeComponent implements OnInit {
   chart: any;
   animais: Animal[] = []
   graficoData: any[] = [];
-
+  melhoresVacas: Animal[] = [];
+  pioresVacas: Animal[] = [];
   codigo?:   string;
   apelido?:   string;
   dataNascimento?:   string;
@@ -38,7 +39,9 @@ export class HomeComponent implements OnInit {
   lactacao:     boolean;
   media: string;
   displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'media'];
-  dataSource = new MatTableDataSource<Animal>(this.animais);
+  dataSource = new MatTableDataSource<Animal>(this.melhoresVacas);
+  data = new MatTableDataSource<Animal>(this.pioresVacas);
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   qtsAnimal: number;
@@ -51,6 +54,7 @@ export class HomeComponent implements OnInit {
   qtdFuncionario: number;
   qtdLote: number;
   qtdTotalLeite: number;
+
   constructor(private animalService: AnimalService,
     private loteService: LoteService,
     private ordenhaService: OrdenhaService,
@@ -62,6 +66,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.obterDadosGrafico();
     this.obterDadosGraficoSemanal();
+    this.getMelhoresVacas();
+    this.getPioresVacas();
     this.animalService.getQtsAnimal().subscribe(
       animal => {
         this.qtsAnimal = animal; // Atribuir diretamente o valor numérico retornado pela requisição
@@ -243,6 +249,20 @@ export class HomeComponent implements OnInit {
         },
       },
     });
+  }
+
+  getMelhoresVacas(): void {
+    this.animalService.getMelhoresVacas().subscribe(response => {
+      this.melhoresVacas = response,
+      this.dataSource = new MatTableDataSource<Animal>(this.melhoresVacas);
+  });
+  }
+
+  getPioresVacas(): void {
+    this.animalService.getPioresVacas().subscribe(response => {
+      this.pioresVacas = response,
+      this.data = new MatTableDataSource<Animal>(this.pioresVacas);
+  });
   }
   
 }

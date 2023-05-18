@@ -22,7 +22,13 @@ export class AnimalService {
   findAllLactantes(): Observable<Animal[]> {
     return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/lactantes`);
   }
+  getMelhoresVacas(): Observable<Animal[]> {
+    return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/melhores`);
+  }
 
+  getPioresVacas(): Observable<Animal[]> {
+    return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/piores`);
+  }
   findAnimaisNaoContemNoLote(idLote: any): Observable<Animal[]> {
     return this.http.get<Animal[]>(`${API_CONFIG.baseUrl}/agromilk/animal/lote/${idLote}/nao-contem`);
 

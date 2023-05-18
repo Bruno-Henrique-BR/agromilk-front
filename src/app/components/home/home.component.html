@@ -93,12 +93,78 @@
       </mat-card>
    </div>
    <div class="graph-container">
-   <mat-card class="graph-card">
-      <mat-card-content>
-         <canvas id="meuGrafico" class="fullscreen-chart"></canvas>
-      </mat-card-content>
-   </mat-card>
+      <mat-card class="graph-card">
+         <mat-card-content>
+            <canvas id="meuGrafico" class="fullscreen-chart"></canvas>
+         </mat-card-content>
+      </mat-card>
    </div>
+
+   <div class="table-container"> 
+      <mat-card class="graph-card">
+      <mat-card-content>
+      <h3 class="table-label">Melhores Médias de Produção</h3>
+      <table mat-table [dataSource]="dataSource">
+         <ng-container matColumnDef="idAnimal">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.idAnimal}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef> Código </th>
+            <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="apelido">
+            <th mat-header-cell *matHeaderCellDef> Apelido </th>
+            <td mat-cell *matCellDef="let element"> {{element.apelido}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="media">
+            <th mat-header-cell *matHeaderCellDef> Media de Leite </th>
+            <td mat-cell *matCellDef="let animal"> {{(+animal.media).toFixed(2) || 0}} litros </td>
+         </ng-container>
+         
+         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+         <tr mat-row *matRowDef="let animal of pioresVacas; columns: displayedColumns;"></tr>
+      </table>
+      </mat-card-content>
+      </mat-card>
+   </div>
+
+   <div class="table-container">
+      <mat-card class="graph-card">
+      <mat-card-content>
+      <h3 class="table-label">Piores Médias de Produção</h3>
+      <table mat-table [dataSource]="data">
+         <ng-container matColumnDef="idAnimal">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.idAnimal}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef> Código </th>
+            <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="apelido">
+            <th mat-header-cell *matHeaderCellDef> Apelido </th>
+            <td mat-cell *matCellDef="let element"> {{element.apelido}} </td>
+         </ng-container>
+
+         <ng-container matColumnDef="media">
+            <th mat-header-cell *matHeaderCellDef> Media de Leite </th>
+            <td mat-cell *matCellDef="let animal"> {{(+animal.media).toFixed(2) || 0}} litros </td>
+         </ng-container>
+         
+         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+         <tr mat-row *matRowDef="let animal of melhoresVacas; columns: displayedColumns;"></tr>
+      </table>
+
+      </mat-card-content>
+      </mat-card>
+   </div>
+
 
 </div>
 
