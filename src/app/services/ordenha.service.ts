@@ -41,6 +41,14 @@ export class OrdenhaService {
   obterGraficoProducaoLeite(): Observable<ProducaoLeiteMensalDTO[]> {
     return this.http.get<ProducaoLeiteMensalDTO[]>(`${API_CONFIG.baseUrl}/agromilk/ordenha/grafico-producao-leite`);
   }
+
+  obterGraficoProducaoLeitePorSemana(): Observable<Object[]> {
+    return this.http.get<Object[]>(`${API_CONFIG.baseUrl}/agromilk/ordenha/grafico-producao-leite-semana`);;
+  }
+
+  obterGraficoProducaoLeitePorSemanaAnimal(idAnimal: any): Observable<Object[]> {
+    return this.http.get<Object[]>(`${API_CONFIG.baseUrl}/agromilk/ordenha/grafico-producao-leite-semana/${idAnimal}`);;
+  }
   
   obterGraficoProducaoLeiteAnimal(idAnimal: any): Observable<ProducaoLeiteMensalDTO[]> {
     return this.http.get<ProducaoLeiteMensalDTO[]>(`${API_CONFIG.baseUrl}/agromilk/ordenha/grafico-producao-leite/${idAnimal}`);

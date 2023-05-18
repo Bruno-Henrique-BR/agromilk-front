@@ -20,6 +20,9 @@ import { TanqueService } from 'src/app/services/tanque.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  lactacaoPercentage: number;
+  secaPercentage: number;
+  chart: any;
   animais: Animal[] = []
   graficoData: any[] = [];
 
@@ -58,6 +61,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.obterDadosGrafico();
+    this.obterDadosGraficoSemanal();
     this.animalService.getQtsAnimal().subscribe(
       animal => {
         this.qtsAnimal = animal; // Atribuir diretamente o valor numérico retornado pela requisição
@@ -111,6 +115,7 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+
 
   obterDadosGrafico() {
     this.ordenhaService.obterGraficoProducaoLeite().subscribe((data) => {
@@ -173,6 +178,65 @@ export class HomeComponent implements OnInit {
       },
     });
   }
+  obterDadosGraficoSemanal() {
+    this.ordenhaService.obterGraficoProducaoLeitePorSemana().subscribe((data) => {
+      this.graficoData = data;
+      this.exibirGraficoSemanal();
+    });
+  }
+  exibirGraficoSemanal() {
+    const labels = this.graficoData.map((item) => item.semana);
+    const dataset = this.graficoData.map((item) => item.producaoLeite);
   
+    const canvas = document.getElementById('meuGraficoSemana') as HTMLCanvasElement;
+    if (!canvas) {
+      return;
+    }
+  
+    new Chart(canvas, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Produção de Leite',
+            data: dataset,
+            borderColor: 'blue',
+            backgroundColor: 'rgba(0, 123, 255, 0.2)', // Cor de fundo do gráfico
+            borderWidth: 2, // Espessura da linha
+            pointRadius: 4, // Tamanho dos pontos
+            pointBackgroundColor: 'blue', // Cor dos pontos
+            fill: true, // Preenchimento abaixo da linha
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function (value) {
+                return value + ' litros';
+              },
+            },
+          },
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Produção de Leite por Semana',
+            font: {
+              size: 18, // Tamanho da fonte do título
+              weight: 'bold', // Peso da fonte do título
+            },
+          },
+          legend: {
+            display: false, // Ocultar a legenda
+          },
+        },
+      },
+    });
+  }
   
 }

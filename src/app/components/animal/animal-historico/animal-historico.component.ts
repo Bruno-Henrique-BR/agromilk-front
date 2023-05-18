@@ -56,7 +56,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
         this.idAnimal = this.route.snapshot.paramMap.get('idAnimal');
         this.findAll();
         this.obterDadosGrafico();
-
+        this.obterDadosGraficoSemanal();
       }
     
     
@@ -133,5 +133,64 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
         },
       });
     }
+    obterDadosGraficoSemanal() {
+      this.ordenhaService.obterGraficoProducaoLeitePorSemanaAnimal(this.idAnimal).subscribe((data) => {
+        this.graficoData = data;
+        this.exibirGraficoSemanal();
+      });
+    }
+    exibirGraficoSemanal() {
+      const labels = this.graficoData.map((item) => item.semana);
+      const dataset = this.graficoData.map((item) => item.producaoLeite);
     
+      const canvas = document.getElementById('meuGraficoSemana') as HTMLCanvasElement;
+      if (!canvas) {
+        return;
+      }
+    
+      new Chart(canvas, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Produção de Leite',
+              data: dataset,
+              borderColor: 'blue',
+              backgroundColor: 'rgba(0, 123, 255, 0.2)', // Cor de fundo do gráfico
+              borderWidth: 2, // Espessura da linha
+              pointRadius: 4, // Tamanho dos pontos
+              pointBackgroundColor: 'blue', // Cor dos pontos
+              fill: true, // Preenchimento abaixo da linha
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function (value) {
+                  return value + ' litros';
+                },
+              },
+            },
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: 'Produção de Leite por Semana',
+              font: {
+                size: 18, // Tamanho da fonte do título
+                weight: 'bold', // Peso da fonte do título
+              },
+            },
+            legend: {
+              display: false, // Ocultar a legenda
+            },
+          },
+        },
+      });
+    }
   }

@@ -26,7 +26,6 @@ export class AnimalUpdateComponent implements OnInit {
     cor: '',
     lote: 0,
     raca: 0,
-    lactacao: false,
     loteNome: '',
     racaNome: '',
     qtsAnimal: 0,

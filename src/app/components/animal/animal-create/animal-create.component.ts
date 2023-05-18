@@ -34,7 +34,6 @@ export class AnimalCreateComponent implements OnInit {
     idLote: '',
     nomeRaca: '',
     nomeLote: '',
-    lactacao: true,
     lote: undefined,
     raca: undefined,
     loteNome: undefined,

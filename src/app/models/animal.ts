@@ -16,7 +16,6 @@ export interface Animal {
    idLote: any;
    nomeRaca:            string;
    nomeLote:            string;
-   lactacao:     boolean;
    qtsAnimal: number;
    media: string;
 

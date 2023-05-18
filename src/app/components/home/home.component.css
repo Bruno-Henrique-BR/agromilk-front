@@ -7,13 +7,13 @@
 }
 
 .dashboard-grid {
-  max-width: 800px;
+  max-width: auto;
   margin: 0 auto;
 }
 
 .dashboard-card {
-  width: 120px;
-  height: 90px;
+  width: 180px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;

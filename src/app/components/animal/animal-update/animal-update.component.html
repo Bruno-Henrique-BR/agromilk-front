@@ -43,10 +43,6 @@
       </mat-form-field>
     
     </div>
-    <div class="lactacao">
-      <mat-checkbox [(ngModel)]="animal.lactacao"
-        [ngModelOptions]="{standalone: true}"><mat-label>Lactação</mat-label></mat-checkbox>
-    </div>
     <div>
       <button (click)="update()" [disabled]="!validaCampos()" class="mat-elevation-z4" mat-flat-button
         color="primary">Atualizar</button>
