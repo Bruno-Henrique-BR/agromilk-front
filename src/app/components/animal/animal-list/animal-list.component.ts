@@ -1,17 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Animal } from 'src/app/models/animal';
 import { AnimalService } from 'src/app/services/animal.service';
 import { AnimalDeleteComponent } from '../animal-delete/animal-delete.component';
 import { MatDialog } from '@angular/material/dialog';
-
+import { PtPaginatorIntl } from '../../PtPaginatorIntl';
 @Component({
   selector: 'app-animal-list',
   templateUrl: './animal-list.component.html',
-  styleUrls: ['./animal-list.component.css']
+  styleUrls: ['./animal-list.component.css'],
+
 })
 export class AnimalListComponent implements OnInit {
+  ptPaginatorIntl: PtPaginatorIntl; // Adicione essa propriedade
 
   animais: Animal[] = []
 
@@ -33,9 +35,14 @@ export class AnimalListComponent implements OnInit {
 
   constructor(
     private service: AnimalService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private paginatorIntl: MatPaginatorIntl,
 
-  ) { }
+  ) { 
+    this.ptPaginatorIntl = this.paginatorIntl as PtPaginatorIntl;
+
+
+  }
   openDialog(idAnimal: number): void {
     const dialogRef = this.dialog.open(AnimalDeleteComponent, {
       width: '350px',

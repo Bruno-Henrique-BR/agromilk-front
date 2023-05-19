@@ -36,7 +36,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-
 // Componentes do projeto
 import { NavComponent } from './components/nav/nav.component'; NavComponent
 import { HomeComponent } from './components/home/home.component';
@@ -80,6 +79,8 @@ import { OrdenhaUpdateComponent } from './components/ordenha/ordenha-update/orde
 import { ColetaUpdateComponent } from './components/coleta/coleta-update/coleta-update.component';
 import { LoteGerenciarComponent } from './components/lote/gerenciamento-lote/lote-gerenciar.component';
 import { AnimalHistoricoComponent } from './components/animal/animal-historico/animal-historico.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { PtPaginatorIntl } from './components/PtPaginatorIntl';
 @NgModule({
   declarations: [
     AppComponent,
@@ -157,6 +158,7 @@ import { AnimalHistoricoComponent } from './components/animal/animal-historico/a
     MatDialogModule,
     MatGridListModule,
     MatSnackBarModule,
+    NgxPaginationModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
@@ -164,7 +166,7 @@ import { AnimalHistoricoComponent } from './components/animal/animal-historico/a
     }),
     NgxMaskModule.forRoot()
   ],
-  providers: [AuthInterceptorProvider, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  providers: [AuthInterceptorProvider, PtPaginatorIntl, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 
   bootstrap: [AppComponent]
 })
