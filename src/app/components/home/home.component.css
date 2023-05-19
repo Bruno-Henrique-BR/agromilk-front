@@ -1,92 +1,41 @@
-.dashboard-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+
+.dashboard-container {
   margin: 20px;
+  
 }
 
 .dashboard-grid {
-  max-width: auto;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
 }
 
 .dashboard-card {
-  width: 180px;
-  height: 120px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  background-color: #417b34;
-  color: bisque;
-}
-
-
-.table-container {
-  margin-top: 20px; /* Espaço entre as tabelas e o conteúdo acima */
-  margin-bottom: 20px; /* Espaço entre as tabelas e o conteúdo abaixo */
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  border-radius: 4px;
-
-}
-table.mat-table {
-  background-color: rgb(225 225 225);
-  width: 100%;
-  border-radius: 4px;
-
-}
-.mat-paginator-container {
-  background-color: rgb(225 225 225);
-  border-radius: 4px;
-}  
-
-
-.table-container:last-child {
-  margin-bottom: 40px; /* Espaço extra abaixo da última tabela */
-}
-
-.large-label {
-  font-size: 1px; /* Ajuste o tamanho da fonte conforme necessário */
-  white-space: nowrap; /* Impede que o texto quebre em várias linhas */
-  overflow: hidden; /* Impede que o texto saia do elemento pai */
-  text-overflow: ellipsis; /* Adiciona reticências (...) no final do texto se ele ultrapassar o tamanho do elemento */
-}
-
-
-.dashboard-card-spacing {
-  margin: 8px;
 }
 
 .dashboard-card-content {
-  display: flex;
-  flex-direction: column;
   text-align: center;
-  height: 10%;
 }
 
 .dashboard-card-value {
-  font-size: 25px;
-  margin-top: 5px;
+  font-size: 24px;
   font-weight: bold;
-  text-align: center;
-
 }
 
 .dashboard-card-label {
-  font-size: 12px;
-  margin-top: 5px;
-  font: bold;
+  font-size: 14px;
+  color: #777;
 }
 
-
-.dashboard-container {
-  position: relative;
+.large-label {
+  font-size: 16px;
 }
-
 .graph-line {
   position: absolute;
   left: 0;
@@ -95,43 +44,68 @@ table.mat-table {
   height: 2px;
   background-color: rgba(0, 0, 0, 0.1);
 }
-
 .graph-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px; /* Espaço entre os gráficos e as tabelas */
-  margin-top: 20px;
+  justify-content: space-between;
+  margin-top: 40px;
 }
 
 .graph-card {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #f2f2f2;
+  border-radius: 8px;
   padding: 20px;
+  flex-basis: 48%;
+}
+
+.small-chart {
+  width: 100%;
+  height: 200px; /* Ajuste a altura conforme necessário */
+  margin-bottom: 20px; /* Adiciona um espaçamento inferior entre os gráficos */
+}
+
+.graph-card + .graph-card {
+  margin-left: 20px; /* Adiciona um espaçamento horizontal entre os gráficos */
+}
+
+
+
+.graph-label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .fullscreen-chart {
   width: 100%;
   height: 500px; /* Defina a altura desejada */
 }
+
+.table-container {
+  margin-top: 40px;
+}
+
 .table-label {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
-  text-align: center;
-  color: rgb(102 102 102);
 }
 
-.graph-label {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-align: center;
-}
-canvas {
-  height: 300px; /* Defina a altura desejada para o gráfico */
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
 
+th {
+  background-color: #f2f2f2;
+}
 
-
-
+tbody tr:last-child td {
+  border-bottom: none;
+}
