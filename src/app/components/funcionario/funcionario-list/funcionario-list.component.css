@@ -1,59 +1,107 @@
 .container {
-    max-width: 90%;
-    margin: 0 auto;
-  }
-  
-  table {
-    width: 100%;
-  }
-  
-  .cadas {
-    width: 25%;
-    float: right;
-    background-color: green;
-    color: #ffffff;
-  }
-  
-  mat-form-field {
-    width: 100%;
-  }
-  .delete {
-    cursor: pointer;
-  }
-  
-  button {
-    width: 100%;
-  }
-  
-  h1 {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .edit {
-    color: rgb(0, 153, 255);
-  }
-  
-  .delete {
-    color: red;
-  }
-  
-  /* Adicionando estilo para campo de input numérico */
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  
-  input[type="number"] {
-    -moz-appearance: textfield;
-    appearance: textfield;
-    width: 100%;
-  }
-  
-  /* Adicionando estilo para o botão Cancelar */
-  button[color="warn"] {
-    margin-right: 1rem;
-  }
-  
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+
+
+
+.search-field {
+  width: 300px;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.search-container {
+  flex: 1;
+  margin-right: 16px;
+}
+
+.action-container {
+  flex-shrink: 0;
+}
+
+
+.mat-table {
+  width: 100%;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  padding: 8px 16px;
+}
+
+th.mat-header-cell {
+  font-weight: bold;
+}
+
+td.mat-cell {
+  font-size: 14px;
+}
+
+
+
+.id-cell,
+.action-cell {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+.edit-icon {
+  color: #2196f3;
+}
+
+.visibility-icon {
+  color: #4caf50;
+}
+
+.delete-icon {
+  color: #f44336;
+}
+
+.mat-paginator {
+  margin-top: 20px;
+}
+
+.custom-table {
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table th.mat-header-cell {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.custom-table td.mat-cell {
+  background-color: #fff;
+}
+
+.custom-paginator {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.custom-paginator .mat-paginator-range-label {
+  margin-right: 10px;
+}
+
+.custom-paginator .mat-paginator-page-size-label {
+  margin-right: 5px;
+}
+
+.custom-paginator .mat-paginator-page-size-select {
+  margin-right: 10px;
+}
+
+.custom-paginator .mat-paginator-navigation-previous,
+.custom-paginator .mat-paginator-navigation-next {
+  margin-right: 5px;
+}
+
