@@ -1,72 +1,77 @@
-h1 {
-  text-align: center;
+.custom-card {
+  margin: 20px auto; /* Define uma margem de 20px nas laterais e 20px no topo e na base */
+  width: 80%; /* Define a largura do cartão como 80% da largura disponível */
+  max-width: 900px; /* Define uma largura máxima de 900px para o cartão */
+  padding: 20px; /* Adiciona um preenchimento interno de 20px */
+  border-radius: 10px; /* Define um raio de borda de 10px para tornar os cantos arredondados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve ao cartão */
 }
 
-.mat-elevation-z2 {
-  margin: 20px auto;
-  width: 80%;
+.header {
+  text-align: center; /* Centraliza o texto no cabeçalho */
+  margin-bottom: 20px; /* Adiciona uma margem inferior de 20px no cabeçalho */
+}
+
+.table-container {
+  max-height: auto; /* Define uma altura máxima de 400px para o contêiner da tabela */
+  overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando o conteúdo da tabela excede a altura máxima */
+}
+
+.table-scroll {
+  overflow-x: auto; /* Adiciona uma barra de rolagem horizontal quando o conteúdo da tabela excede a largura do contêiner */
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  max-height: 70vh; /* Defina a altura desejada para a tabela */
-  overflow-y: auto;
+  width: 100%; /* Define a largura da tabela como 100% do contêiner */
+  border-collapse: collapse; /* Combina as bordas das células adjacentes */
+  font-size: 14px; /* Define o tamanho da fonte para 14px */
 }
 
-
-th, td {
-  padding: 10px;
-  text-align: left;
+th,
+td {
+  padding: 8px; /* Adiciona um preenchimento interno de 8px nas células da tabela */
+  text-align: left; /* Alinha o texto à esquerda nas células da tabela */
+  white-space: nowrap; /* Impede a quebra de linha automática dentro das células da tabela */
 }
 
-thead {
-  background-color: #f0f0f0;
+thead th {
+  background-color: #f0f0f0; /* Define uma cor de fundo para os cabeçalhos da tabela */
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.mat-form-field {
-  margin: 5px;
-}
-
-.button-group {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.button-group button {
-  margin: 5px;
-}
-
-.custom-card {
-  max-height: 500px;
-  overflow-y: auto;
+  background-color: #f9f9f9; /* Define uma cor de fundo alternada para as linhas pares da tabela */
 }
 
 .small-column {
-  width: 60px;
+  width: 60px; /* Define a largura das colunas pequenas como 60px */
 }
 
 .small-input {
-  width: 60px;
+  width: 80px; /* Define a largura dos inputs pequenos como 80px */
 }
-.small-inputt {
-  width: 100px;
+
+button {
+  margin-top: 0.5rem; /* Adiciona uma margem superior de 0.5rem (8px) nos botões */
+}
+
+button:first-child {
+  margin-right: 1rem; /* Adiciona uma margem direita de 1rem (16px) no primeiro botão do grupo */
+}
+
+.cancel-button {
+  margin-left: 10px; /* Adiciona uma margem esquerda de 10px no botão de cancelar */
 }
 
 @media (max-width: 600px) {
-  table {
-      max-height: 50vh; /* Defina a altura desejada para a tabela em dispositivos móveis */
+  .custom-card {
+    width: 100%; /* Define a largura do cartão como 100% em dispositivos com largura máxima de 600px */
   }
-  
+
   .small-column {
-    width: 40px;
+    width: 40px; /* Define a largura das colunas pequenas como 40px em dispositivos com largura máxima de 600px */
   }
-  
+
   .small-input {
-    width: 40px;
+    width: 60px; /* Define a largura dos inputs pequenos como 60px em dispositivos com largura máxima de 600px */
   }
 }

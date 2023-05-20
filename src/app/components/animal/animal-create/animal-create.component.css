@@ -1,93 +1,85 @@
-.container {
-   width: 100%;
-   max-width: 800px;
-   margin: 0 auto;
-   padding: 20px;
-   border-radius: 0.2rem;
-   background: antiquewhite;
- }
- 
- .fullWidth {
-   width: 100%;
- }
- 
- .status-prioridade {
-   display: flex;
-   justify-content: space-between;
-   margin-bottom: 1rem;
- }
- 
- .status-prioridade mat-form-field {
-   flex: 1;
-   padding: 10px;
- }
- 
- .lactacao {
-   display: flex;
-   padding: 10px;
- }
- 
- .animal-comprado {
-   display: flex;
-   padding: 10px;
- }
- 
- .data-compra-field {
-   flex: 1;
- }
- 
- .data-nascimento-field {
-   flex: 1;
- }
- 
- .lote-field {
-   flex: 1;
- }
- 
- .raca-field {
-   flex: 1;
- }
- 
- .button-group {
-   display: flex;
-   justify-content: space-between;
-   margin-top: 0.5rem;
- }
- 
- button {
-   margin-top: 0.5rem;
- }
- 
- .criar {
-   float: left;
- }
- 
- .voltar {
-   float: right;
- }
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
 
- .error-snackbar {
-   background-color: red; /* Cor de fundo da Snackbar */
-   color: white; /* Cor do texto da Snackbar */
-   font-weight: bold; /* Estilo do texto da Snackbar */
- }
+.card {
+  width: auto;
+  height: auto;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.status-prioridade {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.status-prioridade mat-form-field {
+  flex: 1;
+  padding: 10px;
+}
+
+.animal-comprado {
+  display: flex;
+  padding: 10px;
+}
+
+.data-compra-field {
+  flex: 1;
+}
+
+.data-nascimento-field {
+  flex: 1;
+}
+
+.lote-field {
+  flex: 1;
+}
+
+.raca-field {
+  flex: 1;
+}
+
  
- .error-snackbar .mat-simple-snackbar-action {
-   color: white; /* Cor do texto do botão de ação */
- }
- 
- 
- 
- 
- .form {
-   width: auto;
- }
- 
- mat-icon {
-   opacity: 0.8;
- }
- 
- /* Reduzindo o tamanho do campo Código */
- .status-prioridade mat-form-field:first-child {
-   flex: 0.5;
- }
+button {
+  margin-top: 0.5rem;
+}
+
+button:first-child {
+  margin-right: 1rem;
+}
+
+
+.error-snackbar {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+.error-snackbar .mat-simple-snackbar-action {
+  color: white;
+}
+
+.form {
+  width: auto;
+}
+
+mat-icon {
+  opacity: 0.8;
+}
+
+/* Reduzindo o tamanho do campo Código */
+.status-prioridade mat-form-field:first-child {
+  flex: 0.5;
+}

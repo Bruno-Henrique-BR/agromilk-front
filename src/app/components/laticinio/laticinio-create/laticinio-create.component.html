@@ -1,24 +1,23 @@
-<div class="container mat-elevation-z8">
+<div class="card-container">
+  <div class="card">
+    <h1 class="fullWidth">Cadastrar Laticinio</h1>
     <form class="form">
-      <h1 class="fullWidth">Cadastrar Laticínio</h1>
-      <div class="status-prioridade">
-        <mat-form-field appearance="outline" class="mat-form-field-outline-start">
+        <mat-form-field appearance="outline" class="fullWidth">
           <mat-label>Nome</mat-label>
           <input matInput [(ngModel)]="laticinio.razaoSocial" name="razaoSocial" [formControl]="razaoSocial" required maxlength="50">
         </mat-form-field>
-        <mat-form-field appearance="outline" class="mat-form-field-outline-end">
+        <mat-form-field appearance="outline" class="fullWidth">
           <mat-label>CNPJ</mat-label>
           <input matInput [(ngModel)]="laticinio.cnpj" name="cnpj" [formControl]="cnpj" required maxlength="50" mask="00.000.000/0000-00">
         </mat-form-field>
-        <mat-form-field appearance="outline" class="mat-form-field-outline-start">
+        <mat-form-field appearance="outline" class="fullWidth">
           <mat-label>Telefone</mat-label>
           <input matInput [(ngModel)]="laticinio.telefone" name="telefone" [formControl]="telefone" required maxlength="50" mask="(00) 0000-00009">
         </mat-form-field>
-        <mat-form-field appearance="outline" class="mat-form-field-outline-end">
+        <mat-form-field appearance="outline"class="fullWidth">
           <mat-label>Endereço</mat-label>
           <input matInput [(ngModel)]="laticinio.endereco" name="endereco" [formControl]="endereco" required maxlength="50">
         </mat-form-field>
-      </div>
   
       <div class="button-container">
         <button (click)="create()" [disabled]="!validaCampos()" class="mat-elevation-z4 mat-flat-button mat-primary">Cadastrar</button>

@@ -21,7 +21,7 @@ export class TanqueCreateComponent implements OnInit {
   }
 
   modelo: FormControl = new FormControl(null, Validators.minLength(3));
-  descricao: FormControl = new FormControl(null, Validators.minLength(3));
+  capacidade: FormControl = new FormControl(null, Validators.required);
 
 
 
@@ -61,6 +61,6 @@ export class TanqueCreateComponent implements OnInit {
 
 
   validaCampos(): boolean {
-    return this.modelo.valid  && this.descricao.valid
+    return this.modelo.valid  && this.capacidade.valid 
   }
 }
