@@ -3,13 +3,13 @@
      <div class="dashboard-card">
        <div class="dashboard-card-content">
          <p class="dashboard-card-value">{{ qtsAnimal || '0' }}</p>
-         <p class="dashboard-card-label">Animais</p>
+         <p class="dashboard-card-label large-label">Animais</p>
        </div>
      </div>
      <div class="dashboard-card">
        <div class="dashboard-card-content">
          <p class="dashboard-card-value">{{ (+mediaLitro).toFixed(2) || '0,00' }}</p>
-         <p class="dashboard-card-label">Litros por média</p>
+         <p class="dashboard-card-label large-label">Litros por média</p>
        </div>
      </div>
      <div class="dashboard-card">
@@ -21,37 +21,25 @@
      <div class="dashboard-card">
        <div class="dashboard-card-content">
          <p class="dashboard-card-value">{{ qtsAnimaisSeca || '0' }}</p>
-         <p class="dashboard-card-label">Animais em secas</p>
-       </div>
-     </div>
-     <div class="dashboard-card">
-       <div class="dashboard-card-content">
-         <p class="dashboard-card-value">{{ (+porcentagemLactacao).toFixed(2) || '0' }} %</p>
-         <p class="dashboard-card-label large-label">Porcentagem em lactação</p>
-       </div>
-     </div>
-     <div class="dashboard-card">
-       <div class="dashboard-card-content">
-         <p class="dashboard-card-value">{{ (+porcentagemSeca).toFixed(2) || '0'}} %</p>
-         <p class="dashboard-card-label large-label">Porcentagem em secas</p>
+         <p class="dashboard-card-label large-label">Animais em secas</p>
        </div>
      </div>
      <div class="dashboard-card">
        <div class="dashboard-card-content">
          <p class="dashboard-card-value">{{ qtdLote}}</p>
-         <p class="dashboard-card-label">Lotes</p>
+         <p class="dashboard-card-label large-label">Lotes</p>
        </div>
      </div>
      <div class="dashboard-card">
        <div class="dashboard-card-content">
          <p class="dashboard-card-value">{{ qtdTanque}}</p>
-         <p class="dashboard-card-label">Tanques</p>
+         <p class="dashboard-card-label large-label">Tanques</p>
        </div>
      </div>
      <div class="dashboard-card">
        <div class="dashboard-card-content">
          <p class="dashboard-card-value">{{ qtdFuncionario}}</p>
-         <p class="dashboard-card-label">Funcionários</p>
+         <p class="dashboard-card-label large-label">Funcionários</p>
        </div>
      </div>
      <div class="dashboard-card">
@@ -60,13 +48,31 @@
          <p class="dashboard-card-label large-label">Leite armazenado</p>
        </div>
      </div>
+     <div class="dashboard-card">
+      <div class="dashboard-card-content">
+        <p class="dashboard-card-value">{{ (+qtdTotalLeite).toFixed(2)}}</p>
+        <p class="dashboard-card-label large-label">Gestantes</p>
+      </div>
+    </div>
+    <div class="dashboard-card">
+      <div class="dashboard-card-content">
+        <p class="dashboard-card-value">{{ (+qtdTotalLeite).toFixed(2)}}</p>
+        <p class="dashboard-card-label large-label">Descartados</p>
+      </div>
+    </div>
+    <div class="dashboard-card">
+      <div class="dashboard-card-content">
+        <p class="dashboard-card-value">{{ (+qtdTotalLeite).toFixed(2)}}</p>
+        <p class="dashboard-card-label large-label">Mortalidade</p>
+      </div>
+    </div>
    </div>
 
    <div class="card">
     <div class="card-content">
       <div class="filter-container">
         <mat-form-field appearance="outline">
-          <mat-label>Tipo de Gráfico</mat-label>
+          <mat-label>Periodo:</mat-label>
           <mat-select [(value)]="chartType" (selectionChange)="changeChartType()">
             <mat-option value="semanal">Semanal</mat-option>
             <mat-option value="mensal">Mensal</mat-option>
@@ -81,11 +87,19 @@
         </div>
       </div>
     </div>
+    
+    <div class="cardPizza">
+      <div class="card-header">
+        <mat-label class="dashboard-card-label large-label">Distribuição de Porcentagem de Lactação e Secas</mat-label>
+      </div>
+      <div class="card-body">
+        <div id="graficoContainer" >
+          <canvas id="graficoPizza"></canvas>
+        </div>
+      </div>
+    </div>
+    
   </div>
-  
-  
-
-
       <div class="table-container">
       <h3 class="table-label">Melhores Médias de Produção</h3>
       <table mat-table [dataSource]="dataSource">

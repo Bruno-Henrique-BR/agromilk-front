@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
   dataSource = new MatTableDataSource<Animal>(this.melhoresVacas);
   data = new MatTableDataSource<Animal>(this.pioresVacas);
   chartType: string = 'semanal';
+  pieChart: any;
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -88,16 +89,20 @@ export class HomeComponent implements OnInit {
     this.animalService.getAnimalSeca().subscribe(
       animal => {
         this.qtsAnimaisSeca = animal; // Atribuir diretamente o valor numérico retornado pela requisição
+        
       }
     );
     this.animalService.getPorcentagemLactantes().subscribe(
       animal => {
-        this.porcentagemLactacao = animal; // Atribuir diretamente o valor numérico retornado pela requisição
+        this.porcentagemLactacao = animal;
+        this.exibirGraficoPizza();      
       }
     );
     this.animalService.getPorcentagemSecas().subscribe(
       animal => {
-        this.porcentagemSeca = animal; // Atribuir diretamente o valor numérico retornado pela requisição
+        this.porcentagemSeca = animal; 
+        this.exibirGraficoPizza();      
+
       }
     );
 
@@ -251,7 +256,50 @@ export class HomeComponent implements OnInit {
       },
     });
   }
-
+  exibirGraficoPizza() {
+    if (this.porcentagemLactacao !== undefined && this.porcentagemSeca !== undefined) {
+      const data = {
+        labels: ['Lactação', 'Secas'],
+        datasets: [{
+          data: [this.porcentagemLactacao, this.porcentagemSeca],
+          backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)']
+        }]
+      };
+  
+      const options = {
+        responsive: true,
+        legend: {
+          position: 'bottom',
+          labels: {
+            fontColor: '#333',
+            fontSize: 12,
+            padding: 10
+          }
+        },
+        title: {
+          display: true,
+          text: 'Distribuição de Porcentagem de Lactação e Secas',
+          fontSize: 16,
+          fontColor: '#333',
+          padding: 20
+        }
+      };
+  
+      if (this.pieChart) {
+        this.pieChart.destroy();
+      }
+  
+      const canvas = document.getElementById('graficoPizza') as HTMLCanvasElement;
+      const ctx = canvas.getContext('2d');
+      this.pieChart = new Chart(ctx, {
+        type: 'pie',
+        data: data,
+        options: options
+      });
+    }
+  }
+  
+  
   getMelhoresVacas(): void {
     this.animalService.getMelhoresVacas().subscribe(response => {
       this.melhoresVacas = response,
