@@ -13,6 +13,7 @@ import { FuncionarioService } from 'src/app/services/funcionario.service';
 import { LoteService } from 'src/app/services/lote.service';
 import { OrdenhaService } from 'src/app/services/ordenha.service';
 import { TanqueService } from 'src/app/services/tanque.service';
+import { TaxaOcupacaoTanqueDTO } from 'src/app/models/TaxaOcupacaoTanqueDTO';
 
 @Component({
   selector: 'app-home',
@@ -43,6 +44,7 @@ export class HomeComponent implements OnInit {
   data = new MatTableDataSource<Animal>(this.pioresVacas);
   chartType: string = 'semanal';
   pieChart: any;
+  taxaOcupacaoTanqueData: TaxaOcupacaoTanqueDTO[] = [];
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -68,8 +70,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.obterDadosGrafico();
     this.obterDadosGraficoSemanal();
+    this.obterDadosGraficoTaxaOcupacao();
     this.getMelhoresVacas();
     this.getPioresVacas();
+ 
     this.animalService.getQtsAnimal().subscribe(
       animal => {
         this.qtsAnimal = animal; // Atribuir diretamente o valor numérico retornado pela requisição
@@ -176,6 +180,7 @@ export class HomeComponent implements OnInit {
             },
           },
         },
+        
         plugins: {
           title: {
             display: true,
@@ -192,8 +197,62 @@ export class HomeComponent implements OnInit {
       },
     });
   }
+  obterDadosGraficoTaxaOcupacao() {
+  this.ordenhaService.obterGraficoTaxaOcupacaoTanques().subscribe((data) => {
+    this.taxaOcupacaoTanqueData = data;
+    this.exibirGraficoTaxaOcupacaoTanque();
+  });
+}
+  exibirGraficoTaxaOcupacaoTanque() {
+    const labels = this.taxaOcupacaoTanqueData.map((item) => item.modelo);
+    const dataset = this.taxaOcupacaoTanqueData.map((item) => item.taxaOcupacao);
   
+    const canvas = document.getElementById('taxaOcupacaoTanqueChart') as HTMLCanvasElement;
+    if (!canvas) {
+      return;
+    }
   
+    new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Ocupação do Tanque',
+            data: dataset,
+            backgroundColor: 'rgba(54, 162, 235, 0.8)', // Cor de fundo das barras
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function (value) {
+                return value + '%';
+              },
+            },
+          },
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Taxa de Ocupação do Tanque',
+            font: {
+              size: 18,
+              weight: 'bold',
+            },
+          },
+          legend: {
+            display: false,
+          },
+        },
+      },
+    });
+  }
   
   obterDadosGraficoSemanal() {
     this.ordenhaService.obterGraficoProducaoLeitePorSemana().subscribe((data) => {
