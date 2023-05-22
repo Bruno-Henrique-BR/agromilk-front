@@ -62,14 +62,28 @@
      </div>
    </div>
 
-<div class="graph-container">
-  <div class="graph-card">
-    <canvas id="meuGraficoSemana" class="small-chart"></canvas>
+   <div class="card">
+    <div class="card-content">
+      <div class="filter-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Tipo de Gráfico</mat-label>
+          <mat-select [(value)]="chartType" (selectionChange)="changeChartType()">
+            <mat-option value="semanal">Semanal</mat-option>
+            <mat-option value="mensal">Mensal</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div class="graph-container">
+        <div class="graph-card">
+          <canvas *ngIf="chartType === 'semanal'" id="meuGraficoSemana" class="chart-canvas"></canvas>
+          <canvas *ngIf="chartType === 'mensal'" id="meuGrafico" class="chart-canvas"></canvas>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="graph-card">
-    <canvas id="meuGrafico" class="small-chart"></canvas>
-  </div>
-</div>
+  
+  
 
 
       <div class="table-container">

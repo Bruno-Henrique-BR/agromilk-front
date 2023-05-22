@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'media'];
   dataSource = new MatTableDataSource<Animal>(this.melhoresVacas);
   data = new MatTableDataSource<Animal>(this.pioresVacas);
+  chartType: string = 'semanal';
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -180,7 +181,7 @@ export class HomeComponent implements OnInit {
             },
           },
           legend: {
-            display: true, // Ocultar a legenda
+            display: false, // Ocultar a legenda
           },
         },
       },
@@ -264,5 +265,16 @@ export class HomeComponent implements OnInit {
       this.data = new MatTableDataSource<Animal>(this.pioresVacas);
   });
   }
+  changeChartType() {
+    if (this.chartType === 'semanal') {
+      this.obterDadosGraficoSemanal();
+      this.exibirGraficoSemanal();
+    } else if (this.chartType === 'mensal') {
+      this.obterDadosGrafico();
+      this.exibirGrafico();
+    }
+  }
+  
   
 }
+  
