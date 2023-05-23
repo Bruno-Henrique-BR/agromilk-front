@@ -1,10 +1,11 @@
-<div class="container d-flex justify-content-center align-items-center">
-  <mat-card class="p-4" style="background-color: #F5F5F5">
-    <h1 class="text-center mb-4" style="color: #006600">Gestão de produção de leite - Agromilk</h1>
+<div class="container d-flex justify-content-center align-items-center background-container">
+  <mat-card class="p-4">
+    <h1 class="text-center mb-4">Gestão de produção de leite - Agromilk</h1>
     <form class="form">
       <div class="form-group">
-        <mat-form-field class="full-width">
-          <mat-label style="color: #006600">E-mail</mat-label>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label class="label-with-icon">E-mail</mat-label>
+          <mat-icon matPrefix>email</mat-icon>
           <input 
             [(ngModel)]="creds.email"
             name="email"
@@ -16,8 +17,9 @@
       </div>
 
       <div class="form-group">
-        <mat-form-field class="full-width">
-          <mat-label style="color: #006600">Senha</mat-label>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label class="label-with-icon">Senha</mat-label>
+          <mat-icon matPrefix>lock</mat-icon>
           <input 
             [(ngModel)]="creds.senha"
             name="senha"
@@ -32,7 +34,7 @@
       <button 
         (click)="login()" 
         [disabled]="!validaCampos()" 
-        class="btn btn-primary btn-block mt-4" style="background-color: #006600">Login</button>
+        class="btn btn-primary btn-block mt-4">Login</button>
     </form>
   </mat-card>
 </div>

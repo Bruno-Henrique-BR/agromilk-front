@@ -74,6 +74,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Periodo:</mat-label>
           <mat-select [(value)]="chartType" (selectionChange)="changeChartType()">
+            <mat-option value="diario">Diario</mat-option>
             <mat-option value="semanal">Semanal</mat-option>
             <mat-option value="mensal">Mensal</mat-option>
           </mat-select>
@@ -82,6 +83,7 @@
   
       <div class="graph-container">
         <div class="graph-card">
+          <canvas *ngIf="chartType === 'diario'" id="meuGraficoDiario" class="chart-canvas"></canvas>
           <canvas *ngIf="chartType === 'semanal'" id="meuGraficoSemana" class="chart-canvas"></canvas>
           <canvas *ngIf="chartType === 'mensal'" id="meuGrafico" class="chart-canvas"></canvas>
         </div>
