@@ -29,14 +29,14 @@
           </mat-list-item>
           <mat-list-item routerLink="/laticinio" routerLinkActive="active" class="submenu-item">
             <span>Laticínio</span>
+          </mat-list-item> 
+          <mat-list-item routerLink="/funcionario" routerLinkActive="active" class="submenu-item">
+            <span>Funcionario</span>
+          </mat-list-item> 
+          <mat-list-item routerLink="/coleta" routerLinkActive="active" class="submenu-item">
+            <span>Coleta de leite</span>
           </mat-list-item>          
         </mat-nav-list>
-        <mat-list-item routerLink="/funcionario" routerLinkActive="active" class="submenu-item">
-          <span>Funcionario</span>
-        </mat-list-item> 
-        <mat-list-item routerLink="/coleta" routerLinkActive="active" class="submenu-item">
-          <span>Coleta de leite</span>
-        </mat-list-item> 
       </mat-expansion-panel>
       <mat-list-item routerLink="/relatorios" routerLinkActive="active">
         <mat-icon>description</mat-icon>
@@ -48,13 +48,13 @@
       </mat-list-item>
     </mat-nav-list>
   </mat-drawer>
-  
+
   <mat-toolbar color="primary" class="toolbar">
     <button mat-icon-button (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
   </mat-toolbar>
-  
+
   <main class="content">
     <router-outlet></router-outlet>
   </main>
