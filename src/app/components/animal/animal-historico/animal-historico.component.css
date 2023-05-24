@@ -6,9 +6,36 @@
     margin-bottom: 10px;
   }
   
-  .mat-table {
-    width: 100%;
+
+  .table-container {
+    margin-top: 40px;
   }
+  
+  .table-label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px; /* Adicione o espaçamento desejado */
+    margin-right: 10px; /* Adicione o espaçamento desejado */
+  }
+  
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+  
+  
+  .card-content {
+    padding: 20px;
+  }
+  
+  
   
   .mat-header-cell,
   .mat-cell {
@@ -30,4 +57,35 @@
   .mat-paginator {
     margin-top: 20px;
   }
-  
+
+  .graph-card {
+    flex: 1;
+    max-width: 100%;
+  }
+  .filter-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    margin-right: 24px; /* Adiciona uma margem direita de 20 pixels */
+  }
+
+  .card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+  .chart-canvas {
+    width: 100%;
+    height: 100%;
+  }
+  .graph-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }

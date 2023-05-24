@@ -1,7 +1,6 @@
-<div class="container">
-    <h1>Histórico do Animal</h1>
- 
-    <div class="mat-elevation-z8">
+<div class="table-container card">
+    <h3 class="table-label">Histórico do Animal</h3>
+
        <table mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="id">
              <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -42,22 +41,28 @@
        </table>
  
        <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
-    </div>
  </div>
- <div class="graph-container">
-   <mat-card class="graph-card">
-      <mat-card-content>
-         <canvas id="meuGraficoSemana" class="fullscreen-chart"></canvas>
-      </mat-card-content>
-   </mat-card>
-</div>
- <div class="graph-container">
-   <mat-card class="graph-card">
-      <mat-card-content>
-         <canvas id="meuGrafico" class="fullscreen-chart"></canvas>
-      </mat-card-content>
-   </mat-card>
-</div>
+ <div class="card">
+   <div class="card-content">
+     <div class="filter-container">
+       <mat-form-field appearance="outline">
+         <mat-label>Periodo:</mat-label>
+         <mat-select [(value)]="chartType" (selectionChange)="changeChartType()">
+           <mat-option value="diario">Diario</mat-option>
+           <mat-option value="semanal">Semanal</mat-option>
+           <mat-option value="mensal">Mensal</mat-option>
+         </mat-select>
+       </mat-form-field>
+     </div>
+ 
+     <div class="graph-container">
+       <div class="graph-card">
+         <canvas *ngIf="chartType === 'diario'" id="meuGraficoDiario" class="chart-canvas"></canvas>
+         <canvas *ngIf="chartType === 'semanal'" id="meuGraficoSemana" class="chart-canvas"></canvas>
+         <canvas *ngIf="chartType === 'mensal'" id="meuGrafico" class="chart-canvas"></canvas>
+       </div>
+     </div>
+   </div>
 
 
  

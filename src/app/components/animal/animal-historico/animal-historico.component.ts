@@ -37,6 +37,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
     media: string;
     displayedColumns: string[] = ['id', 'apelidoAnimal', 'loteNome', 'dataEntrada', 'dataSaida','dias'];
     dataSource = new MatTableDataSource<Movimento>(this.movimentos);
+    chartType: string = 'diario';
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
     constructor(
@@ -55,6 +56,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
     ngOnInit(): void {
         this.idAnimal = this.route.snapshot.paramMap.get('idAnimal');
         this.findAll();
+        this.obterDadosGraficoDiaria();
         this.obterDadosGrafico();
         this.obterDadosGraficoSemanal();
       }
@@ -194,5 +196,82 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
           },
         },
       });
+    }
+ 
+    obterDadosGraficoDiaria() {
+      this.ordenhaService.obterGraficoProducaoLeiteDiarioPorAnimal(this.idAnimal).subscribe((data) => {
+        this.graficoData = data;
+        this.exibirGraficoDiario();
+      });
+    }
+    
+    exibirGraficoDiario() {
+      const labels = this.graficoData.map((item) => item.dataDia);
+      const dataset = this.graficoData.map((item) => item.somaProducaoLeite);
+    
+      const canvas = document.getElementById('meuGraficoDiario') as HTMLCanvasElement;
+      if (!canvas) {
+        return;
+      }
+    
+      new Chart(canvas, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Produção de Leite',
+              data: dataset,
+              borderColor: 'blue',
+              backgroundColor: 'rgba(0, 123, 255, 0.2)', // Cor de fundo do gráfico
+              borderWidth: 2, // Espessura da linha
+              pointRadius: 4, // Tamanho dos pontos
+              pointBackgroundColor: 'blue', // Cor dos pontos
+              fill: true, // Preenchimento abaixo da linha
+              cubicInterpolationMode: 'monotone', // Suavizar a curva com interpolação cúbica
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false, // Permitir que o gráfico se ajuste ao tamanho do contêiner
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function (value) {
+                  return value + ' litros';
+                },
+              },
+            },
+          },
+          
+          plugins: {
+            title: {
+              display: true,
+              text: 'Produção de Leite nos últimos 7 dias',
+              font: {
+                size: 18, // Tamanho da fonte do título
+                weight: 'bold', // Peso da fonte do título
+              },
+            },
+            legend: {
+              display: false, // Ocultar a legenda
+            },
+          },
+        },
+      });
+    }
+    changeChartType() {
+      if (this.chartType === 'diario') {
+        this.obterDadosGraficoDiaria();
+        this.exibirGraficoDiario();
+      }else if (this.chartType === 'semanal') {
+        this.obterDadosGraficoSemanal();
+        this.exibirGraficoSemanal();
+      } else if (this.chartType === 'mensal') {
+        this.obterDadosGrafico();
+        this.exibirGrafico();
+      }
     }
   }
