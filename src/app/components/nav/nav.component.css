@@ -1,12 +1,15 @@
 .container {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidenav {
-  width: 240px;
+  flex: 0 0 240px;
   background-color: #0e310b;
   color: #fff;
+  overflow-y: auto;
 }
 
 .sidenav img {

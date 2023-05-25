@@ -3,12 +3,11 @@
   margin: 0 auto;
 }
 
-
-
-
 .search-field {
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
 }
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -24,7 +23,6 @@
 .action-container {
   flex-shrink: 0;
 }
-
 
 .mat-table {
   width: 100%;
@@ -43,14 +41,11 @@ td.mat-cell {
   font-size: 14px;
 }
 
-
-
 .id-cell,
 .action-cell {
   padding-left: 20px;
   padding-right: 20px;
 }
-
 
 .edit-icon {
   color: #2196f3;
@@ -105,3 +100,8 @@ td.mat-cell {
   margin-right: 5px;
 }
 
+@media (max-width: 767px) {
+  .search-field {
+    max-width: 100%;
+  }
+}

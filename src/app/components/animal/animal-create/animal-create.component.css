@@ -7,7 +7,7 @@
 }
 
 .card {
-  width: auto;
+  width: 80%;
   height: auto;
   padding: 20px;
   border-radius: 4px;
@@ -51,7 +51,6 @@
   flex: 1;
 }
 
- 
 button {
   margin-top: 0.5rem;
 }
@@ -59,7 +58,6 @@ button {
 button:first-child {
   margin-right: 1rem;
 }
-
 
 .error-snackbar {
   background-color: red;
@@ -82,4 +80,10 @@ mat-icon {
 /* Reduzindo o tamanho do campo Código */
 .status-prioridade mat-form-field:first-child {
   flex: 0.5;
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 90%;
+  }
 }
