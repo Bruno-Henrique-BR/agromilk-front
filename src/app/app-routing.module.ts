@@ -40,6 +40,7 @@ import { OrdenhaUpdateComponent } from './components/ordenha/ordenha-update/orde
 import { ColetaUpdateComponent } from './components/coleta/coleta-update/coleta-update.component';
 import { LoteGerenciarComponent } from './components/lote/gerenciamento-lote/lote-gerenciar.component';
 import { AnimalHistoricoComponent } from './components/animal/animal-historico/animal-historico.component';
+import { RelatorioProducaoDiariaComponent } from './components/relatorio/relatorio-producao-diaria.component';
 
 const routes: Routes = [
   {
@@ -92,6 +93,9 @@ const routes: Routes = [
       { path: 'coleta/create', component: ColetaCreateComponent},
       { path: 'coleta/delete/:idColeta', component: ColetaDeleteComponent },
       { path: 'coleta/update/:idColeta', component: ColetaUpdateComponent },
+
+      { path: 'relatorioDiario', component: RelatorioProducaoDiariaComponent },
+
 
     ]
   },

@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Geração de Relatório de Produção Diária</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="relatorioForm" (ngSubmit)="false" class="report-form">
+        <div class="form-row">
+          <mat-form-field class="full-width" appearance="outline">
+            <input matInput [matDatepicker]="picker1" placeholder="Data Inicial" formControlName="dataInicial">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width" appearance="outline">
+            <input matInput [matDatepicker]="picker2" placeholder="Data Final" formControlName="dataFinal">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+  
+        <button mat-raised-button color="primary" type="submit" (click)="gerarRelatorio()">Gerar Relatório</button>
+        <a #downloadLink style="display: none;"></a> <!-- Elemento âncora oculto para fazer o download -->
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

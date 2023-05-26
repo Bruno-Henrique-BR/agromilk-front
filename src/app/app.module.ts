@@ -81,6 +81,7 @@ import { LoteGerenciarComponent } from './components/lote/gerenciamento-lote/lot
 import { AnimalHistoricoComponent } from './components/animal/animal-historico/animal-historico.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PtPaginatorIntl } from './components/PtPaginatorIntl';
+import { RelatorioProducaoDiariaComponent } from './components/relatorio/relatorio-producao-diaria.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,6 +124,7 @@ import { PtPaginatorIntl } from './components/PtPaginatorIntl';
     ColetaCreateComponent,
     ColetaUpdateComponent,
     LoginComponent,
+    RelatorioProducaoDiariaComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,8 @@ import { MatSnackBar } from '@angular/material/snack-bar'; // import do MatSnack
 import { ProducaoLeiteMensalDTO } from '../models/ProducaoLeiteMensalDTO';
 import { TaxaOcupacaoTanqueDTO } from '../models/TaxaOcupacaoTanqueDTO';
 import { ProducaoLeiteDiarioDTO } from '../models/ProducaoLeiteDiarioDTO';
+import { RelatorioProducaoDiariaDTO } from '../models/RelatorioProducaoDiariaDTO';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -82,6 +84,20 @@ export class OrdenhaService {
     }
     return this.http.get<Ordenha[]>(`${API_CONFIG.baseUrl}/agromilk/ordenha`, { params: params });
   }
+
+  obterRelatorioProducaoDiaria(dataInicial: any, dataFinal: any): Observable<RelatorioProducaoDiariaDTO> {
+    const params = {
+      dataInicial,
+      dataFinal
+    };
+  
+    return this.http.get<RelatorioProducaoDiariaDTO>(`${API_CONFIG.baseUrl}/agromilk/ordenha/relatorio-producao-diaria`, {
+      params
+    });
+  }
+  
+  
+  
   
   showMessage(msg: string): void {
     this.snackBar.open(msg, '', {

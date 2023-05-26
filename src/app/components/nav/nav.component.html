@@ -38,10 +38,17 @@
           </mat-list-item>          
         </mat-nav-list>
       </mat-expansion-panel>
-      <mat-list-item routerLink="/relatorios" routerLinkActive="active">
-        <mat-icon>description</mat-icon>
-        <span>Relatórios</span>
-      </mat-list-item>
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-icon>description</mat-icon>
+            <span>Relatórios</span>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <mat-list-item routerLink="/relatorioDiario" routerLinkActive="active" class="submenu-item">
+              <span>Produção diaria</span>
+            </mat-list-item>
+          </mat-nav-list>
+      </mat-expansion-panel>
       <mat-list-item (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
