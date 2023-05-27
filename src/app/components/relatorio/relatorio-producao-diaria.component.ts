@@ -32,6 +32,7 @@ export class RelatorioProducaoDiariaComponent implements OnInit {
   gerarRelatorio(): void {
     const dataInicial = this.relatorioForm.value.dataInicial;
     const dataFinal = this.relatorioForm.value.dataFinal;
+    
 
     const dataInicialFormatada = formatDate(dataInicial, 'dd/MM/yyyy', 'en-US');
     const dataFinalFormatada = formatDate(dataFinal, 'dd/MM/yyyy', 'en-US');
@@ -63,214 +64,202 @@ export class RelatorioProducaoDiariaComponent implements OnInit {
     const mediaProducaoPorOrdenhas = producaoTotal / quantidadeOrdenhasDiarias;
   
     const docDefinition = {
-        content: [
-          // Título do relatório
-          {
-            text: 'Relatório de Produção Diária',
-            style: 'header',
-            alignment: 'center',
-            margin: [0, 0, 0, 20] // Aumentar o espaçamento após o título
-          },
-          // Dados do relatório
-          {
-            table: {
-              widths: ['*', '*'],
-              body: [
-                [
-                  {
-                    text: 'Data Inicial:',
-                    style: 'label',
-                    alignment: 'right'
-                  },
-                  {
-                    text: relatorio.dataInicial,
-                    style: 'value',
-                    alignment: 'left'
-                  }
-                ],
-                [
-                  {
-                    text: 'Data Final:',
-                    style: 'label',
-                    alignment: 'right'
-                  },
-                  {
-                    text: relatorio.dataFinal,
-                    style: 'value',
-                    alignment: 'left'
-                  }
-                ]
+      content: [
+        // Título do relatório
+        {
+          text: 'Relatório de Produção',
+          style: 'header',
+          alignment: 'center',
+          margin: [0, 0, 0, 20] // Aumentar o espaçamento após o título
+        },
+        // Dados do relatório
+        {
+          table: {
+            widths: ['*', '*'],
+            body: [
+              [
+                {
+                  text: 'Período:',
+                  style: 'label',
+                  alignment: 'right'
+                },
+                {
+                  text: `${relatorio.dataInicial} até ${relatorio.dataFinal}`,
+                  style: 'value',
+                  alignment: 'left'
+                }
               ]
-            },
-            margin: [0, 0, 0, 20] // Aumentar o espaçamento após a tabela
+            ]
           },
-          // Tabela com os dados de produção
-          {
-            table: {
-              headerRows: 1,
-              widths: ['auto', 'auto', 'auto', 'auto'],
-              body: [
-                // Cabeçalho da tabela
-                [
-                  {
-                    text: 'Data',
-                    style: 'tableHeader',
-                    fillColor: '#f2f2f2', // Cor de fundo do cabeçalho
-                    alignment: 'center'
-                  },
-                  {
-                    text: 'Produção Diária',
-                    style: 'tableHeader',
-                    fillColor: '#f2f2f2', // Cor de fundo do cabeçalho
-                    alignment: 'center'
-                  },
-                  {
-                    text: 'Quantidade de Ordenhas',
-                    style: 'tableHeader',
-                    fillColor: '#f2f2f2', // Cor de fundo do cabeçalho
-                    alignment: 'center'
-                  },
-                  {
-                    text: 'Média Diária',
-                    style: 'tableHeader',
-                    fillColor: '#f2f2f2', // Cor de fundo do cabeçalho
-                    alignment: 'center'
-                  }
-                ],
-                // Linhas da tabela
-                ...relatorio.producaoDiaria.map((dado) => [
-                  { text: dado.dataDia, alignment: 'center' },
-                  { text: dado.somaProducaoLeite, alignment: 'center' },
-                  { text: dado.quantidadeOrdenhas, alignment: 'center' },
-                  { text: (dado.somaProducaoLeite / dado.quantidadeOrdenhas).toFixed(2), alignment: 'center' }
-                ])
+          margin: [0, 0, 0, 20] // Aumentar o espaçamento após a tabela
+        },
+        // Tabela com os dados de produção
+        {
+          table: {
+            headerRows: 1,
+            widths: ['*', '*', '*', '*'],
+            body: [
+              // Cabeçalho da tabela
+              [
+                {
+                  text: 'Data',
+                  style: 'tableHeader',
+                  fillColor: '#f2f2f2', // Cor de fundo do cabeçalho
+                  alignment: 'center',
+                },
+                {
+                  text: 'Produção Diária',
+                  style: 'tableHeader',
+                  fillColor: '#f2f2f2', // Cor de fundo do cabeçalho
+                  alignment: 'center',
+                },
+                {
+                  text: 'Média Diária',
+                  style: 'tableHeader',
+                  fillColor: '#f2f2f2', // Cor de fundo do cabeçalho
+                  alignment: 'center',
+                },
+                {
+                  text: 'Quantidade de Ordenhas',
+                  style: 'tableHeader',
+                  fillColor: '#f2f2f2', // Cor de fundo do cabeçalho
+                  alignment: 'center',
+                },
+              ],
+              // Linhas da tabela
+              ...relatorio.producaoDiaria.map((dado) => [
+                { text: dado.dataDia, alignment: 'center' },
+                { text: `${dado.somaProducaoLeite} litros`, alignment: 'center' },
+                { text: `${(dado.somaProducaoLeite / dado.quantidadeOrdenhas).toFixed(2)} litros`, alignment: 'center' }, 
+                { text: dado.quantidadeOrdenhas, alignment: 'center' }, 
+              ])
+            ]
+          },
+          margin: [0, 0, 0, 20] // Aumentar o espaçamento após a tabela
+        },
+        {
+          table: {
+            widths: ['50%', '50%'],
+            body: [
+              [
+                {
+                  text: 'Produção Total ',
+                  style: 'subheader',
+                  alignment: 'center',
+                  margin: [5, 5, 5, 5],
+                  fillColor: '#f2f2f2' // Cor de fundo do quadro
+                },
+                {
+                  text: `${producaoTotal} litros`,
+                  style: 'value',
+                  alignment: 'center'
+                }
               ]
-            },
-            margin: [0, 0, 0, 20] // Aumentar o espaçamento após a tabela
+            ]
           },
-          // Quadro com a quantidade de ordenhas diárias
-          {
-            table: {
-              widths: ['50%', '50%'],
-              body: [
-                [
-                  {
-                    text: 'Quantidade de Ordenhas Diárias',
-                    style: 'subheader',
-                    alignment: 'center',
-                    margin: [0, 5, 0, 5],
-                    fillColor: '#f2f2f2' // Cor de fundo do quadro
-                  },
-                  {
-                    text: quantidadeOrdenhasDiarias,
-                    style: 'value',
-                    alignment: 'center'
-                  }
-                ]
+          margin: [0, 0, 0, 20] // Aumentar o espaçamento após o quadro
+        },
+        // Quadro com a média de produção diária
+        {
+          table: {
+            widths: ['50%', '50%'],
+            body: [
+              [
+                {
+                  text: 'Média de Produção Diária',
+                  style: 'subheader',
+                  alignment: 'center',
+                  margin: [5, 5, 5, 5],
+                  fillColor: '#f2f2f2' // Cor de fundo do quadro
+                },
+                {
+                  text: `${mediaProducaoDiaria.toFixed(2)} litros`,
+                  style: 'value',
+                  alignment: 'center'
+                }
               ]
-            },
-            margin: [0, 0, 0, 10] // Aumentar o espaçamento após o quadro
+            ]
           },
-          // Quadro com a produção total
-          {
-            table: {
-              widths: ['50%', '50%'],
-              body: [
-                [
-                  {
-                    text: 'Produção Total',
-                    style: 'subheader',
-                    alignment: 'center',
-                    margin: [0, 5, 0, 5],
-                    fillColor: '#f2f2f2' // Cor de fundo do quadro
+          margin: [0, 0, 0, 20] // Aumentar o espaçamento após o quadro
+        },
+                // Quadro com a quantidade de ordenhas diárias
+                {
+                  table: {
+                    widths: ['50%', '50%'],
+                    body: [
+                      [
+                        {
+                          text: 'Total de ordenhas',
+                          style: 'subheader',
+                          alignment: 'center',
+                          margin: [5, 5, 5, 5],
+                          fillColor: '#f2f2f2' // Cor de fundo do quadro
+                        },
+                        {
+                          text: `${quantidadeOrdenhasDiarias} ordenhas`,
+                          style: 'value',
+                          alignment: 'center'
+                        }
+                      ]
+                    ]
                   },
-                  {
-                    text: producaoTotal,
-                    style: 'value',
-                    alignment: 'center'
-                  }
-                ]
+                  margin: [0, 0, 0, 20] // Aumentar o espaçamento após o quadro
+                },
+        // Quadro com a média de produção por ordenhas
+        {
+          table: {
+            widths: ['50%', '50%'],
+            body: [
+              [
+                {
+                  text: 'Média de Produção por Ordenhas',
+                  style: 'subheader',
+                  alignment: 'center',
+                  margin: [5, 5, 5, 5],
+                  fillColor: '#f2f2f2' // Cor de fundo do quadro
+                },
+                {
+                  text: `${mediaProducaoPorOrdenhas.toFixed(2)} litros`,
+                  style: 'value',
+                  alignment: 'center'
+                }
               ]
-            },
-            margin: [0, 0, 0, 20] // Aumentar o espaçamento após o quadro
+            ]
           },
-          // Quadro com a média de produção diária
-          {
-            table: {
-              widths: ['50%', '50%'],
-              body: [
-                [
-                  {
-                    text: 'Média de Produção Diária',
-                    style: 'subheader',
-                    alignment: 'center',
-                    margin: [0, 5, 0, 5],
-                    fillColor: '#f2f2f2' // Cor de fundo do quadro
-                  },
-                  {
-                    text: mediaProducaoDiaria.toFixed(2),
-                    style: 'value',
-                    alignment: 'center'
-                  }
-                ]
-              ]
-            },
-            margin: [0, 0, 0, 10] // Aumentar o espaçamento após o quadro
-          },
-          // Quadro com a média de produção por ordenhas
-          {
-            table: {
-              widths: ['50%', '50%'],
-              body: [
-                [
-                  {
-                    text: 'Média de Produção por Ordenhas',
-                    style: 'subheader',
-                    alignment: 'center',
-                    margin: [0, 5, 0, 5],
-                    fillColor: '#f2f2f2' // Cor de fundo do quadro
-                  },
-                  {
-                    text: mediaProducaoPorOrdenhas.toFixed(2),
-                    style: 'value',
-                    alignment: 'center'
-                  }
-                ]
-              ]
-            },
-            margin: [0, 0, 0, 20] // Aumentar o espaçamento após o quadro
-          }
-        ],
-        styles: {
-          header: {
-            fontSize: 18,
-            bold: true
-          },
-          subheader: {
-            fontSize: 14,
-            bold: true
-          },
-          tableHeader: {
-            fontSize: 12,
-            bold: true,
-            fillColor: '#cccccc', // Cor de fundo do cabeçalho
-            margin: [0, 5, 0, 5] // Espaçamento interno do cabeçalho
-          },
-          label: {
-            fontSize: 12,
-            bold: true,
-            alignment: 'right'
-          },
-          value: {
-            fontSize: 12,
-            alignment: 'center'
-          }
+          margin: [0, 0, 0, 20] // Aumentar o espaçamento após o quadro
         }
-      };
-      
-      pdfMake.createPdf(docDefinition).download('relatorio_producao_diaria.pdf');
-      
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true
+        },
+        subheader: {
+          fontSize: 14,
+          bold: true
+        },
+        tableHeader: {
+          fontSize: 12,
+          bold: true,
+          fillColor: '#cccccc', // Cor de fundo do cabeçalho
+          margin: [5, 5, 5, 5] // Espaçamento interno do cabeçalho
+        },
+        label: {
+          fontSize: 12,
+          bold: true,
+          alignment: 'right'
+        },
+        value: {
+          fontSize: 12,
+          alignment: 'center'
+        }
+      }
+    };
+  
+    pdfMake.createPdf(docDefinition).download('relatorio_producao_diaria.pdf');
   }
+  
+  
   
   
   
