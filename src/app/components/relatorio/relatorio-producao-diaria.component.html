@@ -5,13 +5,13 @@
     <mat-card-content>
       <form [formGroup]="relatorioForm" (ngSubmit)="false" class="report-form">
         <div class="form-row">
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field class="full-width date-picker-container" appearance="outline">
             <input matInput [matDatepicker]="picker1" placeholder="Data Inicial" formControlName="dataInicial">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
   
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field class="full-width date-picker-container" appearance="outline">
             <input matInput [matDatepicker]="picker2" placeholder="Data Final" formControlName="dataFinal">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>

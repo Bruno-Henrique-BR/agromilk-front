@@ -29,6 +29,14 @@ form {
     flex-wrap: wrap;
     justify-content: space-between;
   }
+  .date-picker-container {
+    margin-right: 10px;
+  }
+  
+  .date-picker-container:last-child {
+    margin-right: 0;
+    margin-left: 10px;
+  }
   
   .form-field {
     width: calc(50% - 10px);
