@@ -1,7 +1,11 @@
 <mat-drawer-container class="container">
   <mat-drawer #drawer class="sidenav" mode="side" opened="true" fixedTopGap="64">
-    <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
+      <div class="header">
+        <div class="logo">
+          <span>Logo</span>
+        </div>
+      </div>
       <mat-list-item routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <mat-icon>home</mat-icon>
         <span>Home</span>
@@ -31,7 +35,7 @@
             <span>Laticínio</span>
           </mat-list-item> 
           <mat-list-item routerLink="/funcionario" routerLinkActive="active" class="submenu-item">
-            <span>Funcionario</span>
+            <span>Funcionário</span>
           </mat-list-item> 
           <mat-list-item routerLink="/coleta" routerLinkActive="active" class="submenu-item">
             <span>Coleta de leite</span>
@@ -39,30 +43,27 @@
         </mat-nav-list>
       </mat-expansion-panel>
       <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-icon>description</mat-icon>
-            <span>Relatórios</span>
-          </mat-expansion-panel-header>
-          <mat-nav-list>
-            <mat-list-item routerLink="/relatorioDiario" routerLinkActive="active" class="submenu-item">
-              <span>Produção diaria</span>
-            </mat-list-item>
-          </mat-nav-list>
+        <mat-expansion-panel-header>
+          <mat-icon>description</mat-icon>
+          <span>Relatórios</span>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <mat-list-item routerLink="/relatorioDiario" routerLinkActive="active" class="submenu-item">
+            <span>Produção diária</span>
+          </mat-list-item>
+        </mat-nav-list>
       </mat-expansion-panel>
       <mat-list-item (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
-      </mat-list-item>
+      </mat-list-item>    
     </mat-nav-list>
   </mat-drawer>
 
-  <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button (click)="drawer.toggle()">
+  <mat-drawer-content>
+    <div class="hamburger-icon" (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
-    </button>
-  </mat-toolbar>
-
-  <main class="content">
+    </div>
     <router-outlet></router-outlet>
-  </main>
+  </mat-drawer-content>
 </mat-drawer-container>

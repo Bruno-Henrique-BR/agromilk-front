@@ -22,8 +22,14 @@
   color: #fff;
 }
 
+.mat-list-base {
+  padding-top: 1px;
+  display: block;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .mat-list-base .mat-list-item {
-  color: rgb(243 237 237 / 87%);
+  color: rgb(255 255 255 / 87%);
 }
 
 .sidenav a {
@@ -41,7 +47,8 @@
 
 .mat-expansion-panel {
   background: #4e9f3496;
-  color: rgb(255 240 240 / 87%);
+  color: rgba(255, 240, 240, 0.87);
+  margin-bottom: 3px;
 }
 
 .sidenav .mat-list-item:hover {
@@ -52,31 +59,9 @@
   background-color: #164910de;
 }
 
-.mat-toolbar.mat-primary {
-  background: #31662c;
-  color: #fff;
-}
-
-.toolbar {
-  position: fixed;
-  z-index: 2;
-  background-color: #6A5ACD;
-  color: #fff;
-}
-
-.toolbar span {
-  margin-left: 8px;
-}
-
-.logo-image {
-  max-height: 40px;
-  width: auto;
-  margin-left: 16px;
-}
-
 .content {
   padding: 16px;
-  margin-top: 64px;
+  margin-top: 0;
 }
 
 .mat-expansion-panel-header {
@@ -93,20 +78,68 @@
   margin-left: 8px;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: #fff;
+  height: 64px;
+  padding: 0 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.hamburger-icon {
+  cursor: pointer;
+  background-color: transparent;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.hamburger-icon mat-icon {
+  font-size: 24px;
+  color: #000;
+}
+
+.hamburger-icon:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.hamburger-icon.active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 767px) {
+  .container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
   .sidenav {
-    width: 100%;
+    flex: 0 0 100px;
   }
-  
-  .toolbar {
-    width: 100%;
+
+  .submenu-item {
+    display: none;
   }
-  
-  .logo-image {
-    margin-left: 8px;
+
+  .hamburger-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  
-  .content {
-    margin-top: 56px;
+
+  .hamburger-icon mat-icon {
+    font-size: 32px;
+  }
+
+  .mat-expansion-panel-header mat-icon {
+    font-size: 20px;
   }
 }
