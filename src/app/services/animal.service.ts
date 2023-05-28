@@ -71,11 +71,18 @@ export class AnimalService {
   getAnimalSeca(): Observable<number> {
     return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/qtsAnimalSeca`);
   }
+  
+  getAnimalGestantes(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/qtsAnimalGestantes`);
+  }
   getPorcentagemLactantes(): Observable<number> {
     return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/porcentagemLactantes`);
   }
   getPorcentagemSecas(): Observable<number> {
     return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/porcentagemSecas`);
+  }
+  getPorcentagemGestantes(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/animal/porcentagemGestantes`);
   }
   getAnimais(): Observable<Animal[]> {
     const params = new HttpParams().set('sort', 'idAnimal'); // Add the sort parameter with the desired field to sort by

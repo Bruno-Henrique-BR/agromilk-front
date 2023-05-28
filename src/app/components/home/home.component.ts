@@ -54,10 +54,12 @@ export class HomeComponent implements OnInit {
   qtsAnimaisSeca: number;
   porcentagemLactacao: number;
   porcentagemSeca: number;
+  porcentagemGestantes: number;
   qtdTanque: number;
   qtdFuncionario: number;
   qtdLote: number;
   qtdTotalLeite: number;
+  qtsAnimaisGestantes: number;
 
   constructor(private animalService: AnimalService,
     private loteService: LoteService,
@@ -97,6 +99,12 @@ export class HomeComponent implements OnInit {
         
       }
     );
+    this.animalService.getAnimalGestantes().subscribe(
+      animal => {
+        this.qtsAnimaisGestantes = animal; // Atribuir diretamente o valor numérico retornado pela requisição
+        
+      }
+    );
     this.animalService.getPorcentagemLactantes().subscribe(
       animal => {
         this.porcentagemLactacao = animal;
@@ -106,6 +114,13 @@ export class HomeComponent implements OnInit {
     this.animalService.getPorcentagemSecas().subscribe(
       animal => {
         this.porcentagemSeca = animal; 
+        this.exibirGraficoPizza();      
+
+      }
+    );
+    this.animalService.getPorcentagemGestantes().subscribe(
+      animal => {
+        this.porcentagemGestantes = animal; 
         this.exibirGraficoPizza();      
 
       }
@@ -381,12 +396,12 @@ export class HomeComponent implements OnInit {
     });
   }
   exibirGraficoPizza() {
-    if (this.porcentagemLactacao !== undefined && this.porcentagemSeca !== undefined) {
+    if (this.porcentagemLactacao !== undefined && this.porcentagemSeca !== undefined && this.porcentagemGestantes !== undefined) {
       const data = {
-        labels: ['Lactação', 'Secas'],
+        labels: ['Lactação', 'Secas', 'Gestantes'],
         datasets: [{
-          data: [this.porcentagemLactacao, this.porcentagemSeca],
-          backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)']
+          data: [this.porcentagemLactacao, this.porcentagemSeca, this.porcentagemGestantes],
+          backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(124,252,0)']
         }]
       };
   
@@ -402,7 +417,7 @@ export class HomeComponent implements OnInit {
         },
         title: {
           display: true,
-          text: 'Distribuição de Porcentagem de Lactação e Secas',
+          text: 'Distribuição do rebanho',
           fontSize: 16,
           fontColor: '#333',
           padding: 20
