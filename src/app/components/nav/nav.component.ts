@@ -11,19 +11,27 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  
 
   constructor(
     private storage: StorageService, 
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.router.navigate(['home']);
+    this.showHamburgerIcon();
   }
 
   logout() {
     this.storage.setLocalUser(null);
     this.router.navigate(['login']);
   }
+
+  showHamburgerIcon() {
+    setTimeout(() => {
+      const hamburger = document.querySelector('.hamburger-icon');
+      hamburger.classList.remove('hidden');
+    }, 0);
+  }
+  
 }

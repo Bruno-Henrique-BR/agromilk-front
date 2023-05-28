@@ -3,7 +3,7 @@
     <mat-nav-list>
       <div class="header">
         <div class="logo">
-          <span>Logo</span>
+          <img src="assets/img/logo-branco.png" alt="Logo">
         </div>
       </div>
       <mat-list-item routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -61,9 +61,9 @@
   </mat-drawer>
 
   <mat-drawer-content>
-    <div class="hamburger-icon" (click)="drawer.toggle()">
+    <div class="hamburger-icon hidden" (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
-    </div>
+    </div>    
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

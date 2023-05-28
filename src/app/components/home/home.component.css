@@ -17,11 +17,11 @@
   margin-top: 30px;
 }
 
-
 .filter-container {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 20px;
+  margin-right: 24px;
 }
 
 .graph-container {
@@ -51,7 +51,6 @@
   float: left;
 }
 
-
 .chart-container {
   display: flex;
   flex-wrap: wrap;
@@ -70,7 +69,6 @@
   border-top-right-radius: 8px;
 }
 
-
 #graficoPizza {
   width: 100%;
   height: 300px;
@@ -84,7 +82,6 @@
 .card-body {
   padding: 20px;
 }
-
 
 .card-content {
   padding: 20px;
@@ -101,6 +98,7 @@
 .float-right {
   float: right;
 }
+
 .dashboard-card {
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -112,11 +110,13 @@
   align-items: center;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .dashboard-card:hover {
   background-color: #f2f2f2;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
+
 .dashboard-card-value {
   font-size: 28px;
   font-weight: bold;
@@ -133,27 +133,6 @@
   font-size: 16px;
 }
 
-
-.graph-card {
-  flex: 1;
-  max-width: 100%;
-}
-
-.chart-canvas {
-  width: 100%;
-  height: 100%;
-}
-
-.filter-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-  margin-right: 24px;
-}
-
-
-
-
 .table-container {
   margin-top: 40px;
 }
@@ -166,7 +145,6 @@
   margin-left: 10px;
   margin-right: 10px;
 }
-
 
 table {
   width: 100%;
@@ -188,9 +166,52 @@ tbody tr:last-child td {
   border-bottom: none;
 }
 
-@media screen and (max-width: 768px) {
-  .chart-card {
-    flex: 100%;
+@media screen and (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cardPizza {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-container {
+    flex-direction: column;
+  }
+
+  .filter-container {
+    justify-content: flex-start;
     margin-bottom: 10px;
+  }
+
+  .graph-container {
+    align-items: flex-start;
+  }
+
+  .cardPizza {
+    margin: 10px;
+  }
+
+  .chart-card {
+    margin: 10px;
+    flex: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    margin: 10px;
   }
 }
