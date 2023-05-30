@@ -1,75 +1,90 @@
-.container {
-    width: 80%;
-    margin: auto;
-    padding: 5%;
-    border-radius: .2rem;
-    background: antiquewhite;
+.card-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background-color: #f4f4f4;
+ }
  
+ .card {
+   width: 80%;
+   height: auto;
+   padding: 20px;
+   border-radius: 4px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   background-color: #ffffff;
  }
  
  .fullWidth {
-    width: 80%;
-    
+   width: 100%;
  }
  
  .status-prioridade {
-    display: flex;
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 1rem;
  }
+ 
  .status-prioridade mat-form-field {
-    width: auto;
-    padding: 10px;
+   flex: 1;
+   padding: 10px;
  }
  
- .lactacao {
-    display: flex;
-    width: auto;
-    padding: 10px;
+ .animal-comprado {
+   display: flex;
+   padding: 10px;
  }
  
- 
- .raca {
-    width: 35%;
- }
- .lote {
-    width: 35%;
- }
- .cor {
-    width: 35%;
+ .data-compra-field {
+   flex: 1;
  }
  
- 
- h1, p {
-    text-align: center;
+ .data-nascimento-field {
+   flex: 1;
  }
  
- img {
-    height: 12rem;
-    margin: auto;
+ .lote-field {
+   flex: 1;
  }
  
- .section {
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
+ .raca-field {
+   flex: 1;
  }
  
  button {
-    margin-top: .5rem;
+   margin-top: 0.5rem;
  }
  
- p {
-    margin-top: 4rem;
-    opacity: .5;
+ button:first-child {
+   margin-right: 1rem;
  }
- .criar {
-    float: left;
+ 
+ .error-snackbar {
+   background-color: red;
+   color: white;
+   font-weight: bold;
  }
- .voltar {
-    float: right;
+ 
+ .error-snackbar .mat-simple-snackbar-action {
+   color: white;
  }
+ 
  .form {
-    width: auto;
+   width: auto;
  }
+ 
  mat-icon {
-    opacity: .8;
+   opacity: 0.8;
  }
+ 
+ /* Reduzindo o tamanho do campo Código */
+ .status-prioridade mat-form-field:first-child {
+   flex: 0.5;
+ }
+ 
+ @media (max-width: 767px) {
+   .card {
+     width: 90%;
+   }
+ }
+ 
