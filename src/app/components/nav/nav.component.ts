@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ThemeService } from 'src/app/theme.service';
 import { Observable } from 'rxjs';
 import { StorageService } from 'src/app/services/storage.service';
+import PerfectScrollbar from 'perfect-scrollbar';
 
 @Component({
   selector: 'app-nav',
@@ -20,6 +21,10 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.router.navigate(['home']);
     this.showHamburgerIcon();
+    setTimeout(() => {
+      const sidenav = document.querySelector('.scrollable-sidenav');
+      const ps = new PerfectScrollbar(sidenav);
+    }, 0);
   }
 
   logout() {

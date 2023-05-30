@@ -16,6 +16,13 @@ import * as moment from 'moment';
   styleUrls: ['./animal-update.component.css']
 })
 export class AnimalUpdateComponent implements OnInit {
+  animalComprado: boolean = false;
+
+  toggleDataCompra(): void {
+    if (!this.animalComprado) {
+      this.animal.dataCompra = null; // Limpa a data de compra quando o checkbox é desmarcado
+    }
+  }
 
   animal: Animal = {
     idAnimal: '',
@@ -54,6 +61,7 @@ export class AnimalUpdateComponent implements OnInit {
   idRaca: FormControl = new FormControl(null, [Validators.required]);
   dataNascimento: FormControl = new FormControl(null, [Validators.required]);
   dataCompra: FormControl = new FormControl(null, [Validators.required]);
+  
   
 
   constructor(
