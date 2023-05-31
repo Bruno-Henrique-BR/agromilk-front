@@ -11,7 +11,11 @@ import { TanqueService } from 'src/app/services/tanque.service';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import jsPDF from 'jspdf';
+import * as moment from 'moment';
+import { formatDate } from '@angular/common';
+
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
 @Component({
   selector: 'app-ordenha-create',
   templateUrl: './ordenha-create.component.html',
@@ -23,7 +27,6 @@ export class OrdenhaCreateComponent implements OnInit {
   ordenhas: Ordenha[] = [];
   ordenha: Ordenha = {
     idOrdenha: '',
-    data: null,
     primeiraOrdenha: null,
     segundaOrdenha: null,
     idAnimal: null,
@@ -32,6 +35,7 @@ export class OrdenhaCreateComponent implements OnInit {
     tanque: null,
     apelidoAnimal: '',
     modeloTanque: undefined,
+    data: undefined
   };
 
   constructor(
@@ -73,9 +77,16 @@ export class OrdenhaCreateComponent implements OnInit {
 
   cadastrarOrdenha(): void {
     this.animais.forEach((animal) => {
+      let dataOrdenha: Date | null = null; // Define como null para indicar que é para salvar a data atual
+  
+      if (typeof animal.data === 'string' && animal.data.trim() !== '') {
+        const formattedDate = moment(animal.data, 'DD/MM/YYYY').toDate();
+        dataOrdenha = formattedDate;
+      }
+  
       const ordenha: Ordenha = {
         idOrdenha: '',
-        data: null,
+        data: dataOrdenha ? moment(dataOrdenha).format('DD/MM/YYYY') : null,
         primeiraOrdenha: animal.primeiraOrdenha,
         segundaOrdenha: animal.segundaOrdenha,
         idAnimal: animal.idAnimal,
@@ -86,19 +97,24 @@ export class OrdenhaCreateComponent implements OnInit {
         modeloTanque: undefined
       };
   
+      // Converter a data novamente para o formato "DD/MM/YYYY" antes de enviar para o backend
+      ordenha.data = ordenha.data ? moment(ordenha.data, 'DD/MM/YYYY').format('DD/MM/YYYY') : null;
+  
       this.ordenhaService.cadastrarOrdenha(ordenha).subscribe(
         (response) => {
           this.toast.success('Ordenhas cadastradas com sucesso', 'Cadastro');
-          this.router.navigate(['ordenha']);
-          console.log('Ordenha cadastrada com sucesso:', response);
-          // Faça algo com a resposta, se necessário
+          this.router.navigate(['../'], { relativeTo: this.route });
         },
         (error) => {
-          console.log('Erro ao cadastrar ordenha:', error);
-        }       
+          console.log(error);
+          this.toast.error('Erro ao cadastrar as ordenhas', 'Cadastro');
+        }
       );
     });
   }
+  
+  
+  
   limitarQuantidade(event: any) {
     const input = event.target as HTMLInputElement;
     const regex = /^[0-9]{0,2}(\.[0-9]{0,2})?$/;

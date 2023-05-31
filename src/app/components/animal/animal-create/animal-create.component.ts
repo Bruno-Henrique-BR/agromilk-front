@@ -42,7 +42,8 @@ export class AnimalCreateComponent implements OnInit {
     media: '',
     primeiraOrdenha: 0,
     segundaOrdenha: 0,
-    idTanque: 0
+    idTanque: 0,
+    data: ''
   }
 
   public mask = {

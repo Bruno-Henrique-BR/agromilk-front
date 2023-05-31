@@ -18,16 +18,17 @@ import * as moment from 'moment';
 export class OrdenhaUpdateComponent implements OnInit {
 
   ordenha: Ordenha = {
-      idOrdenha: '',
-      primeiraOrdenha: 0,
-      segundaOrdenha: 0,
-      animal: undefined,
-      tanque: undefined,
-      data: '',
-      idAnimal: 0,
-      idTanque: 0,
-      apelidoAnimal: '',
-      modeloTanque: undefined
+    idOrdenha: '',
+    primeiraOrdenha: 0,
+    segundaOrdenha: 0,
+    animal: undefined,
+    tanque: undefined,
+
+    idAnimal: 0,
+    idTanque: 0,
+    apelidoAnimal: '',
+    modeloTanque: undefined,
+    data: ''
   }
 
   animais: Animal[] = []
@@ -79,25 +80,27 @@ export class OrdenhaUpdateComponent implements OnInit {
     })
   }
 
-  update(): void {
-    this.ordenha.idAnimal = this.idAnimal.value;
-    this.ordenha.idTanque = this.idTanque.value;
-    this.ordenha.data = this.data.value;
-    this.ordenha.data = moment(this.ordenha.data).format('DD/MM/YYYY');
-    
-    this.service.atualizarOrdenha(this.ordenha).subscribe(() => {
-      this.toast.success('Ordenha atualizada com sucesso', 'Update');
-      this.router.navigate(['ordenha'])
-    }, ex => {
-      if(ex.error.errors) {
-        ex.error.errors.forEach(element => {
-          this.toast.error(element.message);
-        });
-      } else {
-        this.toast.error(ex.error.message);
-      }
-    })
-  }
+update(): void {
+  this.ordenha.idAnimal = this.idAnimal.value;
+  this.ordenha.idTanque = this.idTanque.value;
+  
+  const dataOrdenha = moment(this.data.value, 'DD/MM/YYYY').toDate(); // Convertendo para o tipo Date
+  this.ordenha.data = dataOrdenha.toISOString(); // Convertendo para o formato esperado pelo backend
+  
+  this.service.atualizarOrdenha(this.ordenha).subscribe(() => {
+    this.toast.success('Ordenha atualizada com sucesso', 'Update');
+    this.router.navigate(['ordenha'])
+  }, ex => {
+    if(ex.error.errors) {
+      ex.error.errors.forEach(element => {
+        this.toast.error(element.message);
+      });
+    } else {
+      this.toast.error(ex.error.message);
+    }
+  })
+}
+
 
   validaCampos(): boolean {
     return this.data.valid && this.primeiraOrdenha.valid && this.idAnimal.valid && this.idTanque.valid;

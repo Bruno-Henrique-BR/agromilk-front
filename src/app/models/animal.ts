@@ -11,6 +11,7 @@ export interface Animal {
    apelido?:   string;
    dataNascimento:   string;
    dataCompra?: string;
+   data: string;
    cor:      string;
    idRaca: any;
    idLote: any;

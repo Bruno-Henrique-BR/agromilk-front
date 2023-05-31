@@ -26,7 +26,7 @@ export class LoteAnimalComponent implements OnInit {
   nomeLote:            string;
   lactacao:     boolean;
   media: string;
-  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'racaNome', 'loteNome', 'lactacao'];
+  displayedColumns: string[] = ['idAnimal', 'codigo', 'apelido', 'racaNome', 'loteNome'];
   dataSource = new MatTableDataSource<Animal>(this.animais);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

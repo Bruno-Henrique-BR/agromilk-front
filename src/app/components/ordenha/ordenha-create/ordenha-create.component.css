@@ -49,7 +49,9 @@ tr:nth-child(even) {
 .small-input {
   width: 80px; /* Define a largura dos inputs pequenos como 80px */
 }
-
+.small-inpute {
+  width: 150px; /* Define a largura dos inputs pequenos como 80px */
+}
 button {
   margin-top: 0.5rem; /* Adiciona uma margem superior de 0.5rem (8px) nos botões */
 }

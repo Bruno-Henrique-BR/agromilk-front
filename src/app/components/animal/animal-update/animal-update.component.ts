@@ -43,7 +43,8 @@ export class AnimalUpdateComponent implements OnInit {
     idRaca: undefined,
     idLote: undefined,
     nomeRaca: '',
-    nomeLote: ''
+    nomeLote: '',
+    data: ''
   };
   
 

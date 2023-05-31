@@ -49,12 +49,6 @@
             <td mat-cell *matCellDef="let animal"> {{animal.loteNome}} </td>
          </ng-container>
 
-         <ng-container matColumnDef="lactacao">
-            <th mat-header-cell *matHeaderCellDef> Lactação </th>
-            <td mat-cell *matCellDef="let element"> {{ element.lactacao ? 'Lactante' : 'Não lactante' }} </td>
-         </ng-container>
-
-
          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
