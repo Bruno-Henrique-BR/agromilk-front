@@ -4,7 +4,7 @@
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
 }
 
@@ -54,6 +54,7 @@
 .chart-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .chart-card {
@@ -210,8 +211,22 @@ tbody tr:last-child td {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
 @media screen and (max-width: 480px) {
-  .card {
-    margin: 10px;
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  }
+
+  .chart-container {
+    flex-direction: column;
+  }
+
+  .chart-card {
+    margin: 10px 0;
   }
 }

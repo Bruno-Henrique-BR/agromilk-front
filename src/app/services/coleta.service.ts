@@ -36,6 +36,9 @@ export class ColetaService {
     excluir(idColeta: any): Observable<Coleta> {
         return this.http.delete<Coleta>(`${API_CONFIG.baseUrl}/agromilk/coleta/${idColeta}`);
     }
+    quantidadeDeColetas(): Observable<number> {
+        return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/coleta/coletas`);
+    }
 
     buscarColetasPorFiltro(tanque: string, data: string): Observable<Coleta[]> {
         return this.http.get<Coleta[]>(`${API_CONFIG.baseUrl}/agromilk/coleta?tanque=${tanque}&data=${data}`);

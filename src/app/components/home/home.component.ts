@@ -14,6 +14,8 @@ import { LoteService } from 'src/app/services/lote.service';
 import { OrdenhaService } from 'src/app/services/ordenha.service';
 import { TanqueService } from 'src/app/services/tanque.service';
 import { TaxaOcupacaoTanqueDTO } from 'src/app/models/TaxaOcupacaoTanqueDTO';
+import { ColetaService } from 'src/app/services/coleta.service';
+import { MovimentoService } from 'src/app/services/movimento.service';
 
 @Component({
   selector: 'app-home',
@@ -60,12 +62,18 @@ export class HomeComponent implements OnInit {
   qtdLote: number;
   qtdTotalLeite: number;
   qtsAnimaisGestantes: number;
+  qtsColetas: number;
+  qtsSecas: number;
+  qtsGestacao: number;
+  qtsLactacao: number;
 
   constructor(private animalService: AnimalService,
     private loteService: LoteService,
     private ordenhaService: OrdenhaService,
     private tanqueService: TanqueService,
     private funcionarioService: FuncionarioService,
+    private coletaService: ColetaService,
+    private movimentoService: MovimentoService,
     private http: HttpClient,
     ) { }
 
@@ -125,7 +133,30 @@ export class HomeComponent implements OnInit {
 
       }
     );
+    this.coletaService.quantidadeDeColetas().subscribe(
+      coleta => {
+        this.qtsColetas = coleta;
 
+    }
+    );
+    this.movimentoService.findQtsAnimaisLactantes().subscribe(
+      movimento => {
+        this.qtsLactacao = movimento;
+
+    }
+    );
+    this.movimentoService.findQtsAnimaisGestantes().subscribe(
+      movimento => {
+        this.qtsGestacao = movimento;
+
+    }
+    );
+    this.movimentoService.findQtsAnimaisSecas().subscribe(
+      movimento => {
+        this.qtsSecas = movimento;
+
+    }
+    );
     this.loteService.getQtsLote().subscribe(
       lote => {
         this.qtdLote = lote; // Atribuir diretamente o valor numérico retornado pela requisição

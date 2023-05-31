@@ -22,3 +22,48 @@
 button {
   margin-top: 20px;
 }
+
+/* Estilos Responsivos */
+
+@media screen and (max-width: 600px) {
+  /* Estilos para dispositivos com largura máxima de 600px, como celulares */
+  .form-row {
+    flex-direction: column;
+  }
+
+  .date-picker-container {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 959px) {
+  /* Estilos para dispositivos com largura mínima de 601px e máxima de 959px, como tablets */
+  .form-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .date-picker-container {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1439px) {
+  /* Estilos para dispositivos com largura mínima de 960px e máxima de 1439px, como notebooks */
+  .form-row {
+    flex-wrap: nowrap;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  /* Estilos para dispositivos com largura mínima de 1440px, como monitores ultrawide */
+  .form-row {
+    justify-content: flex-start;
+  }
+
+  .date-picker-container {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+}

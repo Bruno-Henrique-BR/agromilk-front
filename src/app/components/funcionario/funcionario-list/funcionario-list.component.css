@@ -1,6 +1,8 @@
 .container {
-  max-width: 960px;
+  max-width: 100%;
   margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .search-field {
@@ -26,6 +28,7 @@
 
 .mat-table {
   width: 100%;
+  overflow-x: auto;
 }
 
 th.mat-header-cell,
@@ -57,6 +60,7 @@ td.mat-cell {
 
 .delete-icon {
   color: #f44336;
+  cursor: pointer;
 }
 
 .mat-paginator {
@@ -103,5 +107,139 @@ td.mat-cell {
 @media (max-width: 767px) {
   .search-field {
     max-width: 100%;
+  }
+  
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .search-container {
+    margin-bottom: 8px;
+  }
+  
+  .action-container {
+    margin-top: 8px;
+  }
+  
+  .mat-table {
+    font-size: 12px;
+  }
+  
+  .custom-table th.mat-header-cell,
+  .custom-table td.mat-cell {
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 575px) {
+  .container {
+    padding: 8px;
+  }
+  
+  .header-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  
+  .search-container {
+    flex-basis: 100%;
+    margin-bottom: 8px;
+    margin-right: 0;
+  }
+  
+  .action-container {
+    flex-basis: 100%;
+    margin-top: 8px;
+  }
+  
+  .mat-table {
+    font-size: 11px;
+  }
+  
+  .custom-table th.mat-header-cell,
+  .custom-table td.mat-cell {
+    padding: 4px 8px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .container {
+    padding: 12px;
+  }
+  
+  .header-container {
+    margin-bottom: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* Ajustes para iPhone SE, XR e 8 */
+@media (device-width: 320px) and (device-height: 568px) { /* iPhone SE */
+  .container {
+    padding: 8px;
+  }
+
+  .mat-table {
+    font-size: 10px;
+  }
+
+  .custom-table th.mat-header-cell,
+  .custom-table td.mat-cell {
+    padding: 4px 8px;
+  }
+}
+
+@media (device-width: 414px) and (device-height: 896px) { /* iPhone XR, 11, 11 Pro, 11 Pro Max */
+  .container {
+    padding: 8px;
+  }
+
+  .mat-table {
+    font-size: 12px;
+  }
+
+  .custom-table th.mat-header-cell,
+  .custom-table td.mat-cell {
+    padding: 6px 12px;
+  }
+}
+
+@media (device-width: 375px) and (device-height: 667px) { /* iPhone 8 */
+  .container {
+    padding: 8px;
+  }
+
+  .mat-table {
+    font-size: 11px;
+  }
+
+  .custom-table th.mat-header-cell,
+  .custom-table td.mat-cell {
+    padding: 4px 8px;
   }
 }

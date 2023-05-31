@@ -3,7 +3,7 @@
     <mat-nav-list>
       <div class="header">
         <div class="logo">
-          <img src="assets/img/logo-branco.png" alt="Logo">
+          <img src="assets/img/logo-branco-01.png" alt="Logo">
         </div>
       </div>
       <mat-list-item routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -28,18 +28,26 @@
           <mat-list-item routerLink="/tanque" routerLinkActive="active" class="submenu-item">
             <span>Tanque</span>
           </mat-list-item>
-          <mat-list-item routerLink="/ordenha" routerLinkActive="active" class="submenu-item">
-            <span>Ordenha</span>
-          </mat-list-item>
-          <mat-list-item routerLink="/laticinio" routerLinkActive="active" class="submenu-item">
-            <span>Laticínio</span>
-          </mat-list-item> 
           <mat-list-item routerLink="/funcionario" routerLinkActive="active" class="submenu-item">
             <span>Funcionário</span>
           </mat-list-item> 
+          <mat-list-item routerLink="/laticinio" routerLinkActive="active" class="submenu-item">
+            <span>Laticínio</span>
+          </mat-list-item> 
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-icon>bar_chart</mat-icon>
+          <span>Controle leiteiro</span>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <mat-list-item routerLink="/ordenha" routerLinkActive="active" class="submenu-item">
+            <span>Ordenha</span>
+          </mat-list-item>
           <mat-list-item routerLink="/coleta" routerLinkActive="active" class="submenu-item">
             <span>Coleta de leite</span>
-          </mat-list-item>          
+          </mat-list-item>    
         </mat-nav-list>
       </mat-expansion-panel>
       <mat-expansion-panel>
@@ -66,4 +74,7 @@
     </div>    
     <router-outlet></router-outlet>
   </mat-drawer-content>
+  <footer class="footer">
+    This is the footer.
+  </footer>
 </mat-drawer-container>

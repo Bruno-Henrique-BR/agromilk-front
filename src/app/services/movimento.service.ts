@@ -15,4 +15,13 @@ export class MovimentoService {
   findByIdAnimal(idAnimal: number): Observable<Movimento[]> {
     return this.http.get<Movimento[]>(`${API_CONFIG.baseUrl}/agromilk/movimento/${idAnimal}`);
   }
+  findQtsAnimaisLactantes(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/movimento/media-dias-lactacao`);
+  }
+  findQtsAnimaisSecas(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/movimento/media-dias-gestacao`);
+  }
+  findQtsAnimaisGestantes(): Observable<number> {
+    return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/movimento/media-dias-secas`);
+  }
 }
