@@ -125,21 +125,7 @@
   transform: scale(1.1);
 }
 
-.hamburger-icon {
-  cursor: pointer;
-  padding-left: 18px;
-  padding-top: 10px;
-  flex-shrink: 0;
-}
 
-.hidden {
-  display: none;
-}
-
-.hamburger-icon mat-icon {
-  font-size: 24px;
-  color: #000;
-}
 
 .scrollable-sidenav {
   overflow-y: auto;
@@ -158,6 +144,44 @@
 .scrollable-sidenav::-webkit-scrollbar-thumb {
   background-color: #31662c;
   border-radius: 4px;
+}
+
+.nome-usuario {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 16px;
+  background-color: #006400;
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+
+.hamburger-icon {
+  cursor: pointer;
+  position: absolute;
+  padding-left: 18px;
+  padding-top: 10px;
+  z-index: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+.nome-usuario-label {
+  margin-right: 16px;
+  color: #ffffff;
+}
+
+.hamburger-icon mat-icon {
+  font-size: 24px;
+  color: #ffffff;
 }
 
 
