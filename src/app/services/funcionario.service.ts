@@ -38,4 +38,7 @@ export class FuncionarioService {
   getQtsFuncionarios(): Observable<number> {
     return this.http.get<number>(`${API_CONFIG.baseUrl}/agromilk/funcionario/qtsFuncionario`);
   }
+  getUsuarioLogado(): Observable<string> {
+    return this.http.get<string>(`${API_CONFIG.baseUrl}/agromilk/funcionario/usuario-logado`);
+  }
 }

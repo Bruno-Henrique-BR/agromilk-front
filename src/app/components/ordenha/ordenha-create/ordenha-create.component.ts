@@ -77,16 +77,9 @@ export class OrdenhaCreateComponent implements OnInit {
 
   cadastrarOrdenha(): void {
     this.animais.forEach((animal) => {
-      let dataOrdenha: Date | null = null; // Define como null para indicar que é para salvar a data atual
-  
-      if (typeof animal.data === 'string' && animal.data.trim() !== '') {
-        const formattedDate = moment(animal.data, 'DD/MM/YYYY').toDate();
-        dataOrdenha = formattedDate;
-      }
-  
-      const ordenha: Ordenha = {
+      const ordenha: any = {
         idOrdenha: '',
-        data: dataOrdenha ? moment(dataOrdenha).format('DD/MM/YYYY') : null,
+        data: animal.data ? moment(animal.data, 'DD/MM/YYYY').format('DD/MM/YYYY') : null,
         primeiraOrdenha: animal.primeiraOrdenha,
         segundaOrdenha: animal.segundaOrdenha,
         idAnimal: animal.idAnimal,
@@ -96,9 +89,6 @@ export class OrdenhaCreateComponent implements OnInit {
         apelidoAnimal: '',
         modeloTanque: undefined
       };
-  
-      // Converter a data novamente para o formato "DD/MM/YYYY" antes de enviar para o backend
-      ordenha.data = ordenha.data ? moment(ordenha.data, 'DD/MM/YYYY').format('DD/MM/YYYY') : null;
   
       this.ordenhaService.cadastrarOrdenha(ordenha).subscribe(
         (response) => {
@@ -112,6 +102,10 @@ export class OrdenhaCreateComponent implements OnInit {
       );
     });
   }
+  
+  
+  
+  
   
   
   
