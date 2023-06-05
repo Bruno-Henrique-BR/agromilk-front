@@ -151,11 +151,11 @@
   align-items: center;
   justify-content: flex-end;
   padding-right: 16px;
-  background-color: #006400;
   color: #fff;
   font-size: 16px;
+  font-weight: bold;
   position: absolute;
-  top: 0;
+  top: 8px;
   left: 0;
   right: 0;
   z-index: 1;
@@ -164,26 +164,24 @@
 
 .hamburger-icon {
   cursor: pointer;
-  position: absolute;
   padding-left: 18px;
-  padding-top: 10px;
-  z-index: 1;
+  padding-top: 15px;
+  flex-shrink: 0;
 }
 
 .hidden {
   display: none;
 }
 
+.hamburger-icon mat-icon {
+  font-size: 28px;
+  color: #000;
+}
+
 .nome-usuario-label {
   margin-right: 16px;
-  color: #ffffff;
+  color: #080808;
 }
-
-.hamburger-icon mat-icon {
-  font-size: 24px;
-  color: #ffffff;
-}
-
 
 @media (max-width: 1199px) {
   .sidenav {

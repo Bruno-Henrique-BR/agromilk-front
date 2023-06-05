@@ -69,17 +69,15 @@
   </mat-drawer>
 
   <mat-drawer-content>
-    <mat-card class="nome-usuario">
-      <mat-card-content>
-        <mat-label class="nome-usuario-label">Olá,</mat-label>{{ usuarioLogado }}
-      </mat-card-content>
-    </mat-card>
-    <div class="hamburger-icon hidden" (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
-    </div>
+
+      <div class="hamburger-icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </div>
+      <div class="nome-usuario">
+        <mat-label class="nome-usuario-label">Olá, {{ usuarioLogado }}</mat-label>
+      </div>
     <router-outlet></router-outlet>
   </mat-drawer-content>
-  
   <footer class="footer">
     This is the footer.
   </footer>
