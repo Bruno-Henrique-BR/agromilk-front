@@ -129,7 +129,7 @@ export class RelatorioProducaoDiariaComponent implements OnInit {
               // Linhas da tabela
               ...relatorio.producaoDiaria.map((dado) => [
                 { text: dado.dataDia, alignment: 'center' },
-                { text: `${dado.somaProducaoLeite} litros`, alignment: 'center' },
+                { text: `${dado.somaProducaoLeite.toFixed(2)} litros`, alignment: 'center' },
                 { text: `${(dado.somaProducaoLeite / dado.quantidadeOrdenhas).toFixed(2)} litros`, alignment: 'center' }, 
                 { text: dado.quantidadeOrdenhas, alignment: 'center' }, 
               ])
@@ -150,7 +150,7 @@ export class RelatorioProducaoDiariaComponent implements OnInit {
                   fillColor: '#f2f2f2' // Cor de fundo do quadro
                 },
                 {
-                  text: `${producaoTotal} litros`,
+                  text: `${producaoTotal.toFixed(2)} litros`,
                   style: 'value',
                   alignment: 'center'
                 }
