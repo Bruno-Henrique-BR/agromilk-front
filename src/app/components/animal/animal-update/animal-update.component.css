@@ -1,90 +1,100 @@
 .card-container {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
-   background-color: #f4f4f4;
- }
- 
- .card {
-   width: 80%;
-   height: auto;
-   padding: 20px;
-   border-radius: 4px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   background-color: #ffffff;
- }
- 
- .fullWidth {
-   width: 100%;
- }
- 
- .status-prioridade {
-   display: flex;
-   justify-content: space-between;
-   margin-bottom: 1rem;
- }
- 
- .status-prioridade mat-form-field {
-   flex: 1;
-   padding: 10px;
- }
- 
- .animal-comprado {
-   display: flex;
-   padding: 10px;
- }
- 
- .data-compra-field {
-   flex: 1;
- }
- 
- .data-nascimento-field {
-   flex: 1;
- }
- 
- .lote-field {
-   flex: 1;
- }
- 
- .raca-field {
-   flex: 1;
- }
- 
- button {
-   margin-top: 0.5rem;
- }
- 
- button:first-child {
-   margin-right: 1rem;
- }
- 
- .error-snackbar {
-   background-color: red;
-   color: white;
-   font-weight: bold;
- }
- 
- .error-snackbar .mat-simple-snackbar-action {
-   color: white;
- }
- 
- .form {
-   width: auto;
- }
- 
- mat-icon {
-   opacity: 0.8;
- }
- 
- /* Reduzindo o tamanho do campo Código */
- .status-prioridade mat-form-field:first-child {
-   flex: 0.5;
- }
- 
- @media (max-width: 767px) {
-   .card {
-     width: 90%;
-   }
- }
- 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.card {
+  width: 80%;
+  height: auto;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.status-prioridade {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.status-prioridade mat-form-field {
+  flex: 1 1 45%;
+  padding: 10px;
+}
+
+.animal-comprado {
+  display: flex;
+  padding: 10px;
+}
+
+.data-compra-field {
+  flex: 1 1 100%;
+}
+
+.data-nascimento-field,
+.lote-field,
+.raca-field {
+  flex: 1 1 30%;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+button {
+  margin-top: 0.5rem;
+}
+
+button:first-child {
+  margin-right: 1rem;
+}
+
+.error-snackbar {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+.error-snackbar .mat-simple-snackbar-action {
+  color: white;
+}
+
+.form {
+  width: auto;
+}
+
+mat-icon {
+  opacity: 0.8;
+}
+
+/* Reduzindo o tamanho do campo Código */
+.status-prioridade mat-form-field:first-child {
+  flex: 0 1 15%;
+}
+
+@media (max-width: 991px) {
+  .status-prioridade mat-form-field,
+  .data-compra-field,
+  .data-nascimento-field,
+  .lote-field,
+  .raca-field {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 90%;
+  }
+}

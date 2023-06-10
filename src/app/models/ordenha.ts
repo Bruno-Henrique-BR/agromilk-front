@@ -10,7 +10,7 @@ export class Ordenha {
     idTanque: number;
     tanque: Tanque;
     animal: Animal; // Adiciona o objeto Animal aqui
-    apelidoAnimal: string;
+    apelidoAnimal: any;
     modeloTanque: any;
   
     constructor(idOrdenha?: number, data?: string, primeiraOrdenha?: number, segundaOrdenha?: number, idAnimal?: number, tanque?: Tanque, animal?: Animal) {

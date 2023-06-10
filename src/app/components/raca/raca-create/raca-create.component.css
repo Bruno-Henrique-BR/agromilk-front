@@ -19,36 +19,14 @@
   width: 100%;
 }
 
-.status-prioridade {
+.form {
+  width: auto;
+}
+
+.button-container {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.status-prioridade mat-form-field {
-  flex: 1;
-  padding: 10px;
-}
-
-.animal-comprado {
-  display: flex;
-  padding: 10px;
-}
-
-.data-compra-field {
-  flex: 1;
-}
-
-.data-nascimento-field {
-  flex: 1;
-}
-
-.lote-field {
-  flex: 1;
-}
-
-.raca-field {
-  flex: 1;
+  justify-content: flex-end;
+  margin-top: 1rem;
 }
 
 button {
@@ -59,31 +37,26 @@ button:first-child {
   margin-right: 1rem;
 }
 
-.error-snackbar {
-  background-color: red;
-  color: white;
-  font-weight: bold;
+@media (max-width: 1440px) {
+  .card {
+    width: 70%;
+  }
 }
 
-.error-snackbar .mat-simple-snackbar-action {
-  color: white;
+@media (max-width: 1200px) {
+  .card {
+    width: 80%;
+  }
 }
 
-.form {
-  width: auto;
-}
-
-mat-icon {
-  opacity: 0.8;
-}
-
-/* Reduzindo o tamanho do campo Código */
-.status-prioridade mat-form-field:first-child {
-  flex: 0.5;
+@media (max-width: 992px) {
+  .card {
+    width: 90%;
+  }
 }
 
 @media (max-width: 767px) {
   .card {
-    width: 90%;
+    width: 95%;
   }
 }

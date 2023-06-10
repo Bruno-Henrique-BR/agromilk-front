@@ -26,7 +26,7 @@ export class OrdenhaUpdateComponent implements OnInit {
 
     idAnimal: 0,
     idTanque: 0,
-    apelidoAnimal: '',
+    apelidoAnimal: undefined,
     modeloTanque: undefined,
     data: ''
   }
@@ -69,7 +69,7 @@ export class OrdenhaUpdateComponent implements OnInit {
   
 
   findAllAnimais(): void {
-    this.animalService.findAllLactantes().subscribe(resposta => {
+    this.animalService.findAll().subscribe(resposta => {
       this.animais = resposta;
     })
   }
@@ -84,9 +84,9 @@ update(): void {
   this.ordenha.idAnimal = this.idAnimal.value;
   this.ordenha.idTanque = this.idTanque.value;
   
-  const dataOrdenha = moment(this.data.value, 'DD/MM/YYYY').toDate(); // Convertendo para o tipo Date
-  this.ordenha.data = dataOrdenha.toISOString(); // Convertendo para o formato esperado pelo backend
-  
+  const dataOrdenha = moment(this.data.value, 'DD/MM/YYYY').format('DD/MM/YYYY'); // Convertendo para o tipo Date
+  this.ordenha.data = dataOrdenha.toString(); // Convertendo para o formato esperado pelo backend
+
   this.service.atualizarOrdenha(this.ordenha).subscribe(() => {
     this.toast.success('Ordenha atualizada com sucesso', 'Update');
     this.router.navigate(['ordenha'])

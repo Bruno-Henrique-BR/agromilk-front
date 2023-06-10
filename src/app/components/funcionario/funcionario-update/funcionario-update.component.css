@@ -1,47 +1,90 @@
-.container {
+.card-container {
    width: 80%;
    margin: auto;
    padding: 5%;
-   border-radius: .2rem;
-   background-color: #f4f4f4;
-}
-
-.fullWidth {
+ }
+ 
+ .card {
+   
+   padding: 20px;
+   border-radius: 4px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   background-color: #ffffff;
+ }
+ 
+ .fullWidth {
    width: 100%;
-}
-
-.halfWidth {
+ }
+ 
+ .halfWidth {
    width: 50%;
-}
-
-.status-prioridade {
+ }
+ 
+ .status-prioridade {
    display: flex;
    flex-wrap: wrap;
-}
-
-.status-prioridade mat-form-field {
+   margin-bottom: 1rem;
+ }
+ 
+ .status-prioridade mat-form-field {
    flex: 1;
    margin-right: 1rem;
    margin-bottom: 1rem;
-}
-
-.nome-input {
-   width: 100%;
-}
-
-.form {
-   width: auto;
-}
-
-button {
-   margin-top: 0.5rem;
  }
  
- button:first-child {
+ .nome-input {
+   width: 100%;
+ }
+ 
+ .form {
+   width: auto;
+ }
+ 
+ .button-container {
+   display: flex;
+   justify-content: flex-end;
+   margin-top: 1rem;
+ }
+ 
+ .button-container button {
+   margin-top: 0.5rem;
+   margin-left: 0.5rem;
+ }
+ 
+ .section {
+   margin-bottom: 1rem;
+ }
+ 
+ .section mat-checkbox {
    margin-right: 1rem;
  }
-
-p {
+ 
+ p {
    margin-top: 4rem;
-   opacity: .5;
-}
+   opacity: 0.5;
+ }
+ 
+ @media (max-width: 2560px) {
+   .container {
+     width: 70%;
+   }
+ }
+ 
+ @media (max-width: 1200px) {
+   .container {
+     width: 80%;
+   }
+ }
+ 
+ @media (max-width: 992px) {
+   .container {
+     width: 90%;
+   }
+ }
+ 
+ @media (max-width: 767px) {
+   .container {
+     width: 95%;
+   }
+ }
+ 
