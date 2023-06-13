@@ -46,7 +46,7 @@ export class LoteGerenciarComponent implements OnInit {
   
     this.loteService.adicionarAnimaisAoLote(idLote, this.animaisSelecionados).subscribe(
       () => {
-        this.toast.success("Animal adicionado com sucesso", "Cadastro");
+        this.toast.success("Animal adicionado com sucesso", "Movimentação");
         this.location.back();
       },
       (error) => {
