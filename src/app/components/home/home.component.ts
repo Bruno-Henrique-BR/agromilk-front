@@ -188,8 +188,8 @@ export class HomeComponent implements OnInit {
   }
   
   exibirGrafico() {
-    const labels = this.graficoData.map((item) => item.mes);
-    const dataset = this.graficoData.map((item) => item.producaoLeite);
+    const labels = this.graficoData.slice(-12).map((item) => item.mes);
+    const dataset = this.graficoData.slice(-12).map((item) => item.producaoLeite);
   
     const canvas = document.getElementById('meuGrafico') as HTMLCanvasElement;
     if (!canvas) {
@@ -372,8 +372,8 @@ export class HomeComponent implements OnInit {
     });
   }
   exibirGraficoSemanal() {
-    const labels = this.graficoData.map((item) => item.semana);
-    const dataset = this.graficoData.map((item) => item.producaoLeite);
+    const labels = this.graficoData.slice(-10).map((item) => item.semana);
+    const dataset = this.graficoData.slice(-10).map((item) => item.producaoLeite);
   
     const canvas = document.getElementById('meuGraficoSemana') as HTMLCanvasElement;
     if (!canvas) {
@@ -413,7 +413,7 @@ export class HomeComponent implements OnInit {
         plugins: {
           title: {
             display: true,
-            text: 'Produção de Leite por Semana',
+            text: 'Produção de Leite das últimas 10 semanas',
             font: {
               size: 18, // Tamanho da fonte do título
               weight: 'bold', // Peso da fonte do título
